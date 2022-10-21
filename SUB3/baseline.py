@@ -118,7 +118,10 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     def on_other_options():
         show_more_options(options)
 
-    #+skip to app.py button
+    def main_app():
+        root.destroy()
+        show_app(port, pat_id, sess, no_motor=False, no_emg=False)
+    #skip to app.py button
 
     #Updates M1 delay. Needed for baseline.
     def on_stop():
@@ -169,6 +172,9 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     other_opts_btn.grid(row=0, column=3)
 
     #skip btn
+    skip_btn = Button(root, text="Skip Baseline", command=main_app ,width=big_w, height= big_h, 
+                           bg="blue", font=button_font, fg=button_font_color)
+    trash_btn.grid(row=1, column=0)
 
     # Display Frame: widget to hold preload and record displays
     # display_frame
