@@ -8,6 +8,9 @@
 #from framework import *
 #from tkinter import *
 import time
+from time import sleep
+#sometimes I wish I could import sleep gottem
+from BaselineMaxDisplay import BaselineMaxDisplay
 
 # function for EMG/Torque MAX
 
@@ -33,6 +36,10 @@ import time
             #50% conditioning
             #calculations for new slope and preloading
 
+#This code does 20 baseline measurements and 5 max measurements
+#it has a skip button instead of checking automatically if the user is new/etc
+
+#These libraries are from app.py:
 from datetime import datetime
 from multiprocessing import Process
 import os
@@ -54,8 +61,58 @@ import matplotlib.pyplot as plt
 from SuccessRecordDisplay import SuccessRecordDisplay
 from PIL import ImageTk, Image
 import logging
+#these are from framework.py:
+import threading
 
-#need to edit
+from block import block
+from trial import trial
+from motor import motor
+from emg import emg
+from create_json import JSONmaker
+import scipy as sp
+from scipy import signal
+import peak
+
+# Displays the most recent trial using matplotlib
+def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
+
+    yemg = yemg[400:800]
+    yacc = yacc[400:800]
+
+    _, ax = plt.subplots()
+    
+    ax.plot(yemg, 'r', label="EMG")
+    ax.legend(loc=2)
+
+    # Display vertical lines
+    if v1 and v2 and h1:
+        ax.axhline(h1)
+        ax.axvline(v1)
+        ax.axvline(v2)
+    
+    ax2 = ax.twinx()
+    ax2.plot(yacc,'b', label="ACC")
+    ax2.legend(loc=1)
+
+    # Format plot
+    plt.title('Most Recent Trial Readings')
+    plt.ion()
+    plt.legend()
+    if duration:
+        plt.show()
+        plt.pause(duration)
+        plt.close()
+    else:
+        plt.show(block= True)
+
+# 
+
+#  
+
+
+
+#basically stolen from app.py; edited for baselining
+#notably: different box and oval displays; added EMG MAX collection; added skip button
 def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     
     log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP2\\Logs\\')
@@ -109,8 +166,10 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     def on_start():
         frame.start_block()
 
+    paused = False
     def on_pause():
         frame.pause_block()
+        paused = -paused
 
     def on_trash_prev():
         pass
@@ -124,6 +183,7 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     #skip to app.py button
 
     #Updates M1 delay. Needed for baseline.
+    #calculate preload...?
     def on_stop():
         new_thresh = frame.block.compute_avg_peak()
         messagebox.showinfo(
@@ -202,13 +262,20 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     df_torque.grid(row=1, column=0)
 
 # success baubles: keep
-    nw = 15
-    nh = 5
-    success_display = ControlSuccessRecordDisplay(
-        display_frame, 600, 220, nw, nh, margin=15, radius=15, start_color=1 if options["display_success"] else 3)
+    nw = 10
+    nh = 2
+    success_display = SuccessRecordDisplay(
+        display_frame, 600, 100, nw, nh, margin=15, radius=15, start_color=1 if options["display_success"] else 3)
+    #box columns and rows for MAX collection
+    bw = 5
+    bh = 1
+    baseline_display = BaselineMaxDisplay(
+        display_frame, 600, 50, bw, bh, margin=15, squareSide=30, start_color=1 if options["display_success"] else 3)
+    
     success_display.grid(row=2, column=0, rowspan=2, columnspan=3)
+    baseline_display.grid(row=1,column=0,rowspan=2,columnspan=3)
     success_display.configure(bg=df_bg)
-
+    baseline_display.configure(bg=df_bg)
 
 # preload display: keep
     preload_lbl = Label(display_frame, text="Preload Status", bg=df_bg, font=small_font)
@@ -243,6 +310,78 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     center_window(root)
 
     # End gui
+    root.update()
+    #EMG + Torque MAX Collection (for better preload)
+    #get motor torque and EMG values
+    #-make motor, EMG
+    if not no_motor:
+         baseMot = motor(port, options["pre_max"], options["pre_min"])
+         baseMot.start()
+         # Give motor time to enable
+         sleep(10)
+         logging.info("Done Enabling motor")
+    else:
+         baseMot = None
+    if not no_emg:
+         baseEmg = emg()
+    else:
+         baseEmg = None
+    # display...
+    #-'push as hard as you can!!!!'
+    baselineCount = 0
+    emg_max = 0
+    torque_max = 0
+    while (baselineCount < bw*bh):
+     if paused:
+             sleep(1) 
+     else:
+            baselineCount += 1
+
+            if not baseMot or not baseEmg:
+                logging.info("Missing EMG or Motor, Doing Fake Baseline")
+                emg_max = 1
+                torque_max = 2
+                sleep(1)
+                #-update box color to blue for complete, then skip to next loop
+                baseline_display.set_record(baselineCount -1, 5)
+                root.update()
+                continue
+                
+            root.update()
+            #fresh arrays every loop!
+            emg_data = [[],[]]
+            baseTorque = []
+            #start collecting data from EMG
+            baseEmg.start_cont_collect(emg_data)
+            # Trial starts, debounce half a second
+            sleep(.75)
+            #collect torque data to 100 datapoints; EMG will collect in background simultaneously
+            while(len(baseTorque) < 100):
+             if baseMot.torque_update:
+                 baseTorque.append(baseMot.torque_value)
+                 baseMot.torque_update = False
+            
+            #-grab highest data points for this round;
+            emg_max = ((emg_max)*(baselineCount-1) + max(emg_data[0]))/baselineCount 
+            torque_max = ((torque_max)*(baselineCount-1) + max(baseTorque))/baselineCount
+            #^undoes previous loop average; adds maximum value in new emg array; re-performs average
+
+            #-update box color to blue for complete
+            baseline_display.set_record(baselineCount -1, 5)
+            # then loop until boxes are complete
+    #continue to baseline session of 20 trials, below, which should function normally
+    #clean up after yourself first:
+    if baseMot:
+            baseMot.exit()
+    else:
+            logging.warning("No Baseline Motor, past baseline")
+    if baseEmg:
+            baseEmg.exit()
+    else:
+            logging.warning("No Baseline EMG, Exiting")
+    #note that emg_max and torque_max are not yet recorded as needed
+    #options[preload min, max] = (torque thresholds) * (emg/torque)?
+    #need to find how to write to options
 
     # To launch with no_motor and no_emg, run sign_in.py and hold shift while you press continue
     frame = framework(port, patID=options["pat_id"], sess=options["sess"],
@@ -253,11 +392,11 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
         # Update preload display
         if frame.mot:
             if frame.mot.torque_update:
-                torque_value = frame.trial_data[0][-1]      # temporary fix
+                torque_value = frame.trial_data[0][-1]      #this grabs last EMG value from framework
                 frame.mot.torque_update = False
                 preload_display.update_data(torque_value)
                 
-                # Take a 20 sample rolling torque average
+                # Take a 20 sample rolling torque (EMG) average
                 if options["torque_display"]:
                     max.append(abs(torque_value))
                     max = max[-20:]

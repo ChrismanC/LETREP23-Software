@@ -5,7 +5,7 @@ import multiprocessing
 
 
 from analysis_app import analysis_app
-
+from research_app import research_app
 
 def show_main():
     root = Tk()
@@ -23,7 +23,7 @@ def show_main():
 
     def research_button():
         root.destroy()
-        #run research
+        research_app()
 
     width = 15
     height = 5
@@ -46,6 +46,8 @@ def show_main():
 
     center_window(root)
     root.mainloop()
+
+    # 
 
 
 if __name__ == "__main__":

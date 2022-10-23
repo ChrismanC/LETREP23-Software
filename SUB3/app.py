@@ -191,10 +191,12 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     df_torque.grid(row=1, column=0)
 
 # success baubles: keep
+    #15x5 ovals inside 600x220 rectangle
     nw = 15
     nh = 5
     success_display = SuccessRecordDisplay(
         display_frame, 600, 220, nw, nh, margin=15, radius=15, start_color=1 if options["display_success"] else 3)
+    
     success_display.grid(row=2, column=0, rowspan=2, columnspan=3)
     success_display.configure(bg=df_bg)
 
@@ -241,7 +243,7 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
         # Update preload display
         if frame.mot:
             if frame.mot.torque_update:
-                torque_value = frame.trial_data[0][-1]      # temporary fix
+                torque_value = frame.mot._display_emgV       #grabs emg from motor object
                 frame.mot.torque_update = False
                 preload_display.update_data(torque_value)
                 

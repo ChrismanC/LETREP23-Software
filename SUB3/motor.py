@@ -18,6 +18,8 @@ class motor:
         # Values for preload
         self._preload_max = max
         self._preload_min = min
+        self._preload_emgV = []
+        self._display_emgV = 0
 
         # Ack timeout in seconds
         self._ack_timeout = .4
@@ -131,19 +133,25 @@ class motor:
 
             time.sleep(.01)
 
-    def torque_preload_check(self, emgV):
+    def torque_preload_check(self):
         """
         Checks the motors torque:
         Returns 1 if force is greater than preload_max
         Return 0 if good
         Returens -1 if force is less than preload_min
         """
-        if emgV < self._preload_max:
+        #checks emg val instead now
+        self._display_emgV = self._preload_emgV[-1] #because app doesn't like list[-1]
+        if self._preload_emgV[-1] < self._preload_max:
             return 1
-        elif emgV > self._preload_min:
+        elif self._preload_emgV[-1] > self._preload_min:
             return -1
         else:
             return 0
+
+
+    def update_pre_emg(self,pre_emgV):
+        self._preload_emgV = pre_emgV
 
     def update_preloads(self,pre_min, pre_max):
         self._preload_min = pre_min

@@ -20,7 +20,7 @@ import peak
 
 
 class framework():
-    def __init__(self, COM, patID=1234, sess=1, blocknum=1, premin=.51, premax=.53, no_motor = False, no_emg = False):
+    def __init__(self, COM, patID=1234, sess=1, blocknum=1, premin=-.06, premax=.04, no_motor = False, no_emg = False):
         self.preload_max = premax
         self.preload_min = premin
 
@@ -93,6 +93,7 @@ class framework():
                 return True
 
              # Check if out of torque limits
+            
             if self.mot.torque_preload_check() != 0:
 
                 # Check if out of time for Failure Handler
@@ -171,14 +172,18 @@ class framework():
                 self.emg.start_cont_collect(trial_data)
                 # Trial starts, debounce half a second
                 sleep(.75)
+                #Send the motor the emg array
+                self.mot.update_pre_emg(trial_data[0]) 
 
                 # Preload while checking torque for 1.25 seconds past start time
                 failure_status = False
                 while(1):
                     sleep(.1)
                     if time()-trial_start_time > 1.25:
+        
                         break
-                    if self.mot.torque_preload_check(sum(trial_data[0][-20:])/20) != 0:    # take the last twenty values of emg value array; average; pass to preload check 
+
+                    if self.mot.torque_preload_check() != 0:     
                         failure_status = self.preload_failure_handler(trial_start_time)
                         break
 
