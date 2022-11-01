@@ -49,6 +49,7 @@ import random
 from tkinter import messagebox
 import winsound
 
+
 from M1Display import M1Display
 
 from create_json import JSONTrialMaker
@@ -72,6 +73,8 @@ from create_json import JSONmaker
 import scipy as sp
 from scipy import signal
 import peak
+from app import show_app
+from sign_in import *
 
 # Displays the most recent trial using matplotlib
 def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
@@ -113,7 +116,7 @@ def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
 
 #basically stolen from app.py; edited for baselining
 #notably: different box and oval displays; added EMG MAX collection; added skip button
-def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
+def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
     
     log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP2\\Logs\\')
     if not os.path.exists(log_dir):
@@ -179,7 +182,7 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
 
     def main_app():
         root.destroy()
-        show_app(port, pat_id, sess, no_motor=False, no_emg=False)
+        show_app(port, pat_id, sess, no_motor, no_emg)
     #skip to app.py button
 
     #Updates M1 delay. Needed for baseline.
@@ -234,7 +237,7 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     #skip btn
     skip_btn = Button(root, text="Skip Baseline", command=main_app ,width=big_w, height= big_h, 
                            bg="blue", font=button_font, fg=button_font_color)
-    trash_btn.grid(row=1, column=0)
+    skip_btn.grid(row=0, column=2)
 
     # Display Frame: widget to hold preload and record displays
     # display_frame
@@ -574,7 +577,7 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
 
 if __name__ == "__main__":
 
-    show_app(None, 1234, 1, no_motor=True, no_emg=True)
+    show_baseline(None, 1234, 1, no_motor=True, no_emg=True)
 
 
 

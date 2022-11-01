@@ -3,7 +3,7 @@ from PIL import ImageTk, Image
 
 from global_funcs import *
 from app import show_app
-
+from baseline import show_baseline
 
 def sign_in(port):
     print("Using PORT %s" % port) if port else print("No port selected")
@@ -15,7 +15,8 @@ def sign_in(port):
         sess = sess_choice.get()
         root.destroy()
         no = port == None
-        show_app(port, id, sess, no_motor=no, no_emg=no)
+        show_baseline(port, id, sess, no_motor=no, no_emg=no)
+        
 
     img = Image.open(logo_dir)
     img = img.resize((250, 250), Image.ANTIALIAS)
@@ -32,6 +33,9 @@ def sign_in(port):
 
     sess_label = Label(root, text="Session Number:",
                        bg="white", font=small_font)
+
+
+                       
     sess_label.grid(row=2, column=0, sticky="e")
 
     sess_choice = IntVar(root)
