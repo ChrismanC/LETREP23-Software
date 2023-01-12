@@ -91,7 +91,10 @@ class analysis_app(Tk):
         if folder_name != "":
             
             self.sessions, multiple_patids = open_json_files(folder_name)
-            
+            #right now the patient json files in 1234 have duplicate session IDs
+            #something like seven 'session 1 block 1' files
+            #which means it shows 3 folders when there are, like
+            #seven in reality
             if multiple_patids:
                 messagebox.showwarning(
                     "Data Loading Error!", "Loaded Blocks Contain Differeing Patient IDs")

@@ -1,0 +1,6 @@
+﻿  Copying sFoundation Files
+  cwd=C:\Program Files (x86)\Teknic\ClearView\sdk\examples\ srcArch=x64 srcConfig=Debug dllDir=..\sFoundation Source\sFoundation\win\Debug\x64 destDir="C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\x64\Debug\"
+          1 file(s) copied.
+          1 file(s) copied.
+          1 file(s) copied.
+  Example-Motion.vcxproj -> C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\x64\Debug\Example-Motion.exe

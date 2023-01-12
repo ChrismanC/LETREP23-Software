@@ -1,0 +1,11 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: The intermediate directory (C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\x64\Debug\intermediate\) contains files shared from another project (Example-Motion.vcxproj, LETREP-Home.vcxproj, LETREP-Motion.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  LETREP-Disable.cpp
+C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\LETREP-Disable.cpp(105,14): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\LETREP-Disable.cpp(105,14): message : consider using '%zd' in the format string
+  Copying sFoundation Files
+  cwd=C:\Program Files (x86)\Teknic\ClearView\sdk\examples\ srcArch=x64 srcConfig=Debug dllDir=..\sFoundation Source\sFoundation\win\Debug\x64 destDir="C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\x64\Debug\"
+          1 file(s) copied.
+          1 file(s) copied.
+          1 file(s) copied.
+     Creating library C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\x64\Debug\LETREP-Disable.lib and object C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\x64\Debug\LETREP-Disable.exp
+  LETREP-Disable.vcxproj -> C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\x64\Debug\LETREP-Disable.exe

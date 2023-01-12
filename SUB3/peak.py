@@ -1,7 +1,12 @@
 
 from scipy import signal
-freq=1925
-
+freq=19250
+#was 1925 from jesse
+#from specs, 4370 sa/sec from emg
+#but cassie says 19250
+# bc yes
+#but not everywhere...
+#the accelerometer is 963 sa/sec
 
 def base_peak(emg,factor):
 
@@ -12,7 +17,7 @@ def base_peak(emg,factor):
         peak += 500
 
         sum=0
-        for i in range((peak-10),(peak+10)):
+        for i in range((peak-100),(peak+100)):
             sum=sum+emg[i]
         
         avg_peak=sum/20
@@ -26,17 +31,35 @@ def base_peak(emg,factor):
 
 def condition_peak(emg, avg_time,factor):
 
+    print(avg_time)
+
     M1_avg=int((avg_time*freq/1000)+500)
 
-    range_emg=emg[M1_avg-20:M1_avg+20]
+    print(M1_avg)
 
-    maxes = list(signal.find_peaks(range_emg, height=find_peak_min_thresh(emg,factor))[0])
+    range_emg=emg[M1_avg-200:M1_avg+200]
+
+    # for x in range_emg:
+    #     print(range_emg[int(x)]*1000)
+
+    print(".............................................................................................")
+
+    # maxes = list(signal.find_peaks(emg[1200:1600], height=find_peak_min_thresh(emg,factor))[0])
+    maxes = list(signal.find_peaks(emg[1300:1500], height=find_peak_min_thresh(emg,factor))[0])
+    # if maxes[0]:
+    #     for i in maxes:
+    #         print(maxes[i])
+    # else:
+    #     print("fail")
+
     if maxes:
         peak=maxes[0]
-        peak=peak+M1_avg-20
+        print(maxes[0])
+        # peak=peak+M1_avg-20
+        peak=int(peak)+1300
 
         sum=0
-        for i in range((peak-10),(peak+10)):
+        for i in range((peak-100),(peak+100)):
             sum=sum+emg[i]
 
         avg_peak=sum/20

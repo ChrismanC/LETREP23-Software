@@ -23,8 +23,8 @@ import logging
 # Displays the most recent trial using matplotlib
 def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
 
-    yemg = yemg[400:800]
-    yacc = yacc[400:800]
+    yemg = yemg[400:1600]
+    yacc = yacc[400:1600]
 
     _, ax = plt.subplots()
     
@@ -56,10 +56,12 @@ def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
 
 def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     
+    #makes log directory in LETREP2 on desktop
     log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP2\\Logs\\')
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
 
+    #configs a new Run .log file that logging statements can write to
     logging.basicConfig(filename=log_dir+datetime.now().strftime('Run_%Y-%m-%d_%H-%M.log'), level=logging.DEBUG,
                         format='%(asctime)s:%(filename)s:%(levelname)s:%(message)s')
 

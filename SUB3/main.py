@@ -2,6 +2,8 @@ from tkinter import *
 from PIL import ImageTk, Image
 from global_funcs import *
 import multiprocessing
+from time import sleep
+import os
 
 
 from analysis_app import analysis_app
@@ -49,6 +51,9 @@ def show_main():
 
     # 
 
+
+#
+#
 
 if __name__ == "__main__":
     multiprocessing.freeze_support()

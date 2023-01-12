@@ -2,6 +2,8 @@ import serial
 from threading import Thread
 import logging
 import time
+import os
+import subprocess
 
 
 # Constants
@@ -11,7 +13,7 @@ BAUD = 115200
 class motor:
     def __init__(self, com, max, min):
         # Serial for communication with ESP32
-        self.ser = serial.Serial(com, BAUD, timeout=.1)
+        # self.ser = serial.Serial(com, BAUD, timeout=.1)
 
         self._comm_thread = None
 
@@ -20,6 +22,9 @@ class motor:
         self._preload_min = min
         self._preload_emgV = []
         self._display_emgV = 0
+
+        # Fire delay for framework fire point calculations
+        self.FireDelay = 0
 
         # Ack timeout in seconds
         self._ack_timeout = .4
@@ -63,18 +68,25 @@ class motor:
         self._send_message("d")
 
     def fire(self):
-        """
-        Sends fire command to the ESP32 to actuate the clearpath motor to the raised position
-        """
-        logging.debug("UART: Firing Motor")
-        self._send_message("c")
+        # """
+        # Sends fire command to the ESP32 to actuate the clearpath motor to the raised position
+        # """
+        # logging.debug("UART: Firing Motor")
+        # self._send_message("c")
+        TimeCall = time.time_ns()
+        FiringOutput = subprocess.run("C:/Program Files (x86)/Teknic/ClearView/sdk/examples/3a-Example-Motion/x64/Debug/LETREP-Motion.exe", capture_output=True, text=True)
+        TimeFire = FiringOutput.stdout.split()[-1]
+        self.FireDelay = int(TimeFire)-int(TimeCall)
+        #the EMG sample rate is 4370 samples/second
+        #FireDelay is in nanoseconds, and measures the time between calling the motor and the motor firing
+        #self.fire_point = self.fire_point + FireDelay*4370/(1000000000)
 
-    def release(self):
-        """
-        Sends release command to the ESP32 to return the clearpath motor to starting position
-        """
-        logging.debug("UART: Releasing Motor")
-        self._send_message("b")
+    # def release(self):
+    #     """
+    #     Sends release command to the ESP32 to return the clearpath motor to starting position
+    #     """
+    #     logging.debug("UART: Releasing Motor")
+    #     self._send_message("b")
 
 
 
@@ -158,13 +170,14 @@ class motor:
         self._preload_max = pre_max
 
     def start(self):
-        """
-        Starts the system's threads and enables the motor
-        """
-        self._start_threads()
-        # Added sleep to allow esp to configure UART
-        time.sleep(1)
-        self.enable()
+        # """
+        # Starts the system's threads and enables the motor
+        # """
+        # self._start_threads()
+        # # Added sleep to allow esp to configure UART
+        # time.sleep(1)
+        # self.enable()
+        subprocess.run("C:/Program Files (x86)/Teknic/ClearView/sdk/examples/3a-Example-Motion/x64/Debug/LETREP-Home.exe")
 
     def play_pause(self):
         """"
@@ -178,17 +191,19 @@ class motor:
         """
         # Turn off motor
         logging.info("Motor is exiting")
-        self.disable()
+        # self.disable()
         time.sleep(4)
+
+        subprocess.run("C:/Program Files (x86)/Teknic/ClearView/sdk/examples/3a-Example-Motion/x64/Debug/LETREP-Disable.exe")
 
         # Stop comm thread
         if self._comm_thread:
             self._read_msgs_flag = False
             self._comm_thread.join()
 
-        # Close the serial
-        if self.ser:
-            self.ser.close()
+        # # Close the serial
+        # if self.ser:
+        #     self.ser.close()
 
     def _start_threads(self):
         """

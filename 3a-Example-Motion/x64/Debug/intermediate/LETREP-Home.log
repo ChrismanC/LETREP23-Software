@@ -1,0 +1,8 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: The intermediate directory (C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\x64\Debug\intermediate\) contains files shared from another project (Example-Motion.vcxproj, LETREP-Disable.vcxproj, LETREP-Motion.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Copying sFoundation Files
+  cwd=C:\Program Files (x86)\Teknic\ClearView\sdk\examples\ srcArch=x64 srcConfig=Debug dllDir=..\sFoundation Source\sFoundation\win\Debug\x64 destDir="C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\x64\Debug\"
+  The process cannot access the file because it is being used by another process.
+          0 file(s) copied.
+          1 file(s) copied.
+          1 file(s) copied.
+  LETREP-Home.vcxproj -> C:\Program Files (x86)\Teknic\ClearView\sdk\examples\3a-Example-Motion\x64\Debug\LETREP-Home.exe
