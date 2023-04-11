@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 import math
 from time import time
 
+#this displays a little bar after the high/good/low preload scale depending on the delay of the M1 wave
 class M1Display(Canvas):
 
     def __init__(self, root, width, height, max, min, threshold, baseline, bar_width=0.5, up=False, *args, **kw):
@@ -18,7 +19,7 @@ class M1Display(Canvas):
         self.baseline = baseline
         self.up = up
 
-
+        #make a lil window
         self._bg = self.create_rectangle(0, 0, width, height, fill="#a8a8a8")
         self._threshold = self.create_rectangle(0, 0, 0, 0, fill="#858585")
         self.update_threshold(threshold, up)
@@ -29,9 +30,11 @@ class M1Display(Canvas):
         self._bar = self.create_rectangle(0, 0, 0, 0, outline="#000000")
         self.update_position((max + min) / 2)
 
+    #gets y
     def get_y(self, pos):
         return self.height * (1 - (pos - self.min) / (self.max - self.min))
 
+    #updates m1 threshold to threshold
     def update_threshold(self, threshold, up=None):
         self.threshold = threshold
         if up is None:
@@ -41,15 +44,18 @@ class M1Display(Canvas):
         else:
             self.coords(self._threshold, 0, self.get_y(threshold), self.width, self.height)
 
+    #updates baseline
     def update_baseline(self, baseline):
         self.baseline = baseline
         y = self.get_y(baseline)
         self.coords(self._baseline, 0, y, self.width, y)
 
+    #updates bounds for max/min m1
     def update_bounds(self, m1min, m1max):
         self.min = m1min
         self.max = m1max
 
+    #update position of bar
     def update_position(self, pos):
         self.pos = pos
         w = self.bar_width * self.width
@@ -61,6 +67,7 @@ class M1Display(Canvas):
         color = "#0ed145" if (pos > self.threshold) == self.up else "#ec1c24"
         self.itemconfigure(self._bar, fill=color)
 
+    #update everything
     def update_all(self, threshold=None, baseline=None, m1min=None, m1max=None, pos=None):
         self.update_bounds(m1min if m1min is not None else self.min, m1max if m1max else self.max)
         self.update_threshold(threshold if threshold is not None else self.threshold)
@@ -69,7 +76,7 @@ class M1Display(Canvas):
 
 
 
-
+#lil test run
 if __name__ == "__main__":
     root = Tk()
     m1max = 5

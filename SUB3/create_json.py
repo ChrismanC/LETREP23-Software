@@ -74,7 +74,7 @@ def maxJSON(blockobject: block, file):
                     },
                     "results":{
                         "MaxTrq": blockobject.avg_max_trq,
-                        "TrqNM": blockobject.avg_max_trq*(32.5),
+                        "TrqNM": blockobject.avg_max_trq*(.325),
                         "MaxEMG" : blockobject.avg_max_emg,
                         "numoftrials": blockobject.number_of_trials()
                     }

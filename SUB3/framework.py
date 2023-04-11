@@ -17,7 +17,7 @@ import scipy as sp
 from scipy import signal
 import peak
 
-
+#framework does most of the heavy lifting for calculations. It does not display to the user; app does that.
 
 class framework():
     def __init__(self, COM, patID=1234, sess=1, blocknum=-1, premin=-.06, premax=.04, no_motor = False, no_emg = False):
@@ -106,12 +106,14 @@ class framework():
 
                     self.current_trial.success = False
 
+                    #what kind of preload fail?
                     if self.mot.torque_preload_check() < 0:
                         self.current_trial.failure_reason = "prelow"
                     else:
                         self.current_trial.failure_reason = "prehigh"
                     return True
                 else:
+                    #or when was the success?
                     good_start_time = time()
 
     def preload_randomizer(self, trial_start_time):
@@ -143,6 +145,7 @@ class framework():
                         return self.preload_randomizer(trial_start_time)
 
     def retake_trial(self):
+        #remove the block being retaken from the count; pause
         self.block.trials.pop(-1)
         self.trial_count -= 1
         self.pause_block()
@@ -157,6 +160,7 @@ class framework():
             self.starting_trial = True
 
             if not self.mot or not self.emg:
+                #if no motor/EMG, run fake values for test purposes
                 logging.info("Missing EMG or Motor, Doing Fake Trial")
                 self.current_trial = trial()
                 trial_start_time = time()
@@ -177,6 +181,7 @@ class framework():
                 trial_data = [[],[]] #this array of 2 arrays receives [EMG, Accelerometer] data
             
                 #begin continuous collection of EMG + accel
+                #emg.py constantly collects from this point on, appending to the arrays in trial_data
                 self.emg.start_cont_collect(trial_data)
                 # Trial starts, debounce half a second
                 sleep(1.25)
@@ -192,6 +197,8 @@ class framework():
                         break
 
                     if self.mot.torque_preload_check() != 0:     
+                        #if preload check is not good
+                        #handle failure:
                         failure_status = self.preload_failure_handler(trial_start_time)
                         break
 
@@ -200,18 +207,22 @@ class framework():
                     failure_status = self.preload_randomizer(trial_start_time)
 
                 if not self.paused:
+                    #if failure is true, success is false
                     self.current_trial.success = not failure_status
+                    #we are firing at the current point
                     self.fire_point = len(trial_data[0]) -1
                     self.fire(failure_status, trial_start_time, speed)
                     self.current_trial.speed=speed
                     self.current_trial.foot_speed = self.mot.FootSpeed
                     #the EMG sample rate is 4370 samples/second
                     #FireDelay is in nanoseconds, and measures the time between calling the motor and the motor firing
+                    #so the adjusted true fire point is:
                     self.fire_point = self.fire_point + int(self.mot.FireDelay*4370/(1000000000))
                     
                     #fire point = the current data point at time of firing
                     #note that self.fire logs to a 'run' log file the time that correlates with this
                 else:
+                    #if paused, don't collect data
                     self.emg.stop_cont_collect()
 
                     # Decrementing trial_count due to not completing trial
@@ -225,6 +236,7 @@ class framework():
                 self.current_trial.emg_data = trial_data[0]
                 self.current_trial.acc_data = trial_data[1]
                 self.current_trial.emg_offset = sum(self.current_trial.emg_data[0:400])/400
+                #Average of the starting neutral 400 data points to determine the EMG 'dc offset' ^^^
 
                 # Process the data
                 self.truncate_data()
@@ -372,7 +384,7 @@ class framework():
                 #start collecting data from EMG
                 self.emg.start_cont_collect(emg_data)
                 # Trial starts, debounce half a second
-                sleep(.75)
+                # sleep(.75)
                 #collect torque data to 100 datapoints; EMG will collect in background simultaneously
                 while(len(baseTorque) < 100):
                     self.mot._read_msgs_from_esp()
@@ -380,19 +392,35 @@ class framework():
                         if(self.mot.torque_value<0):
                             self.mot.torque_value=self.mot.torque_value*-1
                         baseTorque.append(self.mot.torque_value)
-                        print(self.mot.torque_value)
+                        # print(self.mot.torque_value)
                         self.mot.torque_update = False
                 
                 # emg_max=0
                 # torque_max=0
                 #-grab highest data points for this round;
-                emg_max_point = emg_data[0].index(max(emg_data[0]))
-                emg_bucket = 0
-                for i in range((emg_max_point -20), (emg_max_point)):
-                    emg_bucket = emg_bucket + emg_data[0][i]
-                emg_average = emg_bucket/21
+                # *************************************************************
+                # print(len(emg_data[1]))
+                # print(len(baseTorque))
+                # emg_max_point = emg_data[0].index(max(emg_data[0]))
+                # emg_bucket = 0
+                # for i in range((emg_max_point -20), (emg_max_point)):
+                #     emg_bucket = emg_bucket + emg_data[0][i]
+                # emg_average = emg_bucket/21
                 
-                emg_max = ((emg_max)*(self.trial_count) + emg_average)/(self.trial_count+1) 
+                # emg_max = ((emg_max)*(self.trial_count) + emg_average)/(self.trial_count+1) 
+                # ***********************************************************************
+                trq_index = baseTorque.index(max(baseTorque))
+                emg_index  = int((trq_index/99)*(len(emg_data[1])))
+                if(emg_index<100):
+                    emg_range = emg_data[0][:emg_index]
+                else:
+                    emg_range = emg_data[0][emg_index-100:emg_index]
+                emg_average=max(emg_range)
+                print(max(emg_data[0]))
+                print(emg_average)
+                
+                emg_max = ((emg_max)*(self.trial_count) + emg_average)/(self.trial_count+1)
+                print(emg_max)
                 torque_max = ((torque_max)*(self.trial_count) + max(baseTorque))/(self.trial_count+1)
                 #^undoes previous loop average; adds maximum value in new emg array; re-performs average
                 self.block.avg_max_trq = torque_max

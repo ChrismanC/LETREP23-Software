@@ -14,14 +14,24 @@ def base_peak(emg,factor):
     # print("max: ", maxes)
     # print("emg: ", emg)
     if (len(emg)>1):
+        #if the data exists, find the highest point
         real_max = max(emg)
     # print("new max:", real_max)
+        #get that point's location
         peak = emg.index(real_max)
     # peak = peak + 500
+        #average a bunch of points around the peak
         sum = 0
-        for i in range((peak-100),(peak+100)):
-            sum=sum+emg[i]
-        avg_peak=sum/20
+        print(peak)
+        print(len(emg))
+        if(len(emg)>=peak+100):
+            for i in range((peak-10),(peak+10)):
+                sum=sum+emg[i]
+            avg_peak=sum/20
+        else:
+            for i in range((peak-100),(peak)):
+                sum=sum+emg[i]
+            avg_peak=sum/20            
         peak_ms = (peak)/freq * 1000
     # if maxes:
     #     peak=maxes[0]

@@ -12,9 +12,13 @@ from PIL import ImageTk, Image
 import logging
 from r_app import r_app
 
+#this is the third research display screen
+#it follows r_sign_in and precedes r_app
+#this is where the EMG max is collected, which scales the EMG preloading later on.
 
 def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
     
+    #log directory is hardcoded in LETREP23
     log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP23\\Logs\\')
     # log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads\\LETREP2\\Logs\\')
     if not os.path.exists(log_dir):
@@ -23,19 +27,20 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
     logging.basicConfig(filename=log_dir+datetime.now().strftime('Run_%Y-%m-%d_%H-%M.log'), level=logging.DEBUG,
                         format='%(asctime)s:%(filename)s:%(levelname)s:%(message)s')
 
+    #basic setup
     cease=False
     root = Tk()
     root.configure(bg="white")
     root.running = True
 
-
-    options = get_default_options()
     # Give defaults for options not set in get_default_options before loading from file
+    options = get_default_options()
     options.update(
         {
             "m1_thresh": 0.06
         }
     )
+    #load from file for patient ID
     options.update(load_options_from_file(pat_id))
     options.update(
         {
@@ -45,13 +50,16 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
         }
     )
 
+    #empty variable for the framework later
     frame = None
 
+    #make sure it closes on closing
     def on_closing():
         root.running = False
         frame.exit()
     root.protocol("WM_DELETE_WINDOW", on_closing)
 
+    #get the logo
     img = Image.open(logo_dir)
     img = img.resize((100, 100), Image.ANTIALIAS)
     logo = ImageTk.PhotoImage(img)
@@ -75,9 +83,12 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
     def on_trash_prev():
         pass
 
+    #options button
     def on_other_options():
         show_more_options(options)
 
+    #continue button launches r_app with collected max_emg 
+    # and passes the same framework! (important for motor/emg continuity)
     def continue_button(event=None):
         #max fn only, important for transition to app
         max_emg = frame.block.avg_max_emg
@@ -89,7 +100,7 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
         r_app(port, pat_id, sess, max_emg, frame, no_motor=no, no_emg=no)
 
 
-    # Button configuration
+    # Button sizes configuration; they're all the same size until continue
     big_w = 11
     big_h = 3
 
@@ -118,6 +129,7 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
     other_opts_btn.grid(row=0, column=3)
 
     #continue btn
+    #it starts out disabled
     cont = Button(root, text="Continue", command=continue_button,
                   width=17, height=0, bg=button_color, font=button_font, fg=button_font_color)
     cont['state'] = 'disabled'
@@ -126,9 +138,10 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
     # Display Frame: widget to hold preload and record displays
     # display_frame
 
-    # Large GRAY background: keep
+    # Large gray area with the preload (or in this file, the max collection) bubbles inside
+    # and associated labels
     df_bg = "gray"
-    display_frame = Frame(root, bg=df_bg, padx=padx, pady=pady)
+    display_frame = Frame(root, bg=df_bg, padx=padx, pady=pady) #not to be confused with framework.py
 
     df_block = Label(display_frame, text="Current Block: N/A", 
                      bg=df_bg, font=small_font)
@@ -148,10 +161,11 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
                      bg=df_bg, font=small_font)
     df_torque.grid(row=1, column=0)
 
-# success baubles: keep
-     #box columns and rows for MAX collection
+# success baubles (inside the above gray background)
+     #set box columns and rows for MAX collection:
     bw = 5
     bh = 1
+    #the rectangle of square bubbles is made by baseline_display:
     baseline_display = BaselineMaxDisplay(
         display_frame, 600, 50, bw, bh, margin=15, squareSide=30, start_color=1 if options["display_success"] else 3)
 
@@ -171,6 +185,7 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
     # End gui
 
     # # To launch with no_motor and no_emg, run sign_in.py and hold shift while you press continue
+    #this launches the framework, which does your calculations and main data processing.
     frame = framework(port, patID=options["pat_id"], sess=options["sess"],
                       premin=options["pre_min"], premax=options["pre_max"], no_motor=no_motor, no_emg=no_emg)
     max = []
@@ -193,11 +208,14 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
                 cont['state'] = 'normal'
 
                 if pause_btn_color_swap and time.time() - swap_time > PAUSE_BLINK_RATE:
+                    #pause button blink animation
                     pause_btn_color_swap = not pause_btn_color_swap
                     pause_btn.configure(bg="red")
                     swap_time = time.time()
 
                 elif not pause_btn_color_swap and time.time() - swap_time > PAUSE_BLINK_RATE:
+                    #also pause button blink animation
+                    #it alternates between these two statements every BLINK_RATE
                     pause_btn_color_swap = not pause_btn_color_swap
                     pause_btn.configure(bg="green")
                     swap_time = time.time()
@@ -230,16 +248,18 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
         # Check if a trial is just starting
         if frame.starting_trial:
             if options["preload_audio"]:
+                #play a sound if preload audio is active
                 wav_file = "C:\\Program Files\\LETREP2\\resources\\preload_notification.wav"
                 winsound.PlaySound(wav_file, winsound.SND_FILENAME | winsound.SND_ASYNC)
 
+            #update the 'current trial' display to the current trial
             df_trial.configure(text="Current Trial: " + str(frame.trial_count))
             #Check if this is a first trial
             if frame.trial_count == 0:
                 options["block_count"] = frame.block_count
                 df_block.configure(text="Current Block: " + str(frame.block_count))
 
-
+            #set the label to prompt max collection
             general_info_lbl.configure(text="Collect Max")
             general_info_lbl.last_updated = time.time()
             frame.starting_trial = False
@@ -248,7 +268,7 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
         if time.time() - general_info_lbl.last_updated > GI_CLEAR_TIME:
             general_info_lbl.configure(text="")
 
-        # This happens when after a trial
+        # This happens when after a trial:
 
         if frame.finished_trial:
     #         # Check if we can do another trial
@@ -257,12 +277,15 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
             if frame.trial_count == bw * bh :
                 logging.warning("Trial count meets success display limit... Ending block")
                 
+                #get max from frame
                 max_emg = frame.block.avg_max_emg
                 print(max_emg)
-                frame.r_block() #***
+
+                frame.r_block() #this is a special block operation for continuity
                 root.running = False
                 # frame.exit()
                 root.update()
+                #replace window with r_app
                 root.destroy()
                 no = port == None
                 r_app(port, pat_id, sess, max_emg, frame, no_motor=no, no_emg=no) #***
@@ -276,7 +299,7 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
     if(not cease):        
         root.destroy()
 
-
+#can be run as a test, but main.py runs the project overall.
 if __name__ == "__main__":
 
     r_max(None, 1234, 1, no_motor=True, no_emg=True)

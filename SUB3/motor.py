@@ -149,7 +149,7 @@ class motor:
         #the EMG sample rate is 4370 samples/second
         #FireDelay is in nanoseconds, and measures the time between calling the motor and the motor firing
         #self.fire_point = self.fire_point + FireDelay*4370/(1000000000)
-        sendSpeed=int(((speed-85)/10)+6)
+        sendSpeed=int(((speed-135)/9)+6)
 
         TimeCall = time.time_ns()
         print("TimeCall: ", TimeCall)
@@ -259,11 +259,12 @@ class motor:
         """
         #checks emg val instead now
         #self._display_emgV = self._preload_emgV[-1] #because app.py doesn't like to call list[-1]
-        self._display_emgV = sum(self._preload_emgV[-100:])/100.0 #sasaki wants a rolling avg because it flickery
+        self._preload_emgV[-1]=abs(self._preload_emgV[-1])
+        self._display_emgV = sum(self._preload_emgV[-500:])/500.0 #sasaki wants a rolling avg because it flickery
         self.torque_update=True
-        if self._preload_emgV[-1] < self._preload_max:
+        if self._display_emgV > self._preload_max:
             return 1
-        elif self._preload_emgV[-1] > self._preload_min:
+        elif self._display_emgV < self._preload_min:
             return -1
         else:
             return 0

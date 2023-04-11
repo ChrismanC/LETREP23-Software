@@ -3,6 +3,10 @@ import time
 import sys
 import win32pipe, win32file, pywintypes
 
+
+#This is an example pipe file! 
+# It is not integral to the project, but it's a good test for communication between python and C++
+#(or any other programming language which can use windows pipes)
 #this is an example of pipes, in case you ever need to troubleshoot them.
 #pipes are a method of communication between processes in windows.
 #functions read and write to pipes almost (but not quite) like they are a file.
