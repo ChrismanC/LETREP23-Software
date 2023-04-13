@@ -9,10 +9,13 @@ import json
 def JSONTrialMaker(trialobject: trial, file):
     jdict = {
         "trial":
-                {"success": trialobject.success,
+                {"speed": trialobject.speed,
+                "measured_speed": trialobject.foot_speed,
+                "success": trialobject.success,
                 "failure-reason": trialobject.failure_reason,
                 "peakvalue": trialobject.peak,
                 "maxdelayms": trialobject.max_delay_ms,
+                "emgoffset": trialobject.emg_offset,
                 "emgdata": trialobject.emg_data,
                  "accdata": trialobject.acc_data
                 }
@@ -45,15 +48,38 @@ def JSONmaker(blockobject: block, file):
         i += 1
 
         jdict["block"]["trials"].update({f"trial{i}":
-                                            {"success": t.success,
+                                            {"speed": t.speed,
+                                            "measured_speed": t.foot_speed,
+                                            "success": t.success,
                                             "failure-reason": t.failure_reason,
                                             "peakvalue": t.peak,
                                             "maxdelayms": t.max_delay_ms,
+                                            "emgoffset": t.emg_offset,
                                             "emgdata": t.emg_data,
                                             "accdata": t.acc_data
                                             }
                                         })
 
+    json.dump(jdict, file, indent=4)
+
+
+def maxJSON(blockobject: block, file):
+    jdict = {
+                "block":{
+                    "info":{
+                        "patID": blockobject.patID,
+                        "date": blockobject.date,
+                        "session": blockobject.session,
+                        "blocknum": "Max"
+                    },
+                    "results":{
+                        "MaxTrq": blockobject.avg_max_trq,
+                        "TrqNM": blockobject.avg_max_trq*(.325),
+                        "MaxEMG" : blockobject.avg_max_emg,
+                        "numoftrials": blockobject.number_of_trials()
+                    }
+                }
+            }
     json.dump(jdict, file, indent=4)
 
 

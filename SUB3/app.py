@@ -54,10 +54,20 @@ def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
 
 #
 
-def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
+def show_app(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=False):
+    #****should be all speeds = 175
+    speed_arr_even = [[0 for i in range(2)] for j in range(20)]
+    speed_arr_odd = [[0 for i in range(2)] for j in range(20)]
+
+    for i in range(0,20):
+        speed_arr_even [i][0] = 175 #85+(i*10)
+        speed_arr_even [i][1] = 2+(i%2)
+        speed_arr_odd [i][0] = 175 #85+(i*10)
+        speed_arr_odd [i][1] = 3-(i%2)
     
     #makes log directory in LETREP2 on desktop
-    log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP2\\Logs\\')
+    log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP23\\Logs\\')
+    # log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads\\LETREP2\\Logs\\')
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
 
@@ -70,6 +80,8 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     root.configure(bg="white")
     root.running = True
 
+    if(max_emg==0):
+        max_emg=.5
 
     options = get_default_options()
     # Give defaults for options not set in get_default_options before loading from file
@@ -84,10 +96,12 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
             "pat_id": pat_id, 
             "sess": sess, 
             "display_success": False if sess in [1,2,3] else True
+            "pre_max": max_emg*.20,
+            "pre_min": max_emg*.05
         }
     )
 
-    frame = None
+    frame = framepass
 
     def on_closing():
         root.running = False
@@ -237,15 +251,16 @@ def show_app(port, pat_id, sess, no_motor=False, no_emg=False):
     # End gui
 
     # To launch with no_motor and no_emg, run sign_in.py and hold shift while you press continue
-    frame = framework(port, patID=options["pat_id"], sess=options["sess"],
-                      premin=options["pre_min"], premax=options["pre_max"], no_motor=no_motor, no_emg=no_emg)
+    # frame = framework(port, patID=options["pat_id"], sess=options["sess"],
+    #                   premin=options["pre_min"], premax=options["pre_max"], no_motor=no_motor, no_emg=no_emg)
     max = []
     center_window(root)
     while root.running:
         # Update preload display
         if frame.mot:
             if frame.mot.torque_update:
-                torque_value = frame.mot._display_emgV       #grabs emg from motor object
+                torque_value = frame.mot._display_emgV       
+                #grabs emg rolling avg from motor object^
                 frame.mot.torque_update = False
                 preload_display.update_data(torque_value)
                 

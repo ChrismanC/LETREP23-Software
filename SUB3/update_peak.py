@@ -34,3 +34,4 @@ if folder_name != "":
                 os.makedirs(json_dir)
             with open(json_dir+file_name, "w") as file:
                 JSONmaker(blk, file)
+print("I exist")

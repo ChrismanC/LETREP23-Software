@@ -6,8 +6,8 @@ import os, json
 
 option_columns = [
         [
-            FloatOption("pre_max", "Preload Max:", 0.3),
-            FloatOption("pre_min", "Preload Min:", 0.4),
+            FloatOption("pre_max", "Preload Max:", 0.04),
+            FloatOption("pre_min", "Preload Min:", -.06),
             FloatOption("m1_baseline", "Baseline Average:", 0.08),
             FloatOption("avg_peak_delay", "EMG Peak Delay:", 42),
             BooleanOption("display_success", "Display Success", True),
@@ -29,14 +29,14 @@ def get_default_options():
     return dict([(option.name, option.value) for collist in option_columns for option in collist] + [("updates", False)])
 
 def save_options_to_file(options):
-    pid_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), f'Desktop\\LETREP2\\Data\\{options["pat_id"]}\\')
+    pid_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), f'Desktop\\LETREP23\\Data\\{options["pat_id"]}\\')
     if not os.path.exists(pid_dir):
         os.makedirs(pid_dir)
     with open(pid_dir+'options.json', "w") as file:
         json.dump(options, file)
 
 def load_options_from_file(pid):
-    pid_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), f'Desktop\\LETREP2\\Data\\{pid}\\options.json')
+    pid_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), f'Desktop\\LETREP23\\Data\\{pid}\\options.json')
     if not os.path.exists(pid_dir):
         return {}
     with open(pid_dir, "r") as file:

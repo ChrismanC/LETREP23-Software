@@ -1,4 +1,6 @@
+#this contains a few misc functions and variables which are used throughout the code.
 
+ #center_window... centers the window.
 def center_window(toplevel):
     toplevel.update_idletasks()
 
@@ -11,7 +13,7 @@ def center_window(toplevel):
 
     toplevel.geometry("+%d+%d" % (x, y))
 
-
+#these define button variables
 button_color = "blue"
 button_font = ("Arial", 15)
 small_font = ("Arial", 10)
@@ -20,4 +22,5 @@ button_font_color = "white"
 padx = 10
 pady = 10
 
+#unsure if this logo_dir is used
 logo_dir = "C:/Program Files/LETREP2/resources/Logo.jpg"

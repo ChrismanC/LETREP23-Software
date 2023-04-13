@@ -81,7 +81,6 @@ class emg:
             self.index.Add(i)
 
         self.TrigBase.StreamData(self.index, newTransform, 2)
-
         self.threadManager()
 
     def emg_trig_collection(self, array, sam_to_collect):
@@ -135,6 +134,8 @@ class emg:
                 dead_array = [[], []]
                 self._read_emg(dead_array)
 
+            
+
     def exit(self):
         """Callback to stop the data stream"""
         self.TrigBase.StopData()
@@ -146,7 +147,7 @@ class emg:
 
     def threadManager(self):
         """Handles the threads for the DataCollector gui"""
-        self._emg_collect = True
+        self._emg_collect = True\
 
         self.t1 = threading.Thread(target=self.streaming)
 

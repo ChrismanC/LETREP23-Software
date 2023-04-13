@@ -1,45 +1,3 @@
-# cool story bro
-# for declaring and setup of baseline trials, MAXs, and 50%
-
-#from more_options import *
-# session, ID, all options for M1 and preloading
-# options = get_default_options()
-    #options.whatever_object_we_need
-#from framework import *
-#from tkinter import *
-import time
-from time import sleep
-#sometimes I wish I could import sleep gottem
-from BaselineMaxDisplay import BaselineMaxDisplay
-
-# function for EMG/Torque MAX
-
-# function for Torque 50% to EMG
-
-# baseline trials (20) to find M1 waves
-
-# new baseline graphics/design
-
-#def 50%
-
-#sign in
-# check ID and day
-    #if new ID
-        #new gui for baseline + max + 50%
-        # MAX conditioning
-    #calculations for slopes for preloading
-
-        #if same day
-             # run trials normally
-        #if  NOT same day
-            # new gui for baseline + 50%
-            #50% conditioning
-            #calculations for new slope and preloading
-
-#This code does 20 baseline measurements and 5 max measurements
-#it has a skip button instead of checking automatically if the user is new/etc
-
-#These libraries are from app.py:
 from datetime import datetime
 from multiprocessing import Process
 import os
@@ -48,7 +6,6 @@ import time
 import random
 from tkinter import messagebox
 import winsound
-
 
 from M1Display import M1Display
 
@@ -62,39 +19,32 @@ import matplotlib.pyplot as plt
 from SuccessRecordDisplay import SuccessRecordDisplay
 from PIL import ImageTk, Image
 import logging
-#these are from framework.py:
-import threading
 
-from block import block
-from trial import trial
-from motor import motor
-from emg import emg
-from create_json import JSONmaker
-import scipy as sp
-from scipy import signal
-import peak
-from app import show_app
-from sign_in import *
+#this displays the research project's app. It has different display than the ordinary data collection app.
+#the project is run from main.py.
 
-# Displays the most recent trial using matplotlib
+# Displays the most recent trial using matplotlib after preload
+# can be toggled in options
 def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
 
-    yemg = yemg[400:800]
-    yacc = yacc[400:800]
+    yemg = yemg[400:1600] #grabs a specific range of EMG data
+    yacc = yacc[400:1600] #and accelerometer data
 
     _, ax = plt.subplots()
     
-    ax.plot(yemg, 'r', label="EMG")
+    ax.plot(yemg, 'r', label="EMG") #plots the EMG and names it EMG
     ax.legend(loc=2)
 
-    # Display vertical lines
+    # Display vertical lines and a horizontal line
+    # EMG peak is expected between the lines
+    # peak should be above the horizontal line or it is invalid
     if v1 and v2 and h1:
         ax.axhline(h1)
         ax.axvline(v1)
         ax.axvline(v2)
     
     ax2 = ax.twinx()
-    ax2.plot(yacc,'b', label="ACC")
+    ax2.plot(yacc,'b', label="ACC") #plot acc data
     ax2.legend(loc=1)
 
     # Format plot
@@ -108,21 +58,31 @@ def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
     else:
         plt.show(block= True)
 
-# 
-
-#  
-
-
-
-#basically stolen from app.py; edited for baselining
-#notably: different box and oval displays; added EMG MAX collection; added skip button
-def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
+#Main research app
+def r_app(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=False):
     
+    #these arrays send speeds to the C++ for clearpath Sfoundation motor
+    speed_arr_even = [[0 for i in range(2)] for j in range(20)]
+    speed_arr_odd = [[0 for i in range(2)] for j in range(20)]
+
+    #They are interspaced with speeds and with signals for the C++ code
+    #The C++ code takes very small numbers from the pipe, so the speeds get mapped to different values elsewhere
+    for i in range(0,20):
+        speed_arr_even [i][0] = 135+(i*9)
+        speed_arr_even [i][1] = 2+(i%2)
+        speed_arr_odd [i][0] = 135+(i*9)
+        speed_arr_odd [i][1] = 3-(i%2)
+
+    
+
+    #makes log directory in LETREP2 on desktop
     log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP23\\Logs\\')
     # log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads\\LETREP2\\Logs\\')
+    #if you update folders, don't forget
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
 
+    #configs a new Run .log file that logging statements can write to
     logging.basicConfig(filename=log_dir+datetime.now().strftime('Run_%Y-%m-%d_%H-%M.log'), level=logging.DEBUG,
                         format='%(asctime)s:%(filename)s:%(levelname)s:%(message)s')
 
@@ -131,30 +91,45 @@ def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
     root.configure(bg="white")
     root.running = True
 
+    #default max EMG for when the EMG given is 0
+    #.5 is not realistic
+    if(max_emg==0):
+        max_emg=.5
 
+    # Get defaults for options not set in get_default_options before loading from file
     options = get_default_options()
-    # Give defaults for options not set in get_default_options before loading from file
     options.update(
         {
             "m1_thresh": 0.06
         }
     )
+    #load from file for patient ID
     options.update(load_options_from_file(pat_id))
     options.update(
         {
             "pat_id": pat_id, 
             "sess": sess, 
-            "display_success": False if sess in [1,2,3] else True
+            "display_success": False if sess in [1,2,3] else True,
+            "pre_max": max_emg*.30,
+            "pre_min": max_emg*.17
         }
     )
 
-    frame = None
+    #Make frame the frame passed in from max collection
+    #the whole continuity system is kind of weird because this code was built to make one frame and rely on it
+    #not to have two different screens like this
+    #but it works
+    frame = framepass 
 
+    #when you click x in the corner, this happens
+    #currently, there is some bug that occurs when the window is closed and it is not in a stop state
+    #possibly make this fn effectively click 'stop' before killing itself
     def on_closing():
         root.running = False
         frame.exit()
     root.protocol("WM_DELETE_WINDOW", on_closing)
 
+    #get the logo from logo directory
     img = Image.open(logo_dir)
     img = img.resize((100, 100), Image.ANTIALIAS)
     logo = ImageTk.PhotoImage(img)
@@ -168,26 +143,29 @@ def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
 
     # Start, Pause, Trash, Stop, and Other button functions
     def on_start():
-        frame.start_block()
+        options["updates"] = True
+        #maps arrays to command C++ code
+        for i in range(0,20):
+            speed_arr_even [i][1] = 2+(i%2)
+            speed_arr_odd [i][1] = 3-(i%2)
 
-    paused = False
+        #uses an array depending on block count
+        if(frame.block_count%2):
+            frame.start_block(speed_arr_even)
+        else:
+            frame.start_block(speed_arr_odd)
+
     def on_pause():
         frame.pause_block()
-        paused = -paused
 
     def on_trash_prev():
         pass
 
+    #opens options screen
     def on_other_options():
         show_more_options(options)
 
-    def main_app():
-        root.destroy()
-        show_app(port, pat_id, sess, no_motor, no_emg)
-    #skip to app.py button
-
     #Updates M1 delay. Needed for baseline.
-    #calculate preload...?
     def on_stop():
         new_thresh = frame.block.compute_avg_peak()
         messagebox.showinfo(
@@ -201,7 +179,7 @@ def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
         general_info_lbl.last_updated = time.time()
         
 
-    # Button configuration
+    # Button size configuration
     big_w = 11
     big_h = 3
 
@@ -235,18 +213,15 @@ def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
                         bg="gray", font=button_font, fg=button_font_color)
     other_opts_btn.grid(row=0, column=3)
 
-    #skip btn
-    skip_btn = Button(root, text="Skip Baseline", command=main_app ,width=big_w, height= big_h, 
-                           bg="blue", font=button_font, fg=button_font_color)
-    skip_btn.grid(row=0, column=2)
 
     # Display Frame: widget to hold preload and record displays
     # display_frame
 
-    # Large GRAY background: keep
+    # Large GRAY background behind the preload bubbles
     df_bg = "gray"
     display_frame = Frame(root, bg=df_bg, padx=padx, pady=pady)
 
+    #some info text
     df_block = Label(display_frame, text="Current Block: N/A", 
                      bg=df_bg, font=small_font)
     df_block.grid(row=0, column=0)
@@ -265,23 +240,17 @@ def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
                      bg=df_bg, font=small_font)
     df_torque.grid(row=1, column=0)
 
-# success baubles: keep
+# success bubbles
+    #10x5 ovals inside 600x220 rectangle
     nw = 10
-    nh = 2
+    nh = 5
     success_display = SuccessRecordDisplay(
-        display_frame, 600, 100, nw, nh, margin=15, radius=15, start_color=1 if options["display_success"] else 3)
-    #box columns and rows for MAX collection
-    bw = 5
-    bh = 1
-    baseline_display = BaselineMaxDisplay(
-        display_frame, 600, 50, bw, bh, margin=15, squareSide=30, start_color=1 if options["display_success"] else 3)
+        display_frame, 600, 220, nw, nh, margin=15, radius=15, start_color=1 if options["display_success"] else 3)
     
     success_display.grid(row=2, column=0, rowspan=2, columnspan=3)
-    baseline_display.grid(row=1,column=0,rowspan=2,columnspan=3)
     success_display.configure(bg=df_bg)
-    baseline_display.configure(bg=df_bg)
 
-# preload display: keep
+# preload display (the bar on the side)
     preload_lbl = Label(display_frame, text="Preload Status", bg=df_bg, font=small_font)
     preload_lbl.grid(row=2, column=3)
 
@@ -289,14 +258,19 @@ def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
     
     preload_display.grid(row=3, column=3)
 
+    #the m1 display
+    #unsure if it's used in this project
     m1baseline = 1.5
     m1_display = M1Display(display_frame, 100, 200, max=options["m1_max"], min=options["m1_min"], threshold=options["m1_thresh"], baseline=m1baseline, bg=df_bg)
 
+    #forget m1 and show preload display
     def show_preload_display():
         m1_display.grid_forget()
         preload_display.grid(row=3, column=3)
         preload_lbl.configure(text="Preload Status")
     
+    #forget preload and show m1
+    #these just swap the two
     def show_m1display(position):
         preload_display.grid_forget()
         m1_display.grid(row=3, column=3)
@@ -304,7 +278,7 @@ def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
         m1_display.update_all(m1min=options["m1_min"], m1max=options["m1_max"], pos=position, threshold=options["m1_thresh"], baseline=options["m1_baseline"])
 
     GI_CLEAR_TIME = 3
-    general_info_lbl = Label(display_frame, text="", bg=df_bg, font=large_font)
+    general_info_lbl = Label(display_frame, text="", bg=df_bg, font=large_font) #general purpose label
     general_info_lbl.grid(row=4, column=0, columnspan=4)
     general_info_lbl.last_updated = time.time()
 
@@ -314,96 +288,31 @@ def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
     center_window(root)
 
     # End gui
-    root.update()
-    #EMG + Torque MAX Collection (for better preload)
-    #get motor torque and EMG values
-    #-make motor, EMG
-    if not no_motor:
-         baseMot = motor(port, options["pre_max"], options["pre_min"])
-         baseMot.start()
-         # Give motor time to enable
-         sleep(10)
-         logging.info("Done Enabling motor")
-    else:
-         baseMot = None
-    if not no_emg:
-         baseEmg = emg()
-    else:
-         baseEmg = None
-    # display...
-    #-'push as hard as you can!!!!'
-    baselineCount = 0
-    emg_max = 0
-    torque_max = 0
-    while (baselineCount < bw*bh):
-     if paused:
-             sleep(1) 
-     else:
-            baselineCount += 1
 
-            if not baseMot or not baseEmg:
-                logging.info("Missing EMG or Motor, Doing Fake Baseline")
-                emg_max = 1
-                torque_max = 2
-                sleep(1)
-                #-update box color to blue for complete, then skip to next loop
-                baseline_display.set_record(baselineCount -1, 5)
-                root.update()
-                continue
-                
-            root.update()
-            #fresh arrays every loop!
-            emg_data = [[],[]]
-            baseTorque = []
-            #start collecting data from EMG
-            baseEmg.start_cont_collect(emg_data)
-            # Trial starts, debounce half a second
-            sleep(.75)
-            #collect torque data to 100 datapoints; EMG will collect in background simultaneously
-            while(len(baseTorque) < 100):
-             if baseMot.torque_update:
-                 baseTorque.append(baseMot.torque_value)
-                 baseMot.torque_update = False
-            
-            #-grab highest data points for this round;
-            emg_max = ((emg_max)*(baselineCount-1) + max(emg_data[0]))/baselineCount 
-            torque_max = ((torque_max)*(baselineCount-1) + max(baseTorque))/baselineCount
-            #^undoes previous loop average; adds maximum value in new emg array; re-performs average
-
-            #-update box color to blue for complete
-            baseline_display.set_record(baselineCount -1, 5)
-            # then loop until boxes are complete
-    #continue to baseline session of 20 trials, below, which should function normally
-    #clean up after yourself first:
-    if baseMot:
-            baseMot.exit()
-    else:
-            logging.warning("No Baseline Motor, past baseline")
-    if baseEmg:
-            baseEmg.exit()
-    else:
-            logging.warning("No Baseline EMG, Exiting")
-    #note that emg_max and torque_max are not yet recorded as needed
-    #options[preload min, max] = (torque thresholds) * (emg/torque)?
-    #need to find how to write to options
-
-    # To launch with no_motor and no_emg, run sign_in.py and hold shift while you press continue
-    frame = framework(port, patID=options["pat_id"], sess=options["sess"],
-                      premin=options["pre_min"], premax=options["pre_max"], no_motor=no_motor, no_emg=no_emg)
+    # # To launch with no_motor and no_emg, run sign_in.py and hold shift while you press continue
+    # frame = framework(port, patID=options["pat_id"], sess=options["sess"],
+    #                   premin=options["pre_min"], premax=options["pre_max"], no_motor=no_motor, no_emg=no_emg)
+    # frame.block_count = 1
+    # frame.trial_count = -1
     max = []
     center_window(root)
     while root.running:
         # Update preload display
         if frame.mot:
+            #if motor exists
             if frame.mot.torque_update:
-                torque_value = frame.trial_data[0][-1]      #this grabs last EMG value from framework
+
+                #and there is new torque (currently new EMG)
+                torque_value = frame.mot._display_emgV #grabs 'torque' (emg) from motor object
+                #it is a rolling average of the last 20 emg values for smoothness
+
                 frame.mot.torque_update = False
-                preload_display.update_data(torque_value)
+                preload_display.update_data(torque_value) #update display for current 'torque'
                 
-                # Take a 20 sample rolling torque (EMG) average
+                # Take a 40 sample rolling torque average
                 if options["torque_display"]:
                     max.append(abs(torque_value))
-                    max = max[-20:]
+                    max = max[-1:]
                     avg_torque = sum(max)/len(max)
                     df_torque.configure(text="Preload Value: %.4f" % avg_torque)
                 else:
@@ -424,6 +333,7 @@ def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
                 pause_btn['state'] = 'normal'
                 stop_btn['state'] = 'normal'
 
+                #make the pause button blink while paused
                 if pause_btn_color_swap and time.time() - swap_time > PAUSE_BLINK_RATE:
                     pause_btn_color_swap = not pause_btn_color_swap
                     pause_btn.configure(bg="red")
@@ -489,7 +399,8 @@ def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
         if time.time() - general_info_lbl.last_updated > GI_CLEAR_TIME:
             general_info_lbl.configure(text="")
 
-        # This happens when after a trial
+        #
+        # This happens when after a trial:
 
         if frame.finished_trial:
             
@@ -578,7 +489,5 @@ def show_baseline(port, pat_id, sess, no_motor=False, no_emg=False):
 
 if __name__ == "__main__":
 
-    show_baseline(None, 1234, 1, no_motor=True, no_emg=True)
-
-
+    r_app(None, 1234, 1, .5, no_motor=True, no_emg=True)
 
