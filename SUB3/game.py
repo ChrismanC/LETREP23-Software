@@ -31,27 +31,23 @@ from SuccessRecordDisplay import SuccessRecordDisplay
 from PIL import ImageTk, Image
 import logging
 from more_options import show_more_options
-from dontdeadopeninside import kill_cris
+from paths import move_paths
 pygame.init()
-
-from BaselineMaxDisplay import BaselineMaxDisplay
-from datetime import datetime
-import os
-from tkinter import *
-import time
-import winsound
-from global_funcs import *
-from framework import framework
-from more_options import *
-from PIL import ImageTk, Image
-import logging
-from r_app import r_app
-from game import show_game
-
 x= 1
 
-def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
-   
+def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=False):
+    ### motor needs ### 
+
+    #****should be all speeds = 175
+    speed_arr_even = [[0 for i in range(2)] for j in range(20)]
+    speed_arr_odd = [[0 for i in range(2)] for j in range(20)]
+
+    for i in range(0,20):
+        speed_arr_even [i][0] = 175 #85+(i*10)
+        speed_arr_even [i][1] = 2+(i%2)
+        speed_arr_odd [i][0] = 175 #85+(i*10)
+        speed_arr_odd [i][1] = 3-(i%2)
+
     #new log directory 
     log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP2\\Logs\\')
     if not os.path.exists(log_dir):
@@ -60,8 +56,9 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
     #configs a new Run .log file that logging statements can write to
     logging.basicConfig(filename=log_dir+datetime.now().strftime('Run_%Y-%m-%d_%H-%M.log'), level=logging.DEBUG,
                     format='%(asctime)s:%(filename)s:%(levelname)s:%(message)s')
-    
-    cease=False
+
+    if(max_emg==0):
+        max_emg=.5
 
     options = get_default_options()
     # Give defaults for options not set in get_default_options before loading from file
@@ -75,11 +72,49 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
     {
         "pat_id": pat_id, 
         "sess": sess, 
-        "display_success": False if sess in [1,2,3] else True
+        "display_success": False if sess in [1,2,3] else True,
+        "pre_max": max_emg*.20,
+        "pre_min": max_emg*.05
     }
     )
 
-    frame = None
+    frame = framepass
+
+    ### from previous motor #####
+
+    def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
+
+        yemg = yemg[400:1600]
+        yacc = yacc[400:1600]
+
+        _, ax = plt.subplots()
+
+        ax.plot(yemg, 'r', label="EMG")
+        ax.legend(loc=2)
+
+        # Display vertical lines
+        if v1 and v2 and h1:
+            ax.axhline(h1)
+            ax.axvline(v1)
+            ax.axvline(v2)
+
+        ax2 = ax.twinx()
+        ax2.plot(yacc,'b', label="ACC")
+        ax2.legend(loc=1)
+
+        # Format plot
+        plt.title('Most Recent Trial Readings')
+        plt.ion()
+        plt.legend()
+        if duration:
+            plt.show()
+            plt.pause(duration)
+            plt.close()
+        else:
+            plt.show(block= True)
+
+
+    ### game prep keep ####
 
     # Directory constants
     ASSETS = "SUB3/resources/"
@@ -251,7 +286,7 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
     #flies
     fly_image = image("fly")
     clock = pygame.time.Clock() 
-    angle, ship_pos = kill_cris()
+    angle, ship_pos = move_paths()
     def move(i):
         clock.tick(100)
         rotimage = pygame.transform.rotate(fly_image, angle[i])
@@ -390,24 +425,6 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
         option_text = button_font.render('Options', True, button_light)
         centerblit(option_text, button_x, button_y- (option_text.get_rect().height / 2))
 
-    def load_continue_button():
-        pygame.draw.rect(root, button_dark, [10,310,180,50])
-        button_font = pygame.font.SysFont('Corbel', 30)
-        button_x = 100
-        button_y = 335
-        stop_text = button_font.render('Continue', True, button_light)
-        centerblit(stop_text, button_x, button_y- (stop_text.get_rect().height / 2))
-
-    def cont():
-        #max fn only, important for transition to app
-        max_emg = frame.block.avg_max_emg
-        print(max_emg)
-        frame.r_block() 
-        # frame.exit()
-        root.destroy()
-        no = port == None
-        show_game(port, pat_id, sess, max_emg, frame, no_motor=no, no_emg=no)
-
     def option_button():
         show_more_options(options)
 
@@ -520,11 +537,6 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
                 #stop 
                 if 890 <= mouse[0] <= 1070 and 310 <= mouse[1] <= 360:
                     stop()
-
-                #continue
-                if 10 <= mouse[0] <= 190 and 310 <= mouse[1] <= 360:
-                    cont()
-
                 # options
                 if 970 <= mouse[0] <= 1070 and 450 <= mouse[1] <= 475:
                     option_button()
@@ -536,7 +548,7 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
                 torque_value = frame.mot._display_emgV       #grabs emg from motor object
                 frame.mot.torque_update = False
                 torque_value = frame.mot._display_emgV
-                
+
                 # 20 sample rolling torque average
                 if options["torque_display"]:
                     max.append(abs(torque_value))
@@ -546,6 +558,8 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
 
 
                 player_xcenter = player_x + (player_image.get_width() / 2)
+                span = 218/(.15 * max_emg)
+                player_x = (torque_value * span) + 363
                 if player_x < BOUNDARY_LEFT:
                     player_x += BOUNDARY_LEFT - player_x
                 if (player_x + player_image.get_width()) > BOUNDARY_RIGHT:
@@ -580,31 +594,58 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
         # This happens when after a trial
         if frame.finished_trial:
             
-            baseline_display.set_record(frame.trial_count-1, 5)
-            
-            if frame.trial_count == 5 :
-                logging.warning("Trial count meets success display limit... Ending block")
+            # Remove DC Offset for finding peak
+            emg_dc_offset = sum(frame.current_trial.emg_data[0:400])/400
+            emg = [sample-emg_dc_offset if sample -
+                    emg_dc_offset > 0 else 0 for sample in frame.current_trial.emg_data]
+
+
+            # Check if we are to show_emg
+            if options["show_emg"]:
+                plot_thread = Process(
+                    target=plot_emg,args = (frame.current_trial.acc_data, emg, None, None, None, 4) )
+                plot_thread.start()
+
+            # Update successs display
+            if options["display_success"]:
                 
-                max_emg = frame.block.avg_max_emg
-                print(max_emg)
-                frame.r_block() #***
-                root.running = False
-                # frame.exit()
-                root.update()
-                root.destroy()
-                no = port == None
-                r_app(port, pat_id, sess, max_emg, frame, no_motor=no, no_emg=no) #***
-                cease=True
-            
-            # Reset trial bit
-            if(not cease):
-                frame.finished_trial = False
-        if(not cease):
-            root.update()
-    if(not cease):        
-        root.destroy()
+                frame.current_trial.peak, frame.current_trial.max_delay_ms = peak.condition_peak(
+                    emg,options["avg_peak_delay"], options["m1_noise_factor"])
+
+                # Add check for no peak found
+                if not (frame.current_trial.peak and frame.current_trial.max_delay_ms) and frame.emg:
+                    frame.pause_block()
+                    json_dir = os.path.join(os.path.join(
+                    os.environ['USERPROFILE']), f'Desktop\\LETREP2\\Logs\\')
+                    if not os.path.exists(json_dir):
+                        os.makedirs(json_dir)
+                    with open(json_dir+f'Failed Trial_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.json', "w") as file:
+
+                        JSONTrialMaker(frame.current_trial, file)
+
+                    M1_avg = int((options["avg_peak_delay"]*1925/1000)+100)
+                    plot_thread = Process(target=plot_emg, args=(frame.current_trial.acc_data, emg,  M1_avg - 20,  M1_avg + 20, peak.find_peak_min_thresh(emg, options["m1_noise_factor"]),  None,))
+                    plot_thread.start()
+                    
+                    retake_trial = messagebox.askyesno(
+                        "EMG Error", "Program failed to find a peak in specified range, retake trial?")
+                    
+                    if retake_trial:
+                        frame.retake_trial()
+                else:
+
+                    m1_size = frame.current_trial.peak if frame.emg else random.random() * (options["m1_max"] - options["m1_min"]) + options["m1_min"]
 
 
+                    
+                    if frame.current_trial.success:
+                        frame.current_trial.success = m1_size <= options["m1_thresh"]
+                        reflex_fail = False
+                        tongue_x = player_xcenter - (tongue_image.get_width() / 2)
+                        if m1_size <= options["m1_thresh"]:
+                            Num_of_success +=1
+                            play_sound("success")
+                            
 
                         trial += 1
                     else:
