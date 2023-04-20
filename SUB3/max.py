@@ -10,10 +10,10 @@ from framework import framework
 from more_options import *
 from PIL import ImageTk, Image
 import logging
-from r_app import r_app
+from game import show_game
 
 
-def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
+def max(port, pat_id, sess, no_motor=False, no_emg=False):
     
     log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP23\\Logs\\')
     # log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads\\LETREP2\\Logs\\')
@@ -28,7 +28,7 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
     root.configure(bg="white")
     root.running = True
 
-
+    #print("options")
     options = get_default_options()
     # Give defaults for options not set in get_default_options before loading from file
     options.update(
@@ -86,7 +86,7 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
         # frame.exit()
         root.destroy()
         no = port == None
-        app(port, pat_id, sess, max_emg, frame, no_motor=no, no_emg=no)
+        show_game(port, pat_id, sess, max_emg, frame, no_motor=no, no_emg=no)
 
 
     # Button configuration
@@ -169,7 +169,7 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
     center_window(root)
 
     # End gui
-
+    #print("make frame")
     # # To launch with no_motor and no_emg, run sign_in.py and hold shift while you press continue
     frame = framework(port, patID=options["pat_id"], sess=options["sess"],
                       premin=options["pre_min"], premax=options["pre_max"], no_motor=no_motor, no_emg=no_emg)
@@ -177,7 +177,7 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
     center_window(root)
     # for i in range(bw*bh):
     #     baseline_display.set_record(i-1, 2)
-
+    #print("after frame")
     while root.running:
 
         # Pause button flashing
@@ -265,7 +265,7 @@ def r_max(port, pat_id, sess, no_motor=False, no_emg=False):
                 root.update()
                 root.destroy()
                 no = port == None
-                r_app(port, pat_id, sess, max_emg, frame, no_motor=no, no_emg=no) #***
+                show_game(port, pat_id, sess, max_emg, frame, no_motor=no, no_emg=no) #***
                 cease=True
             
             # Reset trial bit

@@ -4,6 +4,7 @@ from PIL import ImageTk, Image
 from global_funcs import *
 from app import show_app
 from baseline import show_baseline
+from max import max
 
 def sign_in(port):
     print("Using PORT %s" % port) if port else print("No port selected")

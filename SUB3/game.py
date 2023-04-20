@@ -38,6 +38,7 @@ x= 1
 def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=False):
     ### motor needs ### 
 
+    print("in game")
     #****should be all speeds = 175
     speed_arr_even = [[0 for i in range(2)] for j in range(20)]
     speed_arr_odd = [[0 for i in range(2)] for j in range(20)]
@@ -77,7 +78,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
         "pre_min": max_emg*.05
     }
     )
-
+    print("frame")
     frame = framepass
 
     ### from previous motor #####
@@ -177,15 +178,22 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
             load_border()
             load_golden()
   
-
+    print("root build")
     # ROOT BUILD
     WINDOW_W = 1090
     WINDOW_H = 490 
     root = pygame.display.set_mode((WINDOW_W, WINDOW_H))
 
     def on_closing():
-        running = False
+        #running = False
         pygame.display.exit()
+        frame.exit()
+    #####root.protocol("WM_DELETE_WINDOW", on_closing)
+        # for event in pygame.event.get():
+        # if event.type == pygame.QUIT:
+        #     running = False
+                # on_closing()
+
 
     running = True
 
@@ -249,7 +257,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
 
     ###############################################################################
     # INSTANCES
-
+    print("bars")
     # Bars
     bars_image = image("bars_win")
     bars_x = 218
@@ -305,7 +313,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
             #t = pygame.time.get_ticks() /4  # scale and loop time
             clock.tick(350)
             y = -(t+1) + 400
-            x = math.sin((t+1)/50.0) * 50 +450     #450 to be changed to frog current location
+            x = math.sin((t+1)/50.0) * 50 + player_x    #450 to be changed to frog current location
             x = int(x)                            
             pygame.draw.circle(root, (222,165,164), (x, y), 10)
             pygame.display.update()
@@ -324,7 +332,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
             pygame.display.update((230, 0, 600, 490))
             clock.tick(100)
 
-
+    print("score")
     # Score
     score = 0
     score_font = pygame.font.Font(FONT, 32, bold=True)
@@ -432,6 +440,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
         logo_image = image("LETREP23_LOGO")
         centerblit(logo_image,980,20)
 
+    print("combo")
     # Combo
     combo = 1
     combo_font = pygame.font.Font(FONT, 18, bold=True)
@@ -491,7 +500,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     def load_golden():
         root.blit(golden_image, (golden_x, golden_y))
 
-
+    print("score")
     # Fly score
     fly_board = [0] * TRIAL_MAX
     fly_image = image("fly")
@@ -512,12 +521,12 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
 
     ###############################################################################
     # GAME
-
+    print("pre-loop")
     max = []
 
     i=0
     while running:
-
+        print ("running loop")
         mouse = pygame.mouse.get_pos()
         pressed = pygame.key.get_pressed()
 
@@ -526,6 +535,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
             if event.type == pygame.QUIT:
                 running = False
                 pygame.quit()
+                on_closing()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 # pause

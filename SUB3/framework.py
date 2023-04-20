@@ -26,7 +26,7 @@ class framework():
 
         self.block = block(patID, sess=sess, blocknum=blocknum)
 
-
+        #print("check motor")
         if not no_motor:
             if not 'self.mot' in globals():
                 self.mot = motor(COM, self.preload_max, self.preload_min)
@@ -38,10 +38,12 @@ class framework():
                 print("")
         else:
             self.mot = None
+        #print("check EMG")
         if not no_emg:
             self.emg = emg()
         else:
             self.emg = None
+        #print("all good")
         
         # This bit stops the block
         self.running = False
@@ -60,6 +62,7 @@ class framework():
         self.trial_count = -1
         #this variable carries the fire point to the truncating code
         self.fire_point = 0
+        print("init done")
 
     def exit(self):
         self.running = False

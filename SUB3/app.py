@@ -95,7 +95,7 @@ def show_app(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fals
         {
             "pat_id": pat_id, 
             "sess": sess, 
-            "display_success": False if sess in [1,2,3] else True
+            "display_success": False if sess in [1,2,3] else True,
             "pre_max": max_emg*.20,
             "pre_min": max_emg*.05
         }
