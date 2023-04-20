@@ -40,14 +40,11 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
 
     print("in game")
     #****should be all speeds = 175
-    speed_arr_even = [[0 for i in range(2)] for j in range(20)]
-    speed_arr_odd = [[0 for i in range(2)] for j in range(20)]
+    speed_arr = [[0 for i in range(2)] for j in range(1)]
 
-    for i in range(0,20):
-        speed_arr_even [i][0] = 175 #85+(i*10)
-        speed_arr_even [i][1] = 2+(i%2)
-        speed_arr_odd [i][0] = 175 #85+(i*10)
-        speed_arr_odd [i][1] = 3-(i%2)
+    for i in range(0,1):
+        speed_arr [i][0] = 175 #85+(i*10)
+        speed_arr [i][1] = 75
 
     #new log directory 
     log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP2\\Logs\\')
@@ -278,7 +275,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
                 last_zone = 2
                 play_sound("zone_bad")
         else:
-            bars_image = image("background-green")
+            bars_image = image("basic-background")
             if last_zone != 1:
                 last_zone = 1
                 play_sound("zone_good")
@@ -313,7 +310,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
             #t = pygame.time.get_ticks() /4  # scale and loop time
             clock.tick(350)
             y = -(t+1) + 400
-            x = math.sin((t+1)/50.0) * 50 + player_x    #450 to be changed to frog current location
+            x = math.sin((t+1)/50.0) * 50 + player_x + (player_image.get_width()/2)   #sine + frog current location
             x = int(x)                            
             pygame.draw.circle(root, (222,165,164), (x, y), 10)
             pygame.display.update()
@@ -324,7 +321,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
             refresh2()
             for t in range(m):
                 y = -(t+1) + 400
-                x = math.sin((t+1)/50.0) * 50 + 450   #450 to be changed to frog current location
+                x = math.sin((t+1)/50.0) * 50 + player_x + (player_image.get_width()/2)   #sine + frog current location
                 x = int(x)                   
                 pygame.draw.circle(root, (222,165,164), (x, y), 10)
                 if t == m -1:
@@ -335,7 +332,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     print("score")
     # Score
     score = 0
-    score_font = pygame.font.Font(FONT, 32, bold=True)
+    score_font = pygame.font.Font(FONT, 32)
     score_x = 109
     score_y = 416
     global score_color
@@ -401,7 +398,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
 
     def start():
         global flash
-        frame.start_block()
+        frame.start_block(speed_arr)
         flash = 2
 
     def load_stop_button(flash):
@@ -443,7 +440,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     print("combo")
     # Combo
     combo = 1
-    combo_font = pygame.font.Font(FONT, 18, bold=True)
+    combo_font = pygame.font.Font(FONT, 18)
     combo_x = 109
     combo_y = 448
     combo_color = (0, 0, 0)
@@ -460,7 +457,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     # Info
     trial = 0
     successes = 0
-    info_font = pygame.font.Font(FONT, 18, bold=True)
+    info_font = pygame.font.Font(FONT, 18)
     info_x = 981
     info_y = 380
     info_color = (0, 0, 0)
@@ -654,23 +651,22 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
                         tongue_x = player_xcenter - (tongue_image.get_width() / 2)
                         if m1_size <= options["m1_thresh"]:
                             Num_of_success +=1
-                            play_sound("success")
-                            
-
-                        trial += 1
-                    else:
-                        #handles failure
-                        reflex_fail = True
-                        fly_board[trial] = 1
-                        combo = 1
-                        play_sound("fail")
-                        trial += 1
+                            play_sound("success")  
+                            fly_board[trial] = 2
+                            trial += 1
+                        else:
+                            #handles failure
+                            reflex_fail = True
+                            fly_board[trial] = 1
+                            combo = 1
+                            play_sound("fail")
+                            trial += 1
                           
             else:
                 frame.current_trial.peak, frame.current_trial.max_delay_ms = peak.base_peak(
                     emg, options["m1_noise_factor"])
                 
-                fly_board[trial] = 2
+                fly_board[trial] = 3
                 successes += 1
                 trial += 1
                 score += (combo * SCORE_MULTIPLIER)
