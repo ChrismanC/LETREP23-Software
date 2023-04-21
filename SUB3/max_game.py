@@ -39,7 +39,6 @@ from datetime import datetime
 import os
 from tkinter import *
 import time
-import winsound
 from global_funcs import *
 from framework import framework
 from more_options import *
@@ -113,34 +112,24 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
 
     def refresh():
         global flash
-        # Loads the instances
         load_bars()
         load_lilypads()
-        move(i)
-       # load_tongue()
-        load_score()
         logo()
-        load_combo()
         load_info()
         load_pause_button(flash)
         load_start_button(flash)
         load_stop_button(flash)
+        load_continue_button()
         load_option_button()
         load_player(player_x, player_y)
-        if combo > COMBO_MAX_1:
-            load_border()
-            load_golden()
         load_fly_score()
         
     def refresh2():
-              # Loads the instances
+        # Loads the instances
         load_bars()
         load_lilypads()
-        move(i)
         load_player(player_x, player_y)
-        if combo > COMBO_MAX_1:
-            load_border()
-            load_golden()
+
   
 
     # ROOT BUILD
@@ -172,38 +161,14 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
     BOUNDARY_RIGHT = 872
 
     # Fly score dimensions
-    ROWS = 15
+    ROWS = 1
     COLUMNS = 5
 
     # Maximum number of trials
-    TRIAL_MAX = 75
+    TRIAL_MAX = 5
 
     # Score types
-    SCORE_IMAGE = (image("fail"), image("win"), image("bruh"))
-
-    # Score multiplier
-    SCORE_MULTIPLIER = 100
-
-    # Combo maxima
-    COMBO_MAX_1 = 3
-    COMBO_MAX_2 = 14
-
-    # Full combo bonus
-    FULL_SCORE = 100000
-    FULL_BONUS = 4100
-
-    # Reflex success range   ??
-    REFLEX_MIN = 0.15
-    REFLEX_MAX = 0.85
-
-    # Reflex zone dimensions
-    REFLEX_ZONE_WIDTH = 42
-    REFLEX_ZONE_HEIGHT = 282
-
-    FLY_PAD_Y = 4
-    FLY_HEIGHT = WINDOW_H / 4
-    FLY_BUZZ = 24
-    FLY_SPEED = 1.25
+    SCORE_IMAGE = image("win")
 
     # Border
     BORDER_PAD = 8
@@ -224,21 +189,7 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
 
     def load_bars():
         global last_zone
-        if player_xcenter <= ZONE_LEFT:
-            bars_image = image("yellow-background")
-            if last_zone != 0:
-                last_zone = 0
-                play_sound("zone_bad")
-        elif player_xcenter >= ZONE_RIGHT:
-            bars_image = image("background-red")
-            if last_zone != 2:
-                last_zone = 2
-                play_sound("zone_bad")
-        else:
-            bars_image = image("background-green")
-            if last_zone != 1:
-                last_zone = 1
-                play_sound("zone_good")
+        bars_image = image("background-green")
         root.blit(bars_image, (bars_x, bars_y))
 
     # Lilypads
@@ -247,63 +198,6 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
     lilypads_y = 303
     def load_lilypads():
         root.blit(lilypads_image, (lilypads_x, lilypads_y))
-
-    #flies
-    fly_image = image("fly")
-    clock = pygame.time.Clock() 
-    angle, ship_pos = kill_cris()
-    def move(i):
-        clock.tick(100)
-        rotimage = pygame.transform.rotate(fly_image, angle[i])
-        rect = rotimage.get_rect(center=ship_pos[i])
-        #print(ship_pos[i])
-        root.blit(rotimage,rect)
-
-
-    # Tongue
-    global tongue_image 
-    tongue_image = image("tongue")
-
-    def load_tongue():
-        global tongue_image
-        for t in range(0,350,1):
-            #t = pygame.time.get_ticks() /4  # scale and loop time
-            clock.tick(350)
-            y = -(t+1) + 400
-            x = math.sin((t+1)/50.0) * 50 +450     #450 to be changed to frog current location
-            x = int(x)                            
-            pygame.draw.circle(root, (222,165,164), (x, y), 10)
-            pygame.display.update()
-
-        root.fill((0,0,0),(400, 100, 300, 390)) 
-
-        for m in range(350,0,-10):
-            refresh2()
-            for t in range(m):
-                y = -(t+1) + 400
-                x = math.sin((t+1)/50.0) * 50 + 450   #450 to be changed to frog current location
-                x = int(x)                   
-                pygame.draw.circle(root, (222,165,164), (x, y), 10)
-                if t == m -1:
-                    root.blit(fly_image, (x-10,y))
-            pygame.display.update((230, 0, 600, 490))
-            clock.tick(100)
-
-
-    # Score
-    score = 0
-    score_font = pygame.font.Font(FONT, 32, bold=True)
-    score_x = 109
-    score_y = 416
-    global score_color
-    score_color = (0, 0, 0)
-
-    def load_score():
-        global score_color
-        if score >= (FULL_SCORE * 0.8):
-            score_color = (0, 255, 0)
-        score_text = score_font.render("{:,}".format(score), True, score_color)
-        centerblit(score_text, score_x, score_y)
 
     button_light = (255, 255, 0)
     button_dark = (1,44,118)
@@ -415,21 +309,14 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
         logo_image = image("LETREP23_LOGO")
         centerblit(logo_image,980,20)
 
-    # Combo
-    combo = 1
-    combo_font = pygame.font.Font(FONT, 18, bold=True)
-    combo_x = 109
-    combo_y = 448
-    combo_color = (0, 0, 0)
-    def load_combo():
-        if combo <= math.floor(COMBO_MAX_2 / 3):
-            combo_color = (0, 0, 0)
-        elif combo <= math.floor((COMBO_MAX_2 / 3) * 2):
-            combo_color = (255, 255, 0)
-        else:
-            combo_color = (0, 255, 0)
-        combo_text = combo_font.render("x" + str(combo), True, combo_color)
-        centerblit(combo_text, combo_x, combo_y)
+    def display_max_prompt():
+        pygame.draw.rect(root, button_dark, [400,200,400,100])
+        prompt_font = pygame.font.SysFont('Corbel', 40)
+        prompt_x = 600
+        prompt_y = 250
+        prompt_text = prompt_font.render('Push as hard you can', True, button_light)
+        centerblit(prompt_text, prompt_x, prompt_y- (prompt_text.get_rect().height / 2))
+
 
     # Info
     trial = 0
@@ -466,13 +353,6 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
         border_y = chris_lerp(border_y, border_y_goal, LERP_INTERP)
         root.blit(border_image, (border_x, border_y))
         root.blit(border_image, (border_x + border_w, border_y))
-
-    # Golden fly
-    golden_image = image("golden")
-    golden_x = 0
-    golden_y = 0
-    def load_golden():
-        root.blit(golden_image, (golden_x, golden_y))
 
 
     # Fly score
@@ -542,16 +422,6 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
                     max.append(abs(torque_value))
                     max = max[-20:]
                     avg_torque = sum(max)/len(max)
-                    
-
-
-                player_xcenter = player_x + (player_image.get_width() / 2)
-                if player_x < BOUNDARY_LEFT:
-                    player_x += BOUNDARY_LEFT - player_x
-                if (player_x + player_image.get_width()) > BOUNDARY_RIGHT:
-                    player_x -= (player_x + player_image.get_width()) - BOUNDARY_RIGHT
-                player_xcenter = player_x + (player_image.get_width() / 2)
-                
                            
         # Pause button flashing
         
@@ -572,15 +442,18 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
                 options["block_count"] = frame.block_count
                 Num_of_success = 0
 
+            display_max_prompt()
+
             #preload display
             frame.starting_trial = False
-
-
-
+            
+            pygame.display.update()
         # This happens when after a trial
         if frame.finished_trial:
             
             baseline_display.set_record(frame.trial_count-1, 5)
+            successes += 1
+            trial += 1
             
             if frame.trial_count == 5 :
                 logging.warning("Trial count meets success display limit... Ending block")
@@ -604,84 +477,15 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
     if(not cease):        
         root.destroy()
 
-
-
-                        trial += 1
-                    else:
-                        #handles failure
-                        reflex_fail = True
-                        fly_board[trial] = 1
-                        combo = 1
-                        play_sound("fail")
-                        trial += 1
-                          
-            else:
-                frame.current_trial.peak, frame.current_trial.max_delay_ms = peak.base_peak(
-                    emg, options["m1_noise_factor"])
-                
-                fly_board[trial] = 2
-                successes += 1
-                trial += 1
-                score += (combo * SCORE_MULTIPLIER)
-                  # Plays the success sound effect
-                preloading = True
-
-                tongue_x = player_xcenter - (tongue_image.get_width() / 2)
-                play_sound("tongue")
-                load_tongue()
-
-                if score >= (FULL_SCORE - FULL_BONUS):
-                    score = FULL_SCORE
-                
-                if combo <= COMBO_MAX_1:
-                    combo += 1
-                else:
-                    if (player_xcenter >= border_x) and (player_xcenter <= (border_x + border_w)):
-                        if (combo < COMBO_MAX_2):
-                            combo += 1
-                    else:
-                        score -= SCORE_MULTIPLIER
-                                        # Updates the border's position
-                border_w = ((BOUNDARY_LEFT - (BORDER_PAD * 2)) / 2) - (BORDER_SHRINK * (combo - COMBO_MAX_1))
-                border_x = ZONE_LEFT + BORDER_PAD + (BOUNDARY_LEFT - (BORDER_PAD * 2) - border_w) * random.random()
-                if (combo > COMBO_MAX_1):
-                    border_y_goal = 0
-                    border_y = WINDOW_H
-                    border_y_goal = 0
-                    # Updates the golden fly's position
-                    golden_x = border_x + (border_w / 2) - (golden_image.get_width() / 2)
-                    golden_y = FLY_PAD_Y + (FLY_HEIGHT * random.random())
-                    
-                  
-
-            # Check if we can do another trial
-            if frame.trial_count+1 == 75 :
-                logging.warning("Trial count meets success display limit... Ending block")
-                new_thresh = frame.block.compute_avg_peak()
-                messagebox.showinfo(
-                    "M1 Threshold Update", f"Average M1 Peak From Previous Block: {new_thresh}\n New M1 Thresh: {.9*new_thresh}")
-                #general_info_lbl.configure(text=f"Success Rate:{frame.block.compute_avg_success()*100:.2f}")
-                #general_info_lbl.last_updated = time.time()
-                options["m1_thresh"] = .9*new_thresh
-                options["updates"] = True
-                frame.stop_block()
-            
-            # Reset trial bit
-            frame.finished_trial = False
-
         
+    # Sets the background color
+    root.fill(BG_COLOR)
+    
+    refresh()
 
-        
-        # Sets the background color
-        root.fill(BG_COLOR)
-        
-        refresh()
+    # Updates the window
+    pygame.display.update()
 
-        # Updates the window
-        pygame.display.update()
-        i = i +1
-        if i == len(angle):
-            i = 0
 
 
 
