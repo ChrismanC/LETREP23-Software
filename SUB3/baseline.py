@@ -76,6 +76,9 @@ import peak
 from app import show_app
 from sign_in import *
 
+#this was an old template for max, max_game, and r_max
+#I'm not sure it got used and I don't think this is actually what we copied to make the max_game file
+
 # Displays the most recent trial using matplotlib
 def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
 

@@ -77,6 +77,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     )
     print("frame")
     frame = framepass
+    frame.finished_trial = False
 
     ### from previous motor #####
 
@@ -481,7 +482,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     border_image = image("border")
     border_x = 0
     global border_y
-    border_y_goal = WINDOW_H
+    border_y_goal = 150
     border_y = border_y_goal
     border_w = 0
     def load_border():
@@ -523,7 +524,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
 
     i=0
     while running:
-        print ("running loop")
+        #print ("running loop")
         mouse = pygame.mouse.get_pos()
         pressed = pygame.key.get_pressed()
 
@@ -531,7 +532,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
 
             if event.type == pygame.QUIT:
                 running = False
-                pygame.quit()
+                #pygame.quit()
                 on_closing()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -609,9 +610,10 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
 
             # Check if we are to show_emg
             if options["show_emg"]:
-                plot_thread = Process(
-                    target=plot_emg,args = (frame.current_trial.acc_data, emg, None, None, None, 4) )
-                plot_thread.start()
+                # plot_thread = Process(
+                #     target=plot_emg,args = (frame.current_trial.acc_data, emg, None, None, None, 4) )
+                # plot_thread.start()
+                plot_emg(frame.current_trial.acc_data, emg, None, None, None, 4)
 
             # Update successs display
             if options["display_success"]:
@@ -631,14 +633,19 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
                         JSONTrialMaker(frame.current_trial, file)
 
                     M1_avg = int((options["avg_peak_delay"]*1925/1000)+100)
-                    plot_thread = Process(target=plot_emg, args=(frame.current_trial.acc_data, emg,  M1_avg - 20,  M1_avg + 20, peak.find_peak_min_thresh(emg, options["m1_noise_factor"]),  None,))
-                    plot_thread.start()
+                    #plot_thread = Process(target=plot_emg, args=(frame.current_trial.acc_data, emg,  M1_avg - 20,  M1_avg + 20, peak.find_peak_min_thresh(emg, options["m1_noise_factor"]),  None,))
+                    #plot_thread.start()
+                    ##plot_emg(frame.current_trial.acc_data, emg, None, None, None, 4)
+                    frame.pause_block()
+                    fly_board[trial] = 3
+                    combo = 1
+                    play_sound("fail")
+                    trial += 1
+                    # retake_trial = messagebox.askyesno(
+                    #     "EMG Error", "Program failed to find a peak in specified range, retake trial?")
                     
-                    retake_trial = messagebox.askyesno(
-                        "EMG Error", "Program failed to find a peak in specified range, retake trial?")
-                    
-                    if retake_trial:
-                        frame.retake_trial()
+                    # if retake_trial:
+                    #     frame.retake_trial()
                 else:
 
                     m1_size = frame.current_trial.peak if frame.emg else random.random() * (options["m1_max"] - options["m1_min"]) + options["m1_min"]
@@ -649,15 +656,22 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
                         frame.current_trial.success = m1_size <= options["m1_thresh"]
                         reflex_fail = False
                         tongue_x = player_xcenter - (tongue_image.get_width() / 2)
-                        if m1_size <= options["m1_thresh"]:
+                        if m1_size <= options["m1_thresh"] and 436 <= player_xcenter <= 654:
                             Num_of_success +=1
+                            play_sound("tongue")
+                            load_tongue()
                             play_sound("success")  
                             fly_board[trial] = 2
                             trial += 1
-                        else:
+                        elif m1_size >= options["m1_thresh"] and 436 <= player_xcenter <= 654:
                             #handles failure
                             reflex_fail = True
                             fly_board[trial] = 1
+                            combo = 1
+                            play_sound("fail")
+                            trial += 1
+                        else:
+                            fly_board[trial] = 3
                             combo = 1
                             play_sound("fail")
                             trial += 1

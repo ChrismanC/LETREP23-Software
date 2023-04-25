@@ -14,6 +14,10 @@ from analysis_tools import *
 
 from object_browser import Browser
 
+#analysis
+#calculates the coefficient of variation
+#todo
+
 folder_name = filedialog.askdirectory(title="Select Patient Folder")
 if folder_name != "":
     

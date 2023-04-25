@@ -20,7 +20,10 @@ from SuccessRecordDisplay import SuccessRecordDisplay
 from PIL import ImageTk, Image
 import logging
 
+#Outdated display module for data collection
+
 # Displays the most recent trial using matplotlib
+# this is for M wave display
 def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
 
     yemg = yemg[400:1600]
@@ -31,7 +34,7 @@ def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
     ax.plot(yemg, 'r', label="EMG")
     ax.legend(loc=2)
 
-    # Display vertical lines
+    # Display vertical lines and horizontal line for where the peak was detected and needs to be
     if v1 and v2 and h1:
         ax.axhline(h1)
         ax.axvline(v1)
@@ -52,13 +55,19 @@ def plot_emg(yacc, yemg,v1 = None, v2 = None, h1 = None, duration = None):
     else:
         plt.show(block= True)
 
-#
+#THIS is your main display function
+#this is the original display function
+#the one max, max_game, game.py, r_max, and r_app were modeled off of
+#if you want a template for a generic design, this can be used
+#however, it has currently been replaced with game.py, which has significant changes but similar structure
 
 def show_app(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=False):
-    #****should be all speeds = 175
+    #speed arrays for the motor
+    # should be all speeds = 175 because we are not in the research part where we need changing motor speeds
     speed_arr_even = [[0 for i in range(2)] for j in range(20)]
     speed_arr_odd = [[0 for i in range(2)] for j in range(20)]
 
+    #this fills them with commands for the motor
     for i in range(0,20):
         speed_arr_even [i][0] = 175 #85+(i*10)
         speed_arr_even [i][1] = 2+(i%2)
@@ -80,6 +89,7 @@ def show_app(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fals
     root.configure(bg="white")
     root.running = True
 
+    #without a default value you will crash when the value is fake
     if(max_emg==0):
         max_emg=.5
 

@@ -32,7 +32,8 @@ license = "<License>"\
           "<Signature>MEYCIQCo6q0QdGF6/Yx8SNk23u+XBSvAoqWTPsrLU2YZqzHT+wIhAOgzi0LuVav4wj/JH3wNXI7uMz/98/bydSm4IKtnePoV</Signature>"\
           "</License>"
 
-
+#This is how you create an object to interact with the EMG
+#and the trignobase but he sucks and we dont like him
 class TrignoBase():
     def __init__(self):
         self.BaseInstance = AeroPy()
@@ -67,7 +68,7 @@ class emg:
             self.TrigBase.ScanSensors().Result
             self.SensorsFound = len(self.TrigBase.ListSensorNames())
        
-        self.TrigBase.ConnectSensors()
+        self.TrigBase.ConnectSensors() #connect sensors which must exist
 
        # start the data stream from Sensors
         newTransform = self.TrigBase.CreateTransform("raw")
@@ -75,6 +76,8 @@ class emg:
 
         self.TrigBase.ClearSensorList()
 
+        #for every sensor found
+        #add trigno list
         for i in range(self.SensorsFound):
             self.selectedSensor = self.TrigBase.GetSensorObject(i)
             self.TrigBase.AddSensortoList(self.selectedSensor)
@@ -89,11 +92,14 @@ class emg:
         self.array_to_store = array
         self._start_collect = True
 
+    #This is usually used for data collection
+    #it constantly collects into array_to_store
     def start_cont_collect(self, array):
         """Starts emg continous data collection into the provided array"""
         self.array_to_store = array
         self._cont_emg = True
 
+    #this stops it
     def stop_cont_collect(self):
         """Stops EMG continous data collection"""
         self._cont_emg = False
@@ -135,7 +141,7 @@ class emg:
                 self._read_emg(dead_array)
 
             
-
+    #close things you open
     def exit(self):
         """Callback to stop the data stream"""
         self.TrigBase.StopData()
@@ -145,6 +151,7 @@ class emg:
         if hasattr(self, "t1"):
             self.t1.join()
 
+    #threads
     def threadManager(self):
         """Handles the threads for the DataCollector gui"""
         self._emg_collect = True\

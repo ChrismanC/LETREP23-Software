@@ -26,7 +26,9 @@ def open_json_files(directory):
             else:
                 sessions[blk.session] = {blk.blocknum: blk}
                 
-
+    #make array for patient ids
+    #grab them from IDs in blocks in sessions
+    #return if there are multiple
     patids = []
     for sess in sessions.values():
         for blk in sess.values():
@@ -37,6 +39,7 @@ def open_json_files(directory):
 
     return sessions, False
 
+#makes a session CSV file from JSON
 def sess_to_csv(sess, folder_name):
     for blk in sess.values():
         with open(join(folder_name,f"Block{blk.blocknum}_{blk.date}.csv"), "w") as csv_file:
@@ -55,7 +58,7 @@ def sess_to_csv(sess, folder_name):
                     csv_file.write(",")
                 csv_file.write("\n")
 
-
+#returns average max delay and peak from (sessions) - for use with base sessions
 def avg_base_sessions(sessions):
     maxdelayms_values = []
     maxpeak_values = []

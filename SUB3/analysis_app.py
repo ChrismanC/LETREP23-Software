@@ -11,7 +11,7 @@ from analysis_tools import *
 from object_browser import Browser
 
 #this file is for the analysis screen
-# ...
+# ...todo
 
 class analysis_app(Tk):
     def __init__(self):

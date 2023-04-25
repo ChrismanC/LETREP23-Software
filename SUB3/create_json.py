@@ -5,7 +5,9 @@ from block import block
 from trial import trial
 import json
 
+#makes JSON files
 
+#trials:
 def JSONTrialMaker(trialobject: trial, file):
     jdict = {
         "trial":
@@ -24,7 +26,7 @@ def JSONTrialMaker(trialobject: trial, file):
 
     json.dump(jdict, file, indent=4)
 
-
+#block:
 def JSONmaker(blockobject: block, file):
     jdict = {
                 "block":{
@@ -62,7 +64,7 @@ def JSONmaker(blockobject: block, file):
 
     json.dump(jdict, file, indent=4)
 
-
+#this one is for max collections
 def maxJSON(blockobject: block, file):
     jdict = {
                 "block":{
@@ -82,7 +84,7 @@ def maxJSON(blockobject: block, file):
             }
     json.dump(jdict, file, indent=4)
 
-
+#testing
 def main():
     blockobject = block()
     import random

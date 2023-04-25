@@ -31,7 +31,6 @@ from SuccessRecordDisplay import SuccessRecordDisplay
 from PIL import ImageTk, Image
 import logging
 from more_options import show_more_options
-from dontdeadopeninside import kill_cris
 pygame.init()
 
 from BaselineMaxDisplay import BaselineMaxDisplay
@@ -51,6 +50,12 @@ x= 1
 
 def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
    
+    speed_arr = [[0 for i in range(2)] for j in range(1)]
+
+    for i in range(0,1):
+        speed_arr [i][0] = 175 #85+(i*10)
+        speed_arr [i][1] = 75
+
     #new log directory 
     log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP2\\Logs\\')
     if not os.path.exists(log_dir):
@@ -78,7 +83,7 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
     }
     )
 
-    frame = None
+    #frame = None
 
     # Directory constants
     ASSETS = "SUB3/resources/"
@@ -124,6 +129,7 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
         load_player(player_x, player_y)
         load_fly_score()
         
+        
     def refresh2():
         # Loads the instances
         load_bars()
@@ -168,7 +174,7 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
     TRIAL_MAX = 5
 
     # Score types
-    SCORE_IMAGE = image("win")
+    SCORE_IMAGE = (image("fail"), image("win"), image("bruh"))
 
     # Border
     BORDER_PAD = 8
@@ -189,7 +195,7 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
 
     def load_bars():
         global last_zone
-        bars_image = image("background-green")
+        bars_image = image("basic-background")
         root.blit(bars_image, (bars_x, bars_y))
 
     # Lilypads
@@ -214,11 +220,11 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
             pause_text = button_font.render('Pause', True, button_light)
             centerblit(pause_text, button_x, button_y- (pause_text.get_rect().height / 2))
             pygame.display.update((890,235,180,50))
-            clock.tick(2)
+            #clock.tick(2)
             pygame.draw.rect(root, button_flash, [890,235,180,50])
             centerblit(pause_text, button_x, button_y- (pause_text.get_rect().height / 2))
             pygame.display.update((890,235,180,50))
-            clock.tick(2)
+            #clock.tick(2)
         if flash ==2:
             pygame.draw.rect(root, button_dark, [890,235,180,50])
         pause_text = button_font.render('Pause', True, button_light)
@@ -252,7 +258,7 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
 
     def start():
         global flash
-        frame.start_block()
+        frame.start_block(speed_arr)
         flash = 2
 
     def load_stop_button(flash):
@@ -310,18 +316,17 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
         centerblit(logo_image,980,20)
 
     def display_max_prompt():
-        pygame.draw.rect(root, button_dark, [400,200,400,100])
-        prompt_font = pygame.font.SysFont('Corbel', 40)
-        prompt_x = 600
-        prompt_y = 250
+        pygame.draw.rect(root, button_dark, [300,150,500,150])
+        prompt_font = pygame.font.SysFont('Corbel', 50)
+        prompt_x = 325
+        prompt_y = 200
         prompt_text = prompt_font.render('Push as hard you can', True, button_light)
-        centerblit(prompt_text, prompt_x, prompt_y- (prompt_text.get_rect().height / 2))
-
+        root.blit(prompt_text,(prompt_x, prompt_y))
 
     # Info
     trial = 0
     successes = 0
-    info_font = pygame.font.Font(FONT, 18, bold=True)
+    info_font = pygame.font.Font(FONT, 18)
     info_x = 981
     info_y = 380
     info_color = (0, 0, 0)
@@ -376,11 +381,13 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
     ###############################################################################
     # GAME
 
+    frame = framework(port, patID=options["pat_id"], sess=options["sess"],
+                      premin=options["pre_min"], premax=options["pre_max"], no_motor=no_motor, no_emg=no_emg)
     max = []
 
     i=0
     while running:
-
+        refresh()
         mouse = pygame.mouse.get_pos()
         pressed = pygame.key.get_pressed()
 
@@ -436,25 +443,28 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
 
         # Check if a trial is just starting
         if frame.starting_trial:
+            display_max_prompt()
             # OG PRELOAD SOUND HERE
             #check if 1st trial
             if frame.trial_count == 0:
                 options["block_count"] = frame.block_count
                 Num_of_success = 0
 
-            display_max_prompt()
+            
 
             #preload display
             frame.starting_trial = False
             
-            pygame.display.update()
+            
         # This happens when after a trial
         if frame.finished_trial:
             
-            baseline_display.set_record(frame.trial_count-1, 5)
+            #baseline_display.set_record(frame.trial_count-1, 5)
+
+            fly_board[trial] = 2
             successes += 1
             trial += 1
-            
+            pygame.display.update()
             if frame.trial_count == 5 :
                 logging.warning("Trial count meets success display limit... Ending block")
                 
@@ -473,7 +483,9 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
             if(not cease):
                 frame.finished_trial = False
         if(not cease):
-            root.update()
+            pygame.display.update()
+            #refresh()
+            #root.update()
     if(not cease):        
         root.destroy()
 
@@ -481,7 +493,7 @@ def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
     # Sets the background color
     root.fill(BG_COLOR)
     
-    refresh()
+    
 
     # Updates the window
     pygame.display.update()
