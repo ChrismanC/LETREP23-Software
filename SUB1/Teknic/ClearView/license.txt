@@ -1,0 +1,26 @@
+TEKNIC INC. SOFTWARE LICENSE AGREEMENT:  CLEARVIEW © 1994-2016 TEKNIC, INC.
+
+THIS PROGRAM LICENSE AGREEMENT IS DISPLAYED CONSPICUOUSLY IN THE PACKAGE AND/OR IN THE USER DOCUMENTATION OF THE PROGRAM SO THAT YOU CAN READ IT BEFORE INSTALLING THE SOFTWARE.  RETAINING POSSESSION OF THE PACKAGE AND/OR USING THE PROGRAM OR MATERIALS CONTAINED IN IT INDICATES THAT YOU HAVE AGREED TO THE TERMS AND CONDITIONS OF THIS AGREEMENT.  IF YOU DO NOT AGREE WITH THEM YOU SHOULD PROMPTLY RETURN THE PACKAGE UNOPENED TO THE SELLER FROM WHOM YOU OBTAINED POSSESSION AND YOUR MONEY WILL BE REFUNDED.
+
+1. License Grant.  Teknic hereby grants to you and you accept, a non-exclusive license to use the software program and related documentation in this package (collectively referred to as the "Program") on any computers which are to be connected to Teknic peripheral devices which you purchased from Teknic, Inc., or one of its authorized agents, as long as the terms of this agreement are complied with.  "You" means the company, entity, or individual installing or using the Program.  "Use" means storing, loading, installing, or executing the Program.  You may not modify the SOFTWARE or disable any licensing or control features of the Program except as an intended part of the Program’s programming features.  This license is transferable to other hardware products or other companies, entities, and individuals.
+
+THE PROGRAM IS COPYRIGHTED.  YOU MAY MAKE UNLIMITED COPIES OF THE PROGRAM FOR BACKUP AND ARCHIVAL PURPOSES.  UNAUTHORIZED COPYING, OR REVERSE COMPILING AND DISASSEMBLING OF THE PROGRAMS IN OBJECT FORMAT ARE PROHIBITED.  YOU MAY MAKE ADDITIONAL COPIES OF THE USER'S MANUAL FOR BACKUP PURPOSES.  ANY SUCH COPIES OF THE PROGRAM OR THE USER'S MANUAL SHALL INCLUDE TEKNIC'S COPYRIGHT AND OTHER PROPRIETARY NOTICES.  TITLE TO THIS PROGRAM IS NOT TRANSFERRED TO YOU BY THIS LICENSE.
+
+2. Teknic's Rights.  You acknowledge and agree that the Program consists of proprietary, unpublished products of Teknic, protected under U.S. copyright law and trade secret laws of general applicability.  Title, rights and interest in and to the program is not transferred to you by this license.  
+
+3. Program Limitations.  Teknic does not warrant that the program will be free from error or will meet your specific requirements.  You assume complete responsibility for decisions made or actions taken based on information obtained using the Program.  Any statements made concerning the utility of the Program are not to be construed as expressed or implied warranties.  TEKNIC MAKES NO WARRANTY OR CONDITION, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OR MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, REGARDING THE PROGRAM AND MAKES THE PROGRAM AVAILABLE SOLELY ON AN "AS IS" BASIS.
+
+
+LIMITED WARRANTY ON MEDIA AND DAMAGES DISCLAIMER  
+
+4. The media (not the Program) is warrantied to the original purchaser against defects in material and workmanship for a period of ninety (90) days from the date of original purchase.  Defective media under warranty will be replaced when it is returned postage paid with a copy of the purchase receipt to Teknic Inc., Victor, NY.  The replacement media is warranted for ninety (90) days from the date of replacement.
+
+
+THIS PARAGRAPH EXPRESSES TEKNIC'S SOLE LIABILITY AND YOUR EXCLUSIVE REMEDY.
+
+Teknic shall NOT be responsible for incidental or consequential damages.  This warranty gives you specific legal rights and you may also have other rights which vary from state to state.  Some states do not allow the exclusion or limitations of incidental or consequential damages or limitations on how long an implied warranty lasts so the above limitations or exclusions may not apply to you.
+
+EXPORT CONTROL
+
+THE RE-EXPORT OF UNITED STATES ORIGIN SOFTWARE IS SUBJECT TO THE UNITED STATES LAWS UNDER THE EXPORT ADMINISTRATION ACT OF 1969 AS AMENDED.  ANY FURTHER SALE OF THE PROGRAM SHALL BE IN COMPLIANCE WITH UNITED STATES DEPARTMENT OF COMMERCE ADMINISTRATION REGULATIONS.  COMPLIANCE WITH SUCH REGULATIONS IS YOUR RESPONSIBILITY AND NOT THE RESPONSIBILITY OF TEKNIC, INC.
+

@@ -1,0 +1,1322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TuningDB>(C)2012-2017 Teknic, Inc. All Rights Reserved<DBinfo Revision="1" Date="$Date: 07/14/2017 11:06 $"/>
+	<Keys>
+		<!-- Parallel Wound Motors -->
+		<Key Motor="231XP">
+			<PWR0>
+				<CfgTune Kv="29859" Kp-out="49216" Kp-zero="36980" Ki-out="6498" Ki-zero="4832" Kfa="6238" Kfv="277" Kfj="0" Knv="4460" Kip="900" Kii="2200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0>
+			<PWR0_SK>
+				<CfgTune Kv="29859" Kp-out="49216" Kp-zero="36980" Ki-out="6498" Ki-zero="4832" Kfa="6238" Kfv="277" Kfj="0" Knv="4460" Kip="900" Kii="2200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0_SK>
+			<PWR1>
+				<CfgTune Kv="35830" Kp-out="59535" Kp-zero="51428" Ki-out="12319" Ki-zero="9779" Kfa="4709" Kfv="347" Kfj="11772" Knv="3568" Kip="1000" Kii="2500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="35830" Kp-out="59535" Kp-zero="51428" Ki-out="12319" Ki-zero="9779" Kfa="4709" Kfv="347" Kfj="11772" Knv="3568" Kip="1000" Kii="2500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR5>
+				<CfgTune Kv="29859" Kp-out="59542" Kp-zero="49208" Ki-out="11785" Ki-zero="9355" Kfa="3927" Kfv="194" Kfj="7854" Knv="3568" Kip="900" Kii="1900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.75" RMSSlowLim="4.75" RMSSlowTC="2" NoCommTrq="4.75" />
+			</PWR5>
+			<PWR5_SK>
+				<CfgTune Kv="24883" Kp-out="49210" Kp-zero="36971" Ki-out="7301" Ki-zero="4831" Kfa="4494" Kfv="246" Kfj="11235" Knv="3172" Kip="700" Kii="1600" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.3" RMSSlowLim="4.3" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR5_SK>
+			<PWR6>
+				<CfgTune Kv="24883" Kp-out="65500" Kp-zero="54131" Ki-out="15521" Ki-zero="10267" Kfa="3092" Kfv="184" Kfj="6184" Knv="3172" Kip="1000" Kii="2200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="29859" Kp-out="59541" Kp-zero="54128" Ki-out="12935" Ki-zero="10267" Kfa="3647" Kfv="247" Kfj="7294" Knv="3568" Kip="1000" Kii="2200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.5" RMSSlowLim="4.5" RMSSlowTC="2" NoCommTrq="4.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="232XP">
+			<PWR1>
+				<CfgTune Kv="35830" Kp-out="59548" Kp-zero="54137" Ki-out="11305" Ki-zero="10268" Kfa="4808" Kfv="226" Kfj="0" Knv="2854" Kip="1400" Kii="2800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="35830" Kp-out="59548" Kp-zero="54137" Ki-out="11305" Ki-zero="10268" Kfa="4808" Kfv="226" Kfj="0" Knv="2854" Kip="1400" Kii="2800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="29859" Kp-out="59542" Kp-zero="54129" Ki-out="12935" Ki-zero="10267" Kfa="3382" Kfv="87" Kfj="6764" Knv="3568" Kip="1100" Kii="1600" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="35830" Kp-out="59526" Kp-zero="53991" Ki-out="15444" Ki-zero="10216" Kfa="4011" Kfv="127" Kfj="10027" Knv="3568" Kip="1000" Kii="1600" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.5" RMSSlowLim="4.5" RMSSlowTC="2" NoCommTrq="4.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="233XP">
+			<PWR1>
+				<CfgTune Kv="51595" Kp-out="54125" Kp-zero="51547" Ki-out="12320" Ki-zero="9779" Kfa="6411" Kfv="219" Kfj="12822" Knv="2854" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="51595" Kp-out="54125" Kp-zero="51547" Ki-out="12320" Ki-zero="9779" Kfa="6411" Kfv="219" Kfj="12822" Knv="2854" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="24883" Kp-out="44735" Kp-zero="33609" Ki-out="6683" Ki-zero="4421" Kfa="4366" Kfv="106" Kfj="10915" Knv="3568" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="29859" Kp-out="49209" Kp-zero="36970" Ki-out="7301" Ki-zero="4831" Kfa="5010" Kfv="143" Kfj="10020" Knv="3568" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.5" RMSSlowLim="4.5" RMSSlowTC="2" NoCommTrq="4.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="234XP">
+			<PWR1>
+				<CfgTune Kv="74296" Kp-out="65771" Kp-zero="62639" Ki-out="18054" Ki-zero="17195" Kfa="4639" Kfv="159" Kfj="13917" Knv="1827" Kip="1400" Kii="2000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="74296" Kp-out="65771" Kp-zero="62639" Ki-out="18054" Ki-zero="17195" Kfa="4639" Kfv="159" Kfj="13917" Knv="1827" Kip="1400" Kii="2000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="29859" Kp-out="54123" Kp-zero="44729" Ki-out="10670" Ki-zero="7059" Kfa="4271" Kfv="84" Kfj="10677" Knv="3568" Kip="1200" Kii="1500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="29859" Kp-out="49200" Kp-zero="33602" Ki-out="6683" Ki-zero="4421" Kfa="5251" Kfv="106" Kfj="10502" Knv="3568" Kip="1200" Kii="1500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.5" RMSSlowLim="4.5" RMSSlowTC="2" NoCommTrq="4.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="341XP">
+			<PWR1>
+				<CfgTune Kv="128383" Kp-out="63066" Kp-zero="51882" Ki-out="10344" Ki-zero="9852" Kfa="16287" Kfv="407" Kfj="32574" Knv="1827" Kip="1300" Kii="1700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="128383" Kp-out="63066" Kp-zero="51882" Ki-out="10344" Ki-zero="9852" Kfa="16287" Kfv="407" Kfj="32574" Knv="1827" Kip="1300" Kii="1700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="89155" Kp-out="62758" Kp-zero="51629" Ki-out="14822" Ki-zero="9805" Kfa="11103" Kfv="188" Kfj="22206" Knv="2854" Kip="1300" Kii="1700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="154059" Kp-out="69523" Kp-zero="57196" Ki-out="16437" Ki-zero="15655" Kfa="10766" Kfv="210" Kfj="26915" Knv="2284" Kip="1400" Kii="1700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="342XP">
+			<PWR1>
+				<CfgTune Kv="128378" Kp-out="54121" Kp-zero="40665" Ki-out="8556" Ki-zero="6416" Kfa="20067" Kfv="343" Kfj="0" Knv="3568" Kip="1300" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="128378" Kp-out="54121" Kp-zero="40665" Ki-out="8556" Ki-zero="6416" Kfa="20067" Kfv="343" Kfj="0" Knv="3568" Kip="1300" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="89155" Kp-out="59523" Kp-zero="44415" Ki-out="10609" Ki-zero="7019" Kfa="14098" Kfv="133" Kfj="21147" Knv="3568" Kip="1500" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="128383" Kp-out="60308" Kp-zero="52095" Ki-out="12455" Ki-zero="9887" Kfa="15904" Kfv="131" Kfj="31808" Knv="1827" Kip="1600" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="343XP">
+			<PWR1>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="154059" Kp-out="57499" Kp-zero="42903" Ki-out="8514" Ki-zero="6759" Kfa="24311" Kfv="218" Kfj="36466" Knv="4460" Kip="2200" Kii="2800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="154059" Kp-out="57499" Kp-zero="42903" Ki-out="8514" Ki-zero="6759" Kfa="24311" Kfv="218" Kfj="36466" Knv="4460" Kip="2200" Kii="2800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="128383" Kp-out="62620" Kp-zero="54093" Ki-out="12936" Ki-zero="12320" Kfa="16012" Kfv="125" Kfj="32024" Knv="4460" Kip="1200" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="128383" Kp-out="63193" Kp-zero="47153" Ki-out="9391" Ki-zero="7455" Kfa="19657" Kfv="229" Kfj="29485" Knv="3568" Kip="1400" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="344XP">
+			<PWR1>
+				<CfgTune Kv="184870" Kp-out="62894" Kp-zero="49277" Ki-out="9822" Ki-zero="9355" Kfa="25518" Kfv="179" Kfj="38277" Knv="2284" Kip="1800" Kii="1100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="184870" Kp-out="62894" Kp-zero="49277" Ki-out="9822" Ki-zero="9355" Kfa="25518" Kfv="179" Kfj="38277" Knv="2284" Kip="1800" Kii="1100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="128383" Kp-out="54706" Kp-zero="45005" Ki-out="8982" Ki-zero="7130" Kfa="19877" Kfv="133" Kfj="39754" Knv="3568" Kip="1900" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="106986" Kp-out="59500" Kp-zero="33583" Ki-out="7991" Ki-zero="3672" Kfa="20420" Kfv="147" Kfj="30630" Knv="4460" Kip="2500" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="D100P">
+			<PWR1>
+				<CfgTune Kv="74296" Kp-out="34155" Kp-zero="25485" Ki-out="2429" Ki-zero="2314" Kfa="17201" Kfv="120" Kfj="60203" Knv="1462" Kip="2000" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.8" RMStime="20" RMSSlowTC="5" NoCommTrq="4.8" RMSSlowLim="4.8" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="74296" Kp-out="29469" Kp-zero="19942" Ki-out="1562" Ki-zero="1241" Kfa="25238" Kfv="175" Kfj="75714" Knv="1827" Kip="2500" Kii="1200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.8" RMStime="20" RMSSlowTC="5" NoCommTrq="4.8" RMSSlowLim="4.8" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="51595" Kp-out="35565" Kp-zero="27864" Ki-out="3821" Ki-zero="3034" Kfa="9626" Kfv="69" Kfj="33691" Knv="1827" Kip="1700" Kii="500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.42" RMStime="20" RMSSlowTC="5"  NoCommTrq="6.42" RMSSlowLim="6.42" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="51595" Kp-out="30744" Kp-zero="24087" Ki-out="2296" Ki-zero="1825" Kfa="15552" Kfv="101" Kfj="54432" Knv="1462" Kip="1700" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.42" RMStime="20" RMSSlowTC="5" NoCommTrq="6.42" RMSSlowLim="6.42" />
+			</PWR2_SK>
+			<PWR3>
+				<CfgTune Kv="29859" Kp-out="45024" Kp-zero="35276" Ki-out="7016" Ki-zero="4642" Kfa="5324" Kfv="39" Kfj="18634" Knv="1827" Kip="2600" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="15.5" RMStime="20" RMSSlowTC="5" NoCommTrq="15" RMSSlowLim="9.5" />
+			</PWR3>
+			<PWR3_SK>
+				<CfgTune Kv="35830" Kp-out="33821" Kp-zero="27823" Ki-out="3821" Ki-zero="2529" Kfa="8981" Kfv="52" Kfj="22452" Knv="1462" Kip="2000" Kii="650" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7.3075" RMStime="20" RMSSlowTC="5"  NoCommTrq="7.3075" RMSSlowLim="7.3075" />
+			</PWR3_SK>	
+			<PWR4>
+				<CfgTune Kv="20733" Kp-out="9818" Kp-zero="6094" Ki-out="260" Ki-zero="122" Kfa="19848" Kfv="170" Kfj="0" Knv="4460" Kip="1790" Kii="720" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="15.5" RMStime="20" RMSSlowTC="5" NoCommTrq="15" RMSSlowLim="9.5" />
+			</PWR4>
+			<PWR5>
+				<CfgTune Kv="20734" Kp-out="17336" Kp-zero="11840" Ki-out="769" Ki-zero="425" Kfa="11459" Kfv="80" Kfj="0" Knv="2854" Kip="1700" Kii="500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="15.5" RMStime="20" RMSSlowTC="5" NoCommTrq="15" RMSSlowLim="9.5" />
+			</PWR5>
+		</Key>
+		<Key Motor="N056P">
+			<PWR1>
+				<CfgTune Kv="74296" Kp-out="34155" Kp-zero="25485" Ki-out="2429" Ki-zero="2314" Kfa="17201" Kfv="120" Kfj="60203" Knv="1462" Kip="2000" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.8" RMStime="20" RMSSlowTC="5" NoCommTrq="4.8" RMSSlowLim="4.8" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="74296" Kp-out="29469" Kp-zero="19942" Ki-out="1562" Ki-zero="1241" Kfa="25238" Kfv="175" Kfj="75714" Knv="1827" Kip="2500" Kii="1200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.8" RMStime="20" RMSSlowTC="5" NoCommTrq="4.8" RMSSlowLim="4.8" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="51595" Kp-out="35565" Kp-zero="27864" Ki-out="3821" Ki-zero="3034" Kfa="9626" Kfv="69" Kfj="33691" Knv="1827" Kip="1700" Kii="500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.42" RMStime="20" RMSSlowTC="5"  NoCommTrq="6.42" RMSSlowLim="6.42" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="51595" Kp-out="30744" Kp-zero="24087" Ki-out="2296" Ki-zero="1825" Kfa="15552" Kfv="101" Kfj="54432" Knv="1462" Kip="1700" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.42" RMStime="20" RMSSlowTC="5" NoCommTrq="6.42" RMSSlowLim="6.42" />
+			</PWR2_SK>
+			<PWR3>
+				<CfgTune Kv="29859" Kp-out="45024" Kp-zero="35276" Ki-out="7016" Ki-zero="4642" Kfa="5324" Kfv="39" Kfj="18634" Knv="1827" Kip="2600" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="15.5" RMStime="20" RMSSlowTC="5" NoCommTrq="15" RMSSlowLim="9.5" />
+			</PWR3>
+			<PWR3_SK>
+				<CfgTune Kv="35830" Kp-out="33821" Kp-zero="27823" Ki-out="3821" Ki-zero="2529" Kfa="8981" Kfv="52" Kfj="22452" Knv="1462" Kip="2000" Kii="650" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7.3075" RMStime="20" RMSSlowTC="5"  NoCommTrq="7.3075" RMSSlowLim="7.3075" />
+			</PWR3_SK>	
+			<PWR4>
+				<CfgTune Kv="20733" Kp-out="9818" Kp-zero="6094" Ki-out="260" Ki-zero="122" Kfa="19848" Kfv="170" Kfj="0" Knv="4460" Kip="1790" Kii="720" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="15.5" RMStime="20" RMSSlowTC="5" NoCommTrq="15" RMSSlowLim="9.5" />
+			</PWR4>
+			<PWR5>
+				<CfgTune Kv="20734" Kp-out="17336" Kp-zero="11840" Ki-out="769" Ki-zero="425" Kfa="11459" Kfv="80" Kfj="0" Knv="2854" Kip="1700" Kii="500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="15.5" RMStime="20" RMSSlowTC="5" NoCommTrq="15" RMSSlowLim="9.5" />
+			</PWR5>
+		</Key>
+		<Key Motor="N143P">
+			<PWR1>
+				<CfgTune Kv="74296" Kp-out="34155" Kp-zero="25485" Ki-out="2429" Ki-zero="2314" Kfa="17201" Kfv="120" Kfj="60203" Knv="1462" Kip="2000" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.8" RMStime="20" RMSSlowTC="5" NoCommTrq="4.8" RMSSlowLim="4.8" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="74296" Kp-out="29469" Kp-zero="19942" Ki-out="1562" Ki-zero="1241" Kfa="25238" Kfv="175" Kfj="75714" Knv="1827" Kip="2500" Kii="1200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.8" RMStime="20" RMSSlowTC="5" NoCommTrq="4.8" RMSSlowLim="4.8" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="51595" Kp-out="35565" Kp-zero="27864" Ki-out="3821" Ki-zero="3034" Kfa="9626" Kfv="69" Kfj="33691" Knv="1827" Kip="1700" Kii="500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.42" RMStime="20" RMSSlowTC="5"  NoCommTrq="6.42" RMSSlowLim="6.42" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="51595" Kp-out="30744" Kp-zero="24087" Ki-out="2296" Ki-zero="1825" Kfa="15552" Kfv="101" Kfj="54432" Knv="1462" Kip="1700" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.42" RMStime="20" RMSSlowTC="5" NoCommTrq="6.42" RMSSlowLim="6.42" />
+			</PWR2_SK>
+			<PWR3>
+				<CfgTune Kv="29859" Kp-out="45024" Kp-zero="35276" Ki-out="7016" Ki-zero="4642" Kfa="5324" Kfv="39" Kfj="18634" Knv="1827" Kip="2600" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="15.5" RMStime="20" RMSSlowTC="5" NoCommTrq="15" RMSSlowLim="9.5" />
+			</PWR3>
+			<PWR3_SK>
+				<CfgTune Kv="35830" Kp-out="33821" Kp-zero="27823" Ki-out="3821" Ki-zero="2529" Kfa="8981" Kfv="52" Kfj="22452" Knv="1462" Kip="2000" Kii="650" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7.3075" RMStime="20" RMSSlowTC="5"  NoCommTrq="7.3075" RMSSlowLim="7.3075" />
+			</PWR3_SK>	
+			<PWR4>
+				<CfgTune Kv="20733" Kp-out="9818" Kp-zero="6094" Ki-out="260" Ki-zero="122" Kfa="19848" Kfv="170" Kfj="0" Knv="4460" Kip="1790" Kii="720" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="15.5" RMStime="20" RMSSlowTC="5" NoCommTrq="15" RMSSlowLim="9.5" />
+			</PWR4>
+			<PWR5>
+				<Cfgtune Kv="20734" Kp-out="17336" Kp-zero="11840" Ki-out="769" Ki-zero="425" Kfa="11459" Kfv="80" Kfj="0" Knv="2854" Kip="1700" Kii="500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="15.5" RMStime="20" RMSSlowTC="5" NoCommTrq="15" RMSSlowLim="9.5" />
+			</PWR5>
+		</Key>
+		<!-- Parallel Wound Motors - Sealed -->
+		<Key Motor="231XF">
+			<PWR0>
+				<CfgTune Kv="29859" Kp-out="49216" Kp-zero="36980" Ki-out="6498" Ki-zero="4832" Kfa="6238" Kfv="277" Kfj="0" Knv="4460" Kip="900" Kii="2200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0>
+			<PWR0_SK>
+				<CfgTune Kv="29859" Kp-out="49216" Kp-zero="36980" Ki-out="6498" Ki-zero="4832" Kfa="6238" Kfv="277" Kfj="0" Knv="4460" Kip="900" Kii="2200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0_SK>
+			<PWR1>
+				<CfgTune Kv="35830" Kp-out="59535" Kp-zero="51428" Ki-out="12319" Ki-zero="9779" Kfa="4709" Kfv="347" Kfj="11772" Knv="3568" Kip="1000" Kii="2500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="35830" Kp-out="59535" Kp-zero="51428" Ki-out="12319" Ki-zero="9779" Kfa="4709" Kfv="347" Kfj="11772" Knv="3568" Kip="1000" Kii="2500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR5>
+				<CfgTune Kv="29859" Kp-out="59542" Kp-zero="49208" Ki-out="11785" Ki-zero="9355" Kfa="3927" Kfv="194" Kfj="7854" Knv="3568" Kip="900" Kii="1900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.75" RMSSlowLim="4.75" RMSSlowTC="2" NoCommTrq="4.75" />
+			</PWR5>
+			<PWR5_SK>
+				<CfgTune Kv="24883" Kp-out="49210" Kp-zero="36971" Ki-out="7301" Ki-zero="4831" Kfa="4494" Kfv="246" Kfj="11235" Knv="3172" Kip="700" Kii="1600" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.3" RMSSlowLim="4.3" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR5_SK>
+			<PWR6>
+				<CfgTune Kv="24883" Kp-out="65500" Kp-zero="54131" Ki-out="15521" Ki-zero="10267" Kfa="3092" Kfv="184" Kfj="6184" Knv="3172" Kip="1000" Kii="2200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="29859" Kp-out="59541" Kp-zero="54128" Ki-out="12935" Ki-zero="10267" Kfa="3647" Kfv="247" Kfj="7294" Knv="3568" Kip="1000" Kii="2200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.5" RMSSlowLim="4.5" RMSSlowTC="2" NoCommTrq="4.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="232XF">
+			<PWR1>
+				<CfgTune Kv="35830" Kp-out="59548" Kp-zero="54137" Ki-out="11305" Ki-zero="10268" Kfa="4808" Kfv="226" Kfj="0" Knv="2854" Kip="1400" Kii="2800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="35830" Kp-out="59548" Kp-zero="54137" Ki-out="11305" Ki-zero="10268" Kfa="4808" Kfv="226" Kfj="0" Knv="2854" Kip="1400" Kii="2800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="29859" Kp-out="59542" Kp-zero="54129" Ki-out="12935" Ki-zero="10267" Kfa="3382" Kfv="87" Kfj="6764" Knv="3568" Kip="1100" Kii="1600" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="35830" Kp-out="59526" Kp-zero="53991" Ki-out="15444" Ki-zero="10216" Kfa="4011" Kfv="127" Kfj="10027" Knv="3568" Kip="1000" Kii="1600" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.5" RMSSlowLim="4.5" RMSSlowTC="2" NoCommTrq="4.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="233XF">
+			<PWR1>
+				<CfgTune Kv="51595" Kp-out="54125" Kp-zero="51547" Ki-out="12320" Ki-zero="9779" Kfa="6411" Kfv="219" Kfj="12822" Knv="2854" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="51595" Kp-out="54125" Kp-zero="51547" Ki-out="12320" Ki-zero="9779" Kfa="6411" Kfv="219" Kfj="12822" Knv="2854" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="24883" Kp-out="44735" Kp-zero="33609" Ki-out="6683" Ki-zero="4421" Kfa="4366" Kfv="106" Kfj="10915" Knv="3568" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="29859" Kp-out="49209" Kp-zero="36970" Ki-out="7301" Ki-zero="4831" Kfa="5010" Kfv="143" Kfj="10020" Knv="3568" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.5" RMSSlowLim="4.5" RMSSlowTC="2" NoCommTrq="4.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="234XF">
+			<PWR1>
+				<CfgTune Kv="74296" Kp-out="65771" Kp-zero="62639" Ki-out="18054" Ki-zero="17195" Kfa="4639" Kfv="159" Kfj="13917" Knv="1827" Kip="1400" Kii="2000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="74296" Kp-out="65771" Kp-zero="62639" Ki-out="18054" Ki-zero="17195" Kfa="4639" Kfv="159" Kfj="13917" Knv="1827" Kip="1400" Kii="2000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="29859" Kp-out="54123" Kp-zero="44729" Ki-out="10670" Ki-zero="7059" Kfa="4271" Kfv="84" Kfj="10677" Knv="3568" Kip="1200" Kii="1500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="29859" Kp-out="49200" Kp-zero="33602" Ki-out="6683" Ki-zero="4421" Kfa="5251" Kfv="106" Kfj="10502" Knv="3568" Kip="1200" Kii="1500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.5" RMSSlowLim="4.5" RMSSlowTC="2" NoCommTrq="4.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="341XF">
+			<PWR1>
+				<CfgTune Kv="128383" Kp-out="63066" Kp-zero="51882" Ki-out="10344" Ki-zero="9852" Kfa="16287" Kfv="407" Kfj="32574" Knv="1827" Kip="1300" Kii="1700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="128383" Kp-out="63066" Kp-zero="51882" Ki-out="10344" Ki-zero="9852" Kfa="16287" Kfv="407" Kfj="32574" Knv="1827" Kip="1300" Kii="1700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="89155" Kp-out="62758" Kp-zero="51629" Ki-out="14822" Ki-zero="9805" Kfa="11103" Kfv="188" Kfj="22206" Knv="2854" Kip="1300" Kii="1700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="154059" Kp-out="69523" Kp-zero="57196" Ki-out="16437" Ki-zero="15655" Kfa="10766" Kfv="210" Kfj="26915" Knv="2284" Kip="1400" Kii="1700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="342XF">
+			<PWR1>
+				<CfgTune Kv="128378" Kp-out="54121" Kp-zero="40665" Ki-out="8556" Ki-zero="6416" Kfa="20067" Kfv="343" Kfj="0" Knv="3568" Kip="1300" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="128378" Kp-out="54121" Kp-zero="40665" Ki-out="8556" Ki-zero="6416" Kfa="20067" Kfv="343" Kfj="0" Knv="3568" Kip="1300" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="89155" Kp-out="59523" Kp-zero="44415" Ki-out="10609" Ki-zero="7019" Kfa="14098" Kfv="133" Kfj="21147" Knv="3568" Kip="1500" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="128383" Kp-out="60308" Kp-zero="52095" Ki-out="12455" Ki-zero="9887" Kfa="15904" Kfv="131" Kfj="31808" Knv="1827" Kip="1600" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="343XF">
+			<PWR1>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="154059" Kp-out="57499" Kp-zero="42903" Ki-out="8514" Ki-zero="6759" Kfa="24311" Kfv="218" Kfj="36466" Knv="4460" Kip="2200" Kii="2800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="154059" Kp-out="57499" Kp-zero="42903" Ki-out="8514" Ki-zero="6759" Kfa="24311" Kfv="218" Kfj="36466" Knv="4460" Kip="2200" Kii="2800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="128383" Kp-out="62620" Kp-zero="54093" Ki-out="12936" Ki-zero="12320" Kfa="16012" Kfv="125" Kfj="32024" Knv="4460" Kip="1200" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="128383" Kp-out="63193" Kp-zero="47153" Ki-out="9391" Ki-zero="7455" Kfa="19657" Kfv="229" Kfj="29485" Knv="3568" Kip="1400" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="344XF">
+			<PWR1>
+				<CfgTune Kv="184870" Kp-out="62894" Kp-zero="49277" Ki-out="9822" Ki-zero="9355" Kfa="25518" Kfv="179" Kfj="38277" Knv="2284" Kip="1800" Kii="1100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="184870" Kp-out="62894" Kp-zero="49277" Ki-out="9822" Ki-zero="9355" Kfa="25518" Kfv="179" Kfj="38277" Knv="2284" Kip="1800" Kii="1100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="128383" Kp-out="54706" Kp-zero="45005" Ki-out="8982" Ki-zero="7130" Kfa="19877" Kfv="133" Kfj="39754" Knv="3568" Kip="1900" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="106986" Kp-out="59500" Kp-zero="33583" Ki-out="7991" Ki-zero="3672" Kfa="20420" Kfv="147" Kfj="30630" Knv="4460" Kip="2500" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<!-- Series Wound Motors -->
+		<Key Motor="231XS">
+			<PWR0>
+				<CfgTune Kv="20736" Kp-out="59554" Kp-zero="40675" Ki-out="9698" Ki-zero="5347" Kfa="3973" Kfv="234" Kfj="5959" Knv="3172" Kip="2100" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0>
+			<PWR0_SK>
+				<CfgTune Kv="20736" Kp-out="59554" Kp-zero="40675" Ki-out="9698" Ki-zero="5347" Kfa="3973" Kfv="234" Kfj="5959" Knv="3172" Kip="2100" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0_SK>
+			<PWR1>
+				<CfgTune Kv="17280" Kp-out="54140" Kp-zero="49220" Ki-out="10267" Ki-zero="9355" Kfa="1905" Kfv="162" Kfj="0" Knv="5574" Kip="2100" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="17280" Kp-out="54140" Kp-zero="49220" Ki-out="10267" Ki-zero="9355" Kfa="1905" Kfv="162" Kfj="0" Knv="5574" Kip="2100" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR5>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="2000" Kii="6000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR5>
+			<PWR5_SK>
+				<CfgTune Kv="17280" Kp-out="50445" Kp-zero="41690" Ki-out="9916" Ki-zero="6560" Kfa="2588" Kfv="132" Kfj="6470" Knv="2854" Kip="1900" Kii="3600" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.03" RMSSlowLim="4.03" RMSSlowTC="2" NoCommTrq="4.03" />
+			</PWR5_SK>
+			<PWR6>
+				<CfgTune Kv="10000" Kp-out="54142" Kp-zero="40677" Ki-out="9698" Ki-zero="5347" Kfa="1640" Kfv="76" Kfj="3280" Knv="3568" Kip="3000" Kii="5200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.14" RMSSlowLim="4.14" RMSSlowTC="2" NoCommTrq="4.14" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="14400" Kp-out="54135" Kp-zero="44739" Ki-out="8891" Ki-zero="7059" Kfa="2139" Kfv="113" Kfj="4278" Knv="3172" Kip="2660" Kii="5300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.14" RMSSlowLim="4.14" RMSSlowTC="2" NoCommTrq="4.14" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="232XS">
+			<PWR1>
+				<CfgTune Kv="17280" Kp-out="54138" Kp-zero="40673" Ki-out="8081" Ki-zero="5347" Kfa="2864" Kfv="110" Kfj="7160" Knv="4460" Kip="3500" Kii="3900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="17280" Kp-out="54138" Kp-zero="40673" Ki-out="8081" Ki-zero="5347" Kfa="2864" Kfv="110" Kfj="7160" Knv="4460" Kip="3500" Kii="3900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="14400" Kp-out="59551" Kp-zero="54137" Ki-out="12935" Ki-zero="10267" Kfa="1847" Kfv="70" Kfj="2770" Knv="3568" Kip="3500" Kii="4000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.66" RMSSlowLim="4.66" RMSSlowTC="2" NoCommTrq="4.66" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="17280" Kp-out="54138" Kp-zero="44741" Ki-out="8891" Ki-zero="7059" Kfa="2696" Kfv="101" Kfj="4044" Knv="3172" Kip="3200" Kii="3500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.33" RMSSlowLim="4.33" RMSSlowTC="2" NoCommTrq="4.33" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="233XS">
+			<PWR1>
+				<CfgTune Kv="24883" Kp-out="59545" Kp-zero="49210" Ki-out="14141" Ki-zero="9355" Kfa="3261" Kfv="95" Kfj="6522" Knv="3172" Kip="3800" Kii="3900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="24883" Kp-out="59545" Kp-zero="49210" Ki-out="14141" Ki-zero="9355" Kfa="3261" Kfv="95" Kfj="6522" Knv="3172" Kip="3800" Kii="3900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="17280" Kp-out="58296" Kp-zero="52996" Ki-out="12618" Ki-zero="10016" Kfa="2282" Kfv="57" Kfj="4564" Knv="2854" Kip="3800" Kii="3900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.95" RMSSlowLim="4.95" RMSSlowTC="2" NoCommTrq="4.95" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="10000" Kp-out="33619" Kp-zero="18974" Ki-out="3080" Ki-zero="1417" Kfa="3559" Kfv="70" Kfj="7118" Knv="6968" Kip="3100" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.472" RMSSlowLim="4.472" RMSSlowTC="2" NoCommTrq="4.472" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="234XS">
+			<PWR1>
+				<CfgTune Kv="17280" Kp-out="44740" Kp-zero="30556" Ki-out="6043" Ki-zero="3333" Kfa="3317" Kfv="69" Kfj="8292" Knv="5574" Kip="4900" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="17280" Kp-out="44740" Kp-zero="30556" Ki-out="6043" Ki-zero="3333" Kfa="3317" Kfv="69" Kfj="8292" Knv="5574" Kip="4900" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="12000" Kp-out="40672" Kp-zero="33612" Ki-out="5567" Ki-zero="3684" Kfa="2498" Kfv="56" Kfj="7494" Knv="4460" Kip="2150" Kii="3480" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.42" RMSSlowLim="4.42" RMSSlowTC="2" NoCommTrq="4.42" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="10000" Kp-out="27783" Kp-zero="17249" Ki-out="2348" Ki-zero="1296" Kfa="3720" Kfv="72" Kfj="9300" Knv="8710" Kip="4300" Kii="4300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.2" RMSSlowLim="4.2" RMSSlowTC="2" NoCommTrq="4.2" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="341XS">
+			<PWR1>
+				<CfgTune Kv="61914" Kp-out="65917" Kp-zero="51645" Ki-out="14822" Ki-zero="9805" Kfa="8502" Kfv="147" Kfj="12753" Knv="2854" Kip="7000" Kii="9000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="4.71" RMSSlowTC="2" NoCommTrq="4.71" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="61914" Kp-out="65917" Kp-zero="51645" Ki-out="14822" Ki-zero="9805" Kfa="8502" Kfv="147" Kfj="12753" Knv="2854" Kip="7000" Kii="9000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="4.71" RMSSlowTC="2" NoCommTrq="4.71" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="7000" Kii="9000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="4.71" RMSSlowTC="2" NoCommTrq="4.71" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="7000" Kii="9000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="4.71" RMSSlowTC="2" NoCommTrq="4.71" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="342XS">
+			<PWR1>
+				<CfgTune Kv="61914" Kp-out="56804" Kp-zero="42385" Ki-out="8419" Ki-zero="5570" Kfa="10849" Kfv="134" Kfj="16273" Knv="3568" Kip="5500" Kii="5000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.28" RMSSlowTC="2" NoCommTrq="5.28" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="61914" Kp-out="56804" Kp-zero="42385" Ki-out="8419" Ki-zero="5570" Kfa="10849" Kfv="134" Kfj="16273" Knv="3568" Kip="5500" Kii="5000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.28" RMSSlowTC="2" NoCommTrq="5.28" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="51595" Kp-out="57599" Kp-zero="54856" Ki-out="13116" Ki-zero="10412" Kfa="6911" Kfv="83" Kfj="13822" Knv="2854" Kip="4700" Kii="4000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.28" RMSSlowTC="2" NoCommTrq="5.28" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="61914" Kp-out="49192" Kp-zero="44618" Ki-out="8891" Ki-zero="7058" Kfa="9981" Kfv="119" Kfj="19962" Knv="1827" Kip="4700" Kii="3000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.28" RMSSlowTC="2" NoCommTrq="5.28" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="343XS">
+			<PWR1>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="89155" Kp-out="62906" Kp-zero="54340" Ki-out="15625" Ki-zero="10337" Kfa="12190" Kfv="143" Kfj="24380" Knv="2854" Kip="5100" Kii="2700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.68" RMSSlowTC="2" NoCommTrq="5.68" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="89155" Kp-out="62906" Kp-zero="54340" Ki-out="15625" Ki-zero="10337" Kfa="12190" Kfv="143" Kfj="24380" Knv="2854" Kip="5100" Kii="2700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.68" RMSSlowTC="2" NoCommTrq="5.68" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="61914" Kp-out="59638" Kp-zero="54093" Ki-out="15519" Ki-zero="10266" Kfa="8065" Kfv="78" Kfj="16130" Knv="3568" Kip="6000" Kii="4200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.68" RMSSlowTC="2" NoCommTrq="5.68" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="74295" Kp-out="47132" Kp-zero="40713" Ki-out="8082" Ki-zero="6416" Kfa="10708" Kfv="94" Kfj="21416" Knv="2284" Kip="4490" Kii="2270" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.68" RMSSlowTC="2" NoCommTrq="5.68" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="344XS">
+			<PWR1>
+				<CfgTune Kv="81050" Kp-out="59526" Kp-zero="49198" Ki-out="11305" Ki-zero="9317" Kfa="11261" Kfv="287" Kfj="0" Knv="2854" Kip="7000" Kii="4000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.19" RMSSlowTC="2" NoCommTrq="5.19" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="81050" Kp-out="59526" Kp-zero="49198" Ki-out="11305" Ki-zero="9317" Kfa="11261" Kfv="287" Kfj="0" Knv="2854" Kip="7000" Kii="4000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.19" RMSSlowTC="2" NoCommTrq="5.19" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="51595" Kp-out="42670" Kp-zero="40638" Ki-out="6736" Ki-zero="6416" Kfa="8956" Kfv="100" Kfj="22390" Knv="3568" Kip="4280" Kii="2300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.19" RMSSlowTC="2" NoCommTrq="5.19" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="74296" Kp-out="42684" Kp-zero="36871" Ki-out="6084" Ki-zero="4830" Kfa="12691" Kfv="84" Kfj="31727" Knv="2284" Kip="4900" Kii="2600" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.19" RMSSlowTC="2" NoCommTrq="5.19" />
+			</PWR6_SK>
+		</Key>
+		<!-- Series Wound Motors - Sealed -->
+		<Key Motor="231XH">
+			<PWR0>
+				<CfgTune Kv="20736" Kp-out="59554" Kp-zero="40675" Ki-out="9698" Ki-zero="5347" Kfa="3973" Kfv="234" Kfj="5959" Knv="3172" Kip="2100" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0>
+			<PWR0_SK>
+				<CfgTune Kv="20736" Kp-out="59554" Kp-zero="40675" Ki-out="9698" Ki-zero="5347" Kfa="3973" Kfv="234" Kfj="5959" Knv="3172" Kip="2100" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0_SK>
+			<PWR1>
+				<CfgTune Kv="17280" Kp-out="54140" Kp-zero="49220" Ki-out="10267" Ki-zero="9355" Kfa="1905" Kfv="162" Kfj="0" Knv="5574" Kip="2100" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="17280" Kp-out="54140" Kp-zero="49220" Ki-out="10267" Ki-zero="9355" Kfa="1905" Kfv="162" Kfj="0" Knv="5574" Kip="2100" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR5>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="2000" Kii="6000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR5>
+			<PWR5_SK>
+				<CfgTune Kv="17280" Kp-out="50445" Kp-zero="41690" Ki-out="9916" Ki-zero="6560" Kfa="2588" Kfv="132" Kfj="6470" Knv="2854" Kip="1900" Kii="3600" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.03" RMSSlowLim="4.03" RMSSlowTC="2" NoCommTrq="4.03" />
+			</PWR5_SK>
+			<PWR6>
+				<CfgTune Kv="10000" Kp-out="54142" Kp-zero="40677" Ki-out="9698" Ki-zero="5347" Kfa="1640" Kfv="76" Kfj="3280" Knv="3568" Kip="3000" Kii="5200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.14" RMSSlowLim="4.14" RMSSlowTC="2" NoCommTrq="4.14" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="14400" Kp-out="54135" Kp-zero="44739" Ki-out="8891" Ki-zero="7059" Kfa="2139" Kfv="113" Kfj="4278" Knv="3172" Kip="2660" Kii="5300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.14" RMSSlowLim="4.14" RMSSlowTC="2" NoCommTrq="4.14" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="232XH">
+			<PWR1>
+				<CfgTune Kv="17280" Kp-out="54138" Kp-zero="40673" Ki-out="8081" Ki-zero="5347" Kfa="2864" Kfv="110" Kfj="7160" Knv="4460" Kip="3500" Kii="3900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="17280" Kp-out="54138" Kp-zero="40673" Ki-out="8081" Ki-zero="5347" Kfa="2864" Kfv="110" Kfj="7160" Knv="4460" Kip="3500" Kii="3900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="14400" Kp-out="59551" Kp-zero="54137" Ki-out="12935" Ki-zero="10267" Kfa="1847" Kfv="70" Kfj="2770" Knv="3568" Kip="3500" Kii="4000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.66" RMSSlowLim="4.66" RMSSlowTC="2" NoCommTrq="4.66" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="17280" Kp-out="54138" Kp-zero="44741" Ki-out="8891" Ki-zero="7059" Kfa="2696" Kfv="101" Kfj="4044" Knv="3172" Kip="3200" Kii="3500" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.33" RMSSlowLim="4.33" RMSSlowTC="2" NoCommTrq="4.33" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="233XH">
+			<PWR1>
+				<CfgTune Kv="24883" Kp-out="59545" Kp-zero="49210" Ki-out="14141" Ki-zero="9355" Kfa="3261" Kfv="95" Kfj="6522" Knv="3172" Kip="3800" Kii="3900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="24883" Kp-out="59545" Kp-zero="49210" Ki-out="14141" Ki-zero="9355" Kfa="3261" Kfv="95" Kfj="6522" Knv="3172" Kip="3800" Kii="3900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="17280" Kp-out="58296" Kp-zero="52996" Ki-out="12618" Ki-zero="10016" Kfa="2282" Kfv="57" Kfj="4564" Knv="2854" Kip="3800" Kii="3900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.95" RMSSlowLim="4.95" RMSSlowTC="2" NoCommTrq="4.95" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="10000" Kp-out="33619" Kp-zero="18974" Ki-out="3080" Ki-zero="1417" Kfa="3559" Kfv="70" Kfj="7118" Knv="6968" Kip="3100" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.472" RMSSlowLim="4.472" RMSSlowTC="2" NoCommTrq="4.472" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="234XH">
+			<PWR1>
+				<CfgTune Kv="17280" Kp-out="44740" Kp-zero="30556" Ki-out="6043" Ki-zero="3333" Kfa="3317" Kfv="69" Kfj="8292" Knv="5574" Kip="4900" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="17280" Kp-out="44740" Kp-zero="30556" Ki-out="6043" Ki-zero="3333" Kfa="3317" Kfv="69" Kfj="8292" Knv="5574" Kip="4900" Kii="4100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="12000" Kp-out="40672" Kp-zero="33612" Ki-out="5567" Ki-zero="3684" Kfa="2498" Kfv="56" Kfj="7494" Knv="4460" Kip="2150" Kii="3480" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.42" RMSSlowLim="4.42" RMSSlowTC="2" NoCommTrq="4.42" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="10000" Kp-out="27783" Kp-zero="17249" Ki-out="2348" Ki-zero="1296" Kfa="3720" Kfv="72" Kfj="9300" Knv="8710" Kip="4300" Kii="4300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.2" RMSSlowLim="4.2" RMSSlowTC="2" NoCommTrq="4.2" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="341XH">
+			<PWR1>
+				<CfgTune Kv="61914" Kp-out="65917" Kp-zero="51645" Ki-out="14822" Ki-zero="9805" Kfa="8502" Kfv="147" Kfj="12753" Knv="2854" Kip="7000" Kii="9000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="4.71" RMSSlowTC="2" NoCommTrq="4.71" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="61914" Kp-out="65917" Kp-zero="51645" Ki-out="14822" Ki-zero="9805" Kfa="8502" Kfv="147" Kfj="12753" Knv="2854" Kip="7000" Kii="9000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="4.71" RMSSlowTC="2" NoCommTrq="4.71" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="7000" Kii="9000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="4.71" RMSSlowTC="2" NoCommTrq="4.71" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="7000" Kii="9000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="4.71" RMSSlowTC="2" NoCommTrq="4.71" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="342XH">
+			<PWR1>
+				<CfgTune Kv="61914" Kp-out="56804" Kp-zero="42385" Ki-out="8419" Ki-zero="5570" Kfa="10849" Kfv="134" Kfj="16273" Knv="3568" Kip="5500" Kii="5000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.28" RMSSlowTC="2" NoCommTrq="5.28" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="61914" Kp-out="56804" Kp-zero="42385" Ki-out="8419" Ki-zero="5570" Kfa="10849" Kfv="134" Kfj="16273" Knv="3568" Kip="5500" Kii="5000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.28" RMSSlowTC="2" NoCommTrq="5.28" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="51595" Kp-out="57599" Kp-zero="54856" Ki-out="13116" Ki-zero="10412" Kfa="6911" Kfv="83" Kfj="13822" Knv="2854" Kip="4700" Kii="4000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.28" RMSSlowTC="2" NoCommTrq="5.28" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="61914" Kp-out="49192" Kp-zero="44618" Ki-out="8891" Ki-zero="7058" Kfa="9981" Kfv="119" Kfj="19962" Knv="1827" Kip="4700" Kii="3000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.28" RMSSlowTC="2" NoCommTrq="5.28" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="343XH">
+			<PWR1>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="89155" Kp-out="62906" Kp-zero="54340" Ki-out="15625" Ki-zero="10337" Kfa="12190" Kfv="143" Kfj="24380" Knv="2854" Kip="5100" Kii="2700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.68" RMSSlowTC="2" NoCommTrq="5.68" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="89155" Kp-out="62906" Kp-zero="54340" Ki-out="15625" Ki-zero="10337" Kfa="12190" Kfv="143" Kfj="24380" Knv="2854" Kip="5100" Kii="2700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.68" RMSSlowTC="2" NoCommTrq="5.68" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="61914" Kp-out="59638" Kp-zero="54093" Ki-out="15519" Ki-zero="10266" Kfa="8065" Kfv="78" Kfj="16130" Knv="3568" Kip="6000" Kii="4200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.68" RMSSlowTC="2" NoCommTrq="5.68" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="74295" Kp-out="47132" Kp-zero="40713" Ki-out="8082" Ki-zero="6416" Kfa="10708" Kfv="94" Kfj="21416" Knv="2284" Kip="4490" Kii="2270" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.68" RMSSlowTC="2" NoCommTrq="5.68" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="344XH">
+			<PWR1>
+				<CfgTune Kv="81050" Kp-out="59526" Kp-zero="49198" Ki-out="11305" Ki-zero="9317" Kfa="11261" Kfv="287" Kfj="0" Knv="2854" Kip="7000" Kii="4000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.19" RMSSlowTC="2" NoCommTrq="5.19" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="81050" Kp-out="59526" Kp-zero="49198" Ki-out="11305" Ki-zero="9317" Kfa="11261" Kfv="287" Kfj="0" Knv="2854" Kip="7000" Kii="4000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.19" RMSSlowTC="2" NoCommTrq="5.19" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="51595" Kp-out="42670" Kp-zero="40638" Ki-out="6736" Ki-zero="6416" Kfa="8956" Kfv="100" Kfj="22390" Knv="3568" Kip="4280" Kii="2300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.19" RMSSlowTC="2" NoCommTrq="5.19" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="74296" Kp-out="42684" Kp-zero="36871" Ki-out="6084" Ki-zero="4830" Kfa="12691" Kfv="84" Kfj="31727" Knv="2284" Kip="4900" Kii="2600" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="5.19" RMSSlowTC="2" NoCommTrq="5.19" />
+			</PWR6_SK>
+		</Key>
+		<!-- Delta Wound Motors -->
+		<Key Motor="231XD">
+			<PWR0>
+				<CfgTune Kv="100000" Kp-out="54000" Kp-zero="54000" Ki-out="10000" Ki-zero="10000" Kfa="0" Kfv="0" Kfj="0" Knv="2000" Kip="400" Kii="1900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0>
+			<PWR0_SK>
+				<CfgTune Kv="100000" Kp-out="54000" Kp-zero="54000" Ki-out="10000" Ki-zero="10000" Kfa="0" Kfv="0" Kfj="0" Knv="2000" Kip="400" Kii="1900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0_SK>
+			<PWR1>
+			<CfgTune Kv="61914" Kp-out="62794" Kp-zero="54242" Ki-out="15625" Ki-zero="10337" Kfa="8093" Kfv="542" Kfj="12139" Knv="2854" Kip="400" Kii="1200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="61914" Kp-out="62794" Kp-zero="54242" Ki-out="15625" Ki-zero="10337" Kfa="8093" Kfv="542" Kfj="12139" Knv="2854" Kip="400" Kii="1200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR5>
+				<CfgTune Kv="42996" Kp-out="51660" Kp-zero="38548" Ki-out="7675" Ki-zero="5077" Kfa="7546" Kfv="384" Kfj="15092" Knv="3568" Kip="250" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.9" RMSSlowLim="4.9" RMSSlowTC="2" NoCommTrq="4.9" />
+			</PWR5>
+			<PWR5_SK>
+				<CfgTune Kv="51595" Kp-out="56945" Kp-zero="46847" Ki-out="11191" Ki-zero="8883" Kfa="6835" Kfv="441" Kfj="17087" Knv="2854" Kip="250" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR5_SK>
+			<PWR6>
+				<CfgTune Kv="42996" Kp-out="54114" Kp-zero="51537" Ki-out="12320" Ki-zero="9779" Kfa="5198" Kfv="279" Kfj="12995" Knv="2854" Kip="250" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="51595" Kp-out="62645" Kp-zero="56820" Ki-out="16328" Ki-zero="12960" Kfa="5965" Kfv="350" Kfj="14912" Knv="2854" Kip="300" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.81" RMSSlowLim="4.81" RMSSlowTC="2" NoCommTrq="4.81" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="232XD">
+			<PWR1>
+				<CfgTune Kv="74296" Kp-out="65917" Kp-zero="56940" Ki-out="16327" Ki-zero="12960" Kfa="9158" Kfv="339" Kfj="13737" Knv="2854" Kip="400" Kii="1100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="74296" Kp-out="65917" Kp-zero="56940" Ki-out="16327" Ki-zero="12960" Kfa="9158" Kfv="339" Kfj="13737" Knv="2854" Kip="400" Kii="1100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="42996" Kp-out="54102" Kp-zero="44508" Ki-out="10609" Ki-zero="7019" Kfa="6101" Kfv="176" Kfj="12202" Knv="3172" Kip="320" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="51595" Kp-out="51532" Kp-zero="46740" Ki-out="11143" Ki-zero="8845" Kfa="6832" Kfv="240" Kfj="17080" Knv="2854" Kip="320" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.6" RMSSlowLim="4.6" RMSSlowTC="2" NoCommTrq="4.6" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="233XD">
+			<PWR1>
+				<CfgTune Kv="106986" Kp-out="69205" Kp-zero="62770" Ki-out="18054" Ki-zero="17195" Kfa="11475" Kfv="271" Kfj="17212" Knv="4460" Kip="600" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="106986" Kp-out="69205" Kp-zero="62770" Ki-out="18054" Ki-zero="17195" Kfa="11475" Kfv="271" Kfj="17212" Knv="4460" Kip="600" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="61914" Kp-out="65914" Kp-zero="56938" Ki-out="19592" Ki-zero="12960" Kfa="7184" Kfv="145" Kfj="14368" Knv="2284" Kip="300" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="74296" Kp-out="69053" Kp-zero="65764" Ki-out="22667" Ki-zero="17991" Kfa="7834" Kfv="208" Kfj="15668" Knv="3568" Kip="400" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.59" RMSSlowLim="4.59" RMSSlowTC="2" NoCommTrq="4.59" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="234XD">
+			<PWR1>
+				<CfgTune Kv="68104" Kp-out="54127" Kp-zero="44736" Ki-out="8556" Ki-zero="7059" Kfa="10429" Kfv="277" Kfj="0" Knv="2854" Kip="650" Kii="420" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="68104" Kp-out="54127" Kp-zero="44736" Ki-out="8556" Ki-zero="7059" Kfa="10429" Kfv="277" Kfj="0" Knv="2854" Kip="650" Kii="420" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="61914" Kp-out="62777" Kp-zero="56940" Ki-out="16328" Ki-zero="12960" Kfa="6710" Kfv="143" Kfj="13420" Knv="2284" Kip="500" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="61914" Kp-out="49281" Kp-zero="46934" Ki-out="9327" Ki-zero="8883" Kfa="8207" Kfv="199" Kfj="20517" Knv="2854" Kip="390" Kii="680" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.5" RMSSlowLim="4.5" RMSSlowTC="2" NoCommTrq="4.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="341XD">
+			<PWR1>
+                <CfgTune Kv="184870" Kp-out="54731" Kp-zero="38893" Ki-out="6410" Ki-zero="5090" Kfa="31001" Kfv="425" Kfj="46501" Knv="3568" Kip="700" Kii="1400" TrqBias="0" CfgTune="0x21"/>
+                <Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6"/>
+			</PWR1>
+			<PWR1_SK>
+                <CfgTune Kv="184870" Kp-out="54731" Kp-zero="38893" Ki-out="6410" Ki-zero="5090" Kfa="31001" Kfv="425" Kfj="46501" Knv="3568" Kip="700" Kii="1400" TrqBias="0" CfgTune="0x21"/>
+                <Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6"/>
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="128383" Kp-out="57193" Kp-zero="42676" Ki-out="10205" Ki-zero="6751" Kfa="19839" Kfv="322" Kfj="29758" Knv="3568" Kip="500" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="154059" Kp-out="57200" Kp-zero="44816" Ki-out="7445" Ki-zero="7091" Kfa="22993" Kfv="430" Kfj="45986" Knv="2284" Kip="350" Kii="720" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.6" RMSSlowLim="6.6" RMSSlowTC="2" NoCommTrq="6.6" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="342XD">
+			<PWR1>
+				<CfgTune Kv="154058" Kp-out="39213" Kp-zero="24346" Ki-out="3983" Ki-zero="2197" Kfa="38720" Kfv="331" Kfj="58080" Knv="5,574" Kip="800" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="154058" Kp-out="39213" Kp-zero="24346" Ki-out="3983" Ki-zero="2197" Kfa="38720" Kfv="331" Kfj="58080" Knv="5,574" Kip="800" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="154059" Kp-out="57333" Kp-zero="42780" Ki-out="7088" Ki-zero="6751" Kfa="23548" Kfv="153" Kfj="35322" Knv="3568" Kip="700" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="184867" Kp-out="57542" Kp-zero="45083" Ki-out="7486" Ki-zero="7130" Kfa="27482" Kfv="287" Kfj="41223" Knv="2284" Kip="710" Kii="980" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="343XD">
+			<PWR1>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="221844" Kp-out="49209" Kp-zero="33613" Ki-out="4512" Ki-zero="4421" Kfa="41919" Kfv="1300" Kfj="0" Knv="5574" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="221844" Kp-out="49209" Kp-zero="33613" Ki-out="4512" Ki-zero="4421" Kfa="41919" Kfv="1300" Kfj="0" Knv="5574" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="154059" Kp-out="52219" Kp-zero="35340" Ki-out="7016" Ki-zero="4642" Kfa="28696" Kfv="103" Kfj="43044" Knv="4460" Kip="800" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="184870" Kp-out="49674" Kp-zero="35300" Ki-out="7016" Ki-zero="4642" Kfa="34603" Kfv="118" Kfj="51904" Knv="4460" Kip="700" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="344XD">
+			<PWR1>
+				<CfgTune Kv="106984" Kp-out="23180" Kp-zero="13081" Ki-out="1465" Ki-zero="675" Kfa="49133" Kfv="39" Kfj="98266" Knv="13609" Kip="1000" Kii="1200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="106984" Kp-out="23180" Kp-zero="13081" Ki-out="1465" Ki-zero="675" Kfa="49133" Kfv="39" Kfj="98266" Knv="13609" Kip="1000" Kii="1200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="154059" Kp-out="49625" Kp-zero="33584" Ki-out="6656" Ki-zero="3671" Kfa="30563" Kfv="177" Kfj="45844" Knv="4460" Kip="800" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="154059" Kp-out="42607" Kp-zero="27461" Ki-out="4526" Ki-zero="2497" Kfa="36737" Kfv="231" Kfj="73474" Knv="5574" Kip="550" Kii="640" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<!-- Delta Wound Motors -Sealed -->
+		<Key Motor="231XJ">
+			<PWR0>
+				<CfgTune Kv="100000" Kp-out="54000" Kp-zero="54000" Ki-out="10000" Ki-zero="10000" Kfa="0" Kfv="0" Kfj="0" Knv="2000" Kip="400" Kii="1900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0>
+			<PWR0_SK>
+				<CfgTune Kv="100000" Kp-out="54000" Kp-zero="54000" Ki-out="10000" Ki-zero="10000" Kfa="0" Kfv="0" Kfj="0" Knv="2000" Kip="400" Kii="1900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="3.1" RMSSlowLim="3.1" RMSSlowTC="2" NoCommTrq="3.1" />
+			</PWR0_SK>
+			<PWR1>
+			<CfgTune Kv="61914" Kp-out="62794" Kp-zero="54242" Ki-out="15625" Ki-zero="10337" Kfa="8093" Kfv="542" Kfj="12139" Knv="2854" Kip="400" Kii="1200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="61914" Kp-out="62794" Kp-zero="54242" Ki-out="15625" Ki-zero="10337" Kfa="8093" Kfv="542" Kfj="12139" Knv="2854" Kip="400" Kii="1200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR5>
+				<CfgTune Kv="42996" Kp-out="51660" Kp-zero="38548" Ki-out="7675" Ki-zero="5077" Kfa="7546" Kfv="384" Kfj="15092" Knv="3568" Kip="250" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.9" RMSSlowLim="4.9" RMSSlowTC="2" NoCommTrq="4.9" />
+			</PWR5>
+			<PWR5_SK>
+				<CfgTune Kv="51595" Kp-out="56945" Kp-zero="46847" Ki-out="11191" Ki-zero="8883" Kfa="6835" Kfv="441" Kfj="17087" Knv="2854" Kip="250" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR5_SK>
+			<PWR6>
+				<CfgTune Kv="42996" Kp-out="54114" Kp-zero="51537" Ki-out="12320" Ki-zero="9779" Kfa="5198" Kfv="279" Kfj="12995" Knv="2854" Kip="250" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="51595" Kp-out="62645" Kp-zero="56820" Ki-out="16328" Ki-zero="12960" Kfa="5965" Kfv="350" Kfj="14912" Knv="2854" Kip="300" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.81" RMSSlowLim="4.81" RMSSlowTC="2" NoCommTrq="4.81" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="232XJ">
+			<PWR1>
+				<CfgTune Kv="74296" Kp-out="65917" Kp-zero="56940" Ki-out="16327" Ki-zero="12960" Kfa="9158" Kfv="339" Kfj="13737" Knv="2854" Kip="400" Kii="1100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="74296" Kp-out="65917" Kp-zero="56940" Ki-out="16327" Ki-zero="12960" Kfa="9158" Kfv="339" Kfj="13737" Knv="2854" Kip="400" Kii="1100" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="42996" Kp-out="54102" Kp-zero="44508" Ki-out="10609" Ki-zero="7019" Kfa="6101" Kfv="176" Kfj="12202" Knv="3172" Kip="320" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="51595" Kp-out="51532" Kp-zero="46740" Ki-out="11143" Ki-zero="8845" Kfa="6832" Kfv="240" Kfj="17080" Knv="2854" Kip="320" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.6" RMSSlowLim="4.6" RMSSlowTC="2" NoCommTrq="4.6" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="233XJ">
+			<PWR1>
+				<CfgTune Kv="106986" Kp-out="69205" Kp-zero="62770" Ki-out="18054" Ki-zero="17195" Kfa="11475" Kfv="271" Kfj="17212" Knv="4460" Kip="600" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="106986" Kp-out="69205" Kp-zero="62770" Ki-out="18054" Ki-zero="17195" Kfa="11475" Kfv="271" Kfj="17212" Knv="4460" Kip="600" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="61914" Kp-out="65914" Kp-zero="56938" Ki-out="19592" Ki-zero="12960" Kfa="7184" Kfv="145" Kfj="14368" Knv="2284" Kip="300" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="74296" Kp-out="69053" Kp-zero="65764" Ki-out="22667" Ki-zero="17991" Kfa="7834" Kfv="208" Kfj="15668" Knv="3568" Kip="400" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.59" RMSSlowLim="4.59" RMSSlowTC="2" NoCommTrq="4.59" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="234XJ">
+			<PWR1>
+				<CfgTune Kv="68104" Kp-out="54127" Kp-zero="44736" Ki-out="8556" Ki-zero="7059" Kfa="10429" Kfv="277" Kfj="0" Knv="2854" Kip="650" Kii="420" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="68104" Kp-out="54127" Kp-zero="44736" Ki-out="8556" Ki-zero="7059" Kfa="10429" Kfv="277" Kfj="0" Knv="2854" Kip="650" Kii="420" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4" RMSSlowLim="4" RMSSlowTC="2" NoCommTrq="4" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="61914" Kp-out="62777" Kp-zero="56940" Ki-out="16328" Ki-zero="12960" Kfa="6710" Kfv="143" Kfj="13420" Knv="2284" Kip="500" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="5" RMSSlowLim="5" RMSSlowTC="2" NoCommTrq="5" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="61914" Kp-out="49281" Kp-zero="46934" Ki-out="9327" Ki-zero="8883" Kfa="8207" Kfv="199" Kfj="20517" Knv="2854" Kip="390" Kii="680" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="4.5" RMSSlowLim="4.5" RMSSlowTC="2" NoCommTrq="4.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="341XJ">
+			<PWR1>
+                <CfgTune Kv="184870" Kp-out="54731" Kp-zero="38893" Ki-out="6410" Ki-zero="5090" Kfa="31001" Kfv="425" Kfj="46501" Knv="3568" Kip="700" Kii="1400" TrqBias="0" CfgTune="0x21"/>
+                <Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6"/>
+			</PWR1>
+			<PWR1_SK>
+                <CfgTune Kv="184870" Kp-out="54731" Kp-zero="38893" Ki-out="6410" Ki-zero="5090" Kfa="31001" Kfv="425" Kfj="46501" Knv="3568" Kip="700" Kii="1400" TrqBias="0" CfgTune="0x21"/>
+                <Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6"/>
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="128383" Kp-out="57193" Kp-zero="42676" Ki-out="10205" Ki-zero="6751" Kfa="19839" Kfv="322" Kfj="29758" Knv="3568" Kip="500" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="154059" Kp-out="57200" Kp-zero="44816" Ki-out="7445" Ki-zero="7091" Kfa="22993" Kfv="430" Kfj="45986" Knv="2284" Kip="350" Kii="720" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.6" RMSSlowLim="6.6" RMSSlowTC="2" NoCommTrq="6.6" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="342XJ">
+			<PWR1>
+				<CfgTune Kv="154058" Kp-out="39213" Kp-zero="24346" Ki-out="3983" Ki-zero="2197" Kfa="38720" Kfv="331" Kfj="58080" Knv="5,574" Kip="800" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="154058" Kp-out="39213" Kp-zero="24346" Ki-out="3983" Ki-zero="2197" Kfa="38720" Kfv="331" Kfj="58080" Knv="5,574" Kip="800" Kii="1000" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="154059" Kp-out="57333" Kp-zero="42780" Ki-out="7088" Ki-zero="6751" Kfa="23548" Kfv="153" Kfj="35322" Knv="3568" Kip="700" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="184867" Kp-out="57542" Kp-zero="45083" Ki-out="7486" Ki-zero="7130" Kfa="27482" Kfv="287" Kfj="41223" Knv="2284" Kip="710" Kii="980" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="343XJ">
+			<PWR1>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="0" Kp-out="0" Kp-zero="0" Ki-out="0" Ki-zero="0" Kfa="0" Kfv="0" Kfj="0" Knv="0" Kip="0" Kii="0" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR2>
+				<CfgTune Kv="221844" Kp-out="49209" Kp-zero="33613" Ki-out="4512" Ki-zero="4421" Kfa="41919" Kfv="1300" Kfj="0" Knv="5574" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2>
+			<PWR2_SK>
+				<CfgTune Kv="221844" Kp-out="49209" Kp-zero="33613" Ki-out="4512" Ki-zero="4421" Kfa="41919" Kfv="1300" Kfj="0" Knv="5574" Kip="900" Kii="1300" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR2_SK>
+			<PWR6>
+				<CfgTune Kv="154059" Kp-out="52219" Kp-zero="35340" Ki-out="7016" Ki-zero="4642" Kfa="28696" Kfv="103" Kfj="43044" Knv="4460" Kip="800" Kii="800" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="184870" Kp-out="49674" Kp-zero="35300" Ki-out="7016" Ki-zero="4642" Kfa="34603" Kfv="118" Kfj="51904" Knv="4460" Kip="700" Kii="900" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="344XJ">
+			<PWR1>
+				<CfgTune Kv="106984" Kp-out="23180" Kp-zero="13081" Ki-out="1465" Ki-zero="675" Kfa="49133" Kfv="39" Kfj="98266" Knv="13609" Kip="1000" Kii="1200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1>
+			<PWR1_SK>
+				<CfgTune Kv="106984" Kp-out="23180" Kp-zero="13081" Ki-out="1465" Ki-zero="675" Kfa="49133" Kfv="39" Kfj="98266" Knv="13609" Kip="1000" Kii="1200" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6" RMSSlowLim="6" RMSSlowTC="2" NoCommTrq="6" />
+			</PWR1_SK>
+			<PWR6>
+				<CfgTune Kv="154059" Kp-out="49625" Kp-zero="33584" Ki-out="6656" Ki-zero="3671" Kfa="30563" Kfv="177" Kfj="45844" Knv="4460" Kip="800" Kii="700" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="7" RMSSlowLim="7" RMSSlowTC="2" NoCommTrq="7" />
+			</PWR6>
+			<PWR6_SK>
+				<CfgTune Kv="154059" Kp-out="42607" Kp-zero="27461" Ki-out="4526" Ki-zero="2497" Kfa="36737" Kfv="231" Kfj="73474" Knv="5574" Kip="550" Kii="640" TrqBias="0" CfgTune="0x21"/>
+				<Cfg RMSlim="6.5" RMSSlowLim="6.5" RMSSlowTC="2" NoCommTrq="6.5" />
+			</PWR6_SK>
+		</Key>
+		<Key Motor="UBER">
+			<CfgTune CmdTuneReg="4" />
+			<Cfg CfgApp="0x91180014">
+				<CPHW0 RGenOn="88" RGenOff="86" IBLimUser="9"/>
+				<CPHW1 RGenOn="417" RGenOff="400" IBLimUser="12.5"/>
+			</Cfg>
+		</Key>
+		<Key Motor="NULL">
+			<CfgTune CmdTuneReg="0"/>
+			<Cfg CfgApp="0x91180014">
+				<CPHW0 RGenOn="88" RGenOff="86" IBLimUser="9"/>
+				<CPHW1 RGenOn="417" RGenOff="400" IBLimUser="12.5"/>
+			</Cfg>
+		</Key>
+		<Key Motor="SDSK">
+			<CfgTune CmdTuneReg="4"/>
+			<Cfg CfgApp="0x9118000B">
+				<CPHW0 RGenOn="88" RGenOff="86" IBLimUser="9"/>
+				<CPHW1 RGenOn="417" RGenOff="400" IBLimUser="12.5"/>
+			</Cfg>
+		</Key>
+		<Key Motor="SDHP">
+			<CfgTune CmdTuneReg="4"/>
+			<Cfg CfgApp="0x9118000B">
+				<CPHW0 RGenOn="88" RGenOff="86" IBLimUser="9"/>
+				<CPHW1 RGenOn="417" RGenOff="400" IBLimUser="12.5"/>
+			</Cfg>
+		</Key>
+		<Key Motor="MCVC">
+			<CfgTune CmdTuneReg="0x50c85"/>
+			<Cfg CfgApp="0x91180014">
+				<CPHW0 RGenOn="88" RGenOff="86" IBLimUser="9"/>
+				<CPHW1 RGenOn="417" RGenOff="400" IBLimUser="12.5"/>
+			</Cfg>
+		</Key>
+		<Key Motor="MCPV">
+			<CfgTune CmdTuneReg="0x50c85"/>
+			<Cfg CfgApp="0x91180014">
+				<CPHW0 RGenOn="88" RGenOff="86" IBLimUser="9"/>
+				<CPHW1 RGenOn="417" RGenOff="400" IBLimUser="12.5"/>
+			</Cfg>
+		</Key>
+		<!-- NOT A VALID COMBINATION Key Motor="SCNULL">
+			<Cfg CmdTuneReg="4">
+				<CPHW0 TrkErrLim="6400" HomingOffset="1600" IBLimUser="8"/>
+				<CPHW1 TrkErrLim="32000" HomingOffset="8000" IBLimUser="12.5"/>
+			</Cfg>
+		</Key-->
+		<Key Motor="SCSK">
+			<CfgTune CmdTuneReg="4" />
+			<Cfg>
+				<CPHW0 RGenOn="88" RGenOff="86" IBLimUser="9"/>
+				<CPHW1 RGenOn="417" RGenOff="400" IBLimUser="12.5"/>
+			</Cfg>
+		</Key>
+		<Key Motor="SCHP">
+			<CfgTune CmdTuneReg="4" />
+			<Cfg >
+				<CPHW0 RGenOn="88" RGenOff="86" IBLimUser="9"/>
+				<CPHW1 RGenOn="417" RGenOff="400" IBLimUser="12.5"/>
+			</Cfg>
+		</Key>
+		<Key Motor="CPOpt_SDR">
+			<CfgTune />
+			<Cfg>
+				<CPHW0 TrkErrLim="800" PhysHomeClearance="800" PosnFollowDeadband="100"/>
+				<CPHW1 TrkErrLim="4000" PhysHomeClearance="4000" PosnFollowDeadband="500"/>
+			</Cfg>
+		</Key>
+		<Key Motor="CPOpt_SDE">
+			<CfgTune />
+			<Cfg>
+				<CPHW0 TrkErrLim="6400" PhysHomeClearance="6400" PosnFollowDeadband="800"/>
+				<CPHW1 TrkErrLim="32000" PhysHomeClearance="32000" PosnFollowDeadband="4000"/>
+			</Cfg>
+		</Key>
+		<Key Motor="CPOpt_UBR">
+			<CfgTune />
+			<Cfg>
+				<CPHW0 TrkErrLim="800" PhysHomeClearance="800" PosnFollowDeadband="100"/>
+				<CPHW1 TrkErrLim="4000" PhysHomeClearance="4000" PosnFollowDeadband="500"/>
+			</Cfg>
+		</Key>
+		<Key Motor="CPOpt_UBE">
+			<CfgTune />
+			<Cfg>
+				<CPHW0 TrkErrLim="6400" PhysHomeClearance="6400" PosnFollowDeadband="800"/>
+				<CPHW1 TrkErrLim="32000" PhysHomeClearance="32000" PosnFollowDeadband="4000"/>
+			</Cfg>
+		</Key>
+		<Key Motor="CPOpt_NUR">
+			<CfgTune />
+			<Cfg>
+				<CPHW0 TrkErrLim="800" PhysHomeClearance="800" PosnFollowDeadband="100"/>
+				<CPHW1 TrkErrLim="4000" PhysHomeClearance="4000" PosnFollowDeadband="500"/>
+			</Cfg>
+		</Key>
+		<Key Motor="CPOpt_NUE">
+			<CfgTune />
+			<Cfg>
+				<CPHW0 TrkErrLim="6400" PhysHomeClearance="6400" PosnFollowDeadband="800"/>
+				<CPHW1 TrkErrLim="32000" PhysHomeClearance="32000" PosnFollowDeadband="4000"/>
+			</Cfg>
+		</Key>
+		<Key Motor="CPOpt_MCR">
+			<CfgTune />
+			<Cfg>
+				<CPHW0 TrkErrLim="800" PhysHomeClearance="800" PosnFollowDeadband="100"/>
+				<CPHW1 TrkErrLim="4000" PhysHomeClearance="4000" PosnFollowDeadband="500"/>
+			</Cfg>
+		</Key>
+		<Key Motor="CPOpt_MCE">
+			<CfgTune />
+			<Cfg>
+				<CPHW0 TrkErrLim="6400" PhysHomeClearance="6400" PosnFollowDeadband="800"/>
+				<CPHW1 TrkErrLim="32000" PhysHomeClearance="32000" PosnFollowDeadband="4000"/>
+			</Cfg>
+		</Key>
+		<Key Motor="CPOpt_SCR">
+			<CfgTune />
+			<Cfg>
+				<CPHW0 TrkErrLim="800" PhysHomeClearance="800" PosnFollowDeadband="100"/>
+				<CPHW1 TrkErrLim="4000" PhysHomeClearance="4000" PosnFollowDeadband="500"/>
+			</Cfg>
+		</Key>
+		<Key Motor="CPOpt_SCE">
+			<CfgTune />
+			<Cfg>
+				<CPHW0 TrkErrLim="6400" PhysHomeClearance="6400" PosnFollowDeadband="800"/>
+				<CPHW1 TrkErrLim="32000" PhysHomeClearance="32000" PosnFollowDeadband="4000"/>
+			</Cfg>
+		</Key>
+		<Key Motor="SCOpt_A">
+			<CfgTune CmdTuneReg="0x50084"/>
+			<Cfg />
+		</Key>
+		<Key Motor="SCOpt_B">
+			<CfgTune CmdTuneReg="0x4"/>
+			<Cfg />
+		</Key>
+		<!-- ======================================================================================================= -->
+		<Key Motor="CommonCS">
+			<Model StopType="4"  WDogTC="2000"  CfgApp="0x00080814"  PARAM_32="0"  PARAM_33="0"  PARAM_34="0"  PARAM_35="0"  PARAM_46="0"  AtPosnLoc="0"  AAfterDist="0"  BBeforeDist="0"  JogVel="15"  JogAccel="5000"  VelLim="1000"  AccLim="5000"  CmdTuneReg="1"  DecLim="5000"  EStopDec="5000"  HeadDX="1000"  TailDX="1000"  HTvel="200"  MvDwell="0"  StopQualTime="1000"  StopQualVel="0"  MvDnTime="10"  InRngVelWin="3"  InAFiltTC="20"  InBFiltTC="20"  CommAngleLim="20"  NoCommRamp="2000"  NoCommSweep="1000"  NoCommSettle="500"  VerifyTime="300"  VerifyMaxMotion="15"  VerifyMinMotion="5"  VerifyRampTime="100"  NoCommTrq="6"  TrkErrLim="1000"  RMSinitLvl="80"  KipAdj="0"  Kip="0"  Kii="0"  Kr="1"  KiiAdj="0"  CfgTune="0x4A1"  Kv="0"  Kp-out="0"  Ki-out="0"  Kfv="0"  Kfa="0"  Kfj="0"  Knv="0"  AHFiltTC="50"  TrqBias="0"  AHfuzz="1"  AHhyst="1"  AHhold="50"  Kp-zero="0"  Ki-zero="0"  TgtWindow="3"  StabWindow="0"  Inertia="-1"  StaticFriction="-1"  ViscousFriction="-1"  KpFactor="1"  KpZFactor="1"  KiFactor="1"  FineTunePosn="19"  TrqLim="100"  FldBckPos="5"  FldBckPosTC="200"  FldBckNeg="5"  FldBckNegTC="200"  FldBckHS="5"  FldBckHSTC="200"  HrdStpVel="17.8"  HrdStpTrip="80"  HrdStpTime="50"  HrdStpAltTrqLim=".6"  DelayDisable="200"  VRStc="10"  HomingSpeed="40"  HomingOffset="0"  HomingAccel="500"  HrdStpDelay="0"  ShutdownMask="0xFFFFFFFFFFFFFFFFFFFFFFFF"  PwrUpHoldoffTime="500"  PARAM_540="0"  PARAM_541="0"  PARAM_542="0"  PARAM_543="0"  PARAM_544="0"  XPSOutSrcReg="0"  XPSInSrcReg="0"  XPSUserInReg="0"  XPSInvertIn="0"  XPSInvertOut="0"  PARAM_552="0"  PARAM_553="0"  XPSFeatEnable="0"  PARAM_555="0"  XPSFeatTrigger="0"  XPSFeatNodeStop="0"  XPSFeatResetTimer="0"  XPSFeatAttn0="0"  XPSFeatAttn1="0"  PARAM_561="0"  PARAM_562="0"  XPSFeatAtHome="0"  XPSFeatPosTrqFldbk="0"  XPSFeatNegTrqFldbk="0"  XPSFeatInPosLim="0"  XPSFeatInNegLim="0"  SoftLim1="0"  SoftLim2="0"  >
+				<CPHW0 CfgHW="0x00102c70"  InRngWin="10"  RMSlim="3"  RMStime="3"  RMSSlowLim="3"  StepsPerRev="800"  RGenOff="86"  RMSSlowTC="2"  RGenOn="88"  VBusAdjRate="-1"  MinOperV="0"  OverTempUser="83"  IBLimUser="9" />
+				<CPHW1 CfgHW="0x00112df0"  InRngWin="50"  RMSlim="15"  RMStime="6"  RMSSlowLim="15"  StepsPerRev="4000"  RGenOff="400"  RMSSlowTC="5"  RGenOn="417"  VBusAdjRate="5"  ACLossTC="150"  ACWiringErrorTC="30"  MinOperV="0"  OverTempUser="83"  IBLimUser="12.5"  />
+			</Model>
+		</Key>
+		<Key Motor="CommonCP">
+			<Model StopType="0" CfgApp="0x91180014" PARAM_27="0" PARAM_28="0" CfgApp1="0" PARAM_32="0" PARAM_33="0" PARAM_34="0" PARAM_35="0" KnobSpdLim="200000" JogVel="15" JogAccel="5000" VelLim="1000" AccLim="5000" CmdTuneReg="1" DecLim="5000" EStopDec="50000" PARAM_69="0" StopQualTime="1000" StopQualVel="0" MvDnTime="10" InRngVelWin="3" InAFiltTC="20" TrigMinPulseTime="20" InBFiltTC="20" CommAngleLim="20" NoCommRamp="2000" NoCommSweep="1000" NoCommSettle="500" VerifyTime="300" VerifyMaxMotion="15" VerifyMinMotion="5" VerifyRampTime="100" TrkErrLim="1000" RMSinitLvl="80" KipAdj="0" Kip="0" Kii="0" Kr="1" KiiAdj="0" CfgTune="0x21" Kv="0" Kp_out="0" Ki_out="0" Kfv="0" Kfa="0" Kfj="0" Knv="0" AHFiltTC="50" TrqBias="0" AHfuzz="1" AHhyst="1" AHhold="50" Kp_zero="0" Ki_zero="0" TgtWindow="3" StabWindow="0" Inertia="0" StaticFriction="0" ViscousFriction="0" KpFactor="1" KpZFactor="1" KiFactor="1" FineTunePosn="19" TrqLim="1" PARAM_351=".05" PARAM_352="200" PARAM_353=".05" PARAM_354="200" FldBckMvDn=".05" FldBckMvDnTC="200" FldBckHS=".05" FldBckHSTC="200" HrdStpVel="31.7" HrdStpTrip="80" HrdStpTime="50" HomingOffset="0" ZoneFldbkTC="20" HrdStpAltTrqLim=".6" PARAM_364="5" DelayDisable="0" SpinOnPwrVel="0" TrqFollowMaxTrq="1" TrqFollowTrqFiltTC="50" TrqFollowOverSpdTime="10" VelFollowPWMDeadband="0" VelFollowMaxFreq="20" VelFollowMinFreq="0" VelKnobMaxCWVel="1000" VelKnobMaxCCWVel="1000" VelKnobVelScale="2" HomingSpeed="40" AbsPosnPosn0="0" AbsPosnPosn1="0" AbsPosnPosn2="0" AbsPosnPosn3="0" TrqFollowMaxSpd="500" AltSpdLim="40" BnFCwVelLim="1000" BnFCcwVelLim="1000" VelFollowMaxSpeed="1000" Ramp2SpdTrqLim="1" Ramp2SpdVel0="0" Ramp2SpdVel1="0" Ramp2SpdVel2="0" Ramp2SpdVel3="0" IncPosnDist0="0" IncPosnDist1="0" IncPosnDist2="0" IncPosnDist3="0" M2SSwitchCount="4" PwrUpHoldoffTime="500" PosnRecVel="200" PosnRecAcc="5000" HomingAccel="5000" MaxTravel="0" HrdStpDelay="0" RGenTC="10" AltTrqLim="1" AsymTrqLim00="1" AsymTrqLim01="-1" AsymTrqLim10="1" AsymTrqLim11="-1" AltTrqTC="20" PWMCMaxVel="1000" MinOperV="0" OverTempUser="83" ZoneFldbkTrqPos=".05" ZoneFldbkTrqNeg=".05" ZoneFldbkPosPosnA="0" ZoneFldbkPosPosnB="0" ZoneFldbkNegPosnA="0" ZoneFldbkNegPosnB="0" ZoneTrkErrLim="0" PosnFollowRAS="3077" PosnFollowInFilt="10" AbsPosnPosn4="0" AbsPosnPosn5="0" AbsPosnPosn6="0" AbsPosnPosn7="0" AbsPosnPosn8="0" AbsPosnPosn9="0" AbsPosnPosn10="0" AbsPosnPosn11="0" AbsPosnPosn12="0" AbsPosnPosn13="0" AbsPosnPosn14="0" AbsPosnPosn15="0" IncPosnVel1="1000" IncPosnVel2="1000" IncPosnVel3="1000" IncPosnAccel1="5000" IncPosnAccel2="5000" IncPosnAccel3="5000" ShutdownMask="0xffffffffffffffffffffffff" DHeatPwrFact=".8" DHeatMaxTravel="0" PrecisionHomeTarget="-1" ShaftHomeTarget="-1" >
+				<CPHW0 CfgHW="0x05000000" InRngWin="10" RMSlim="3" RMSSlowLim="3" RMSSlowTC="2" RMStime="3" StepsPerRev="800" M2SMinSwDist="50" RGenOn="88" RGenOff="86"/>
+				<CPHW1 CfgHW="0x15000030" PARAM_46="150" PARAM_47="50" InRngWin="50" RMSlim="15" RMSSlowLim="15" RMSSlowTC="5" RMStime="6" StepsPerRev="4000" M2SMinSwDist="250" RGenOn="417" RGenOff="400" ACLossTC="150" ACWiringErrorTC="100"/>
+			</Model>
+		</Key>
+	</Keys>
+</TuningDB>
