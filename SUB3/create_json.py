@@ -84,7 +84,7 @@ def maxJSON(blockobject: block, file):
             }
     json.dump(jdict, file, indent=4)
 
-#testing
+#for testing:
 def main():
     blockobject = block()
     import random

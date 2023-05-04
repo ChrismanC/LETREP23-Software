@@ -32,19 +32,24 @@ from PIL import ImageTk, Image
 import logging
 from more_options import show_more_options
 from paths import move_paths
+from block import block
+from time import sleep, time
 pygame.init()
 x= 1
 
+#This is the pygame re-implementation of app.py
+#at time of comment it still has a few kinks but it functions
+
 def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=False):
-    ### motor needs ### 
+    ### motor needs speed arrays ### 
 
     print("in game")
-    #****should be all speeds = 175
+    #****should be all speeds = 175 for consistent speed
     speed_arr = [[0 for i in range(2)] for j in range(1)]
 
     for i in range(0,1):
         speed_arr [i][0] = 175 #85+(i*10)
-        speed_arr [i][1] = 75
+        speed_arr [i][1] = 150
 
     #new log directory 
     log_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\LETREP2\\Logs\\')
@@ -145,6 +150,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
         else:
             return math.floor(value_new)
 
+    #this reloads the screen every frame
     def refresh():
         global flash
         # Loads the instances
@@ -175,6 +181,12 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
         if combo > COMBO_MAX_1:
             load_border()
             load_golden()
+            
+    def refresh3():
+        load_bars()
+        load_lilypads()
+        move(i)
+        load_player(player_x, player_y)
   
     print("root build")
     # ROOT BUILD
@@ -183,9 +195,10 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     root = pygame.display.set_mode((WINDOW_W, WINDOW_H))
 
     def on_closing():
-        #running = False
-        pygame.display.exit()
+        frame.running = False
+        pygame.display.quit()
         frame.exit()
+        pygame.quit()
     #####root.protocol("WM_DELETE_WINDOW", on_closing)
         # for event in pygame.event.get():
         # if event.type == pygame.QUIT:
@@ -263,6 +276,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     global last_zone
     last_zone = 1
 
+    #loads the red/yellow/green bars according to position
     def load_bars():
         global last_zone
         if player_xcenter <= ZONE_LEFT:
@@ -295,16 +309,54 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     angle, ship_pos = move_paths()
     def move(i):
         clock.tick(100)
+        j1 = 50
+        j = j1 + i
+        s1 = 70 
+        s = s1 + i
+        k1 = 100
+        k = k1 +i 
+        if i >= len(angle):
+            i = 0
+        if j >= len(angle):
+            j1 = 0
+            j =0
+        if s >= len(angle):
+            s1 = 0
+            s = 0
+        if k >= len(angle):
+            k1 = 0
+            k = 0
         rotimage = pygame.transform.rotate(fly_image, angle[i])
         rect = rotimage.get_rect(center=ship_pos[i])
-        #print(ship_pos[i])
-        root.blit(rotimage,rect)
+        change1 = (0,25)
+        
+        add = tuple(map(lambda x,y:x+y, change1, ship_pos[j]))
+        rotimage1 = pygame.transform.rotate(fly_image, angle[j])
+        rect1 = rotimage.get_rect(center=add)
+      
+        change2 = (-50,40)
+        add1 = tuple(map(lambda x,y:x+y, change2, ship_pos[s]))
+        rotimage2 = pygame.transform.rotate(fly_image, angle[s])
+        rect2 = rotimage.get_rect(center=add1)
 
+        change3 = (50,-10)
+        add2 = tuple(map(lambda x,y:x+y, change3, ship_pos[k]))
+        rotimage3 = pygame.transform.rotate(fly_image, angle[k])
+        rect3 = rotimage.get_rect(center=add2)
+
+        root.blit(rotimage,rect)
+        root.blit(rotimage1,rect1)
+        root.blit(rotimage2,rect2)
+        root.blit(rotimage3,rect3)
 
     # Tongue
     global tongue_image 
     tongue_image = image("tongue")
 
+    #tongue animation
+    #up tongue loads +1 circle each frame
+    #down tongue loads an entire tongue -1 circle each frame
+    #display has to update to show graphical changes
     def load_tongue():
         global tongue_image
         for t in range(0,350,1):
@@ -317,6 +369,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
             pygame.display.update()
 
         root.fill((0,0,0),(400, 100, 300, 390)) 
+        #^to clear existing, fill black to [point, point]
 
         for m in range(350,0,-10):
             refresh2()
@@ -328,10 +381,11 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
                 if t == m -1:
                     root.blit(fly_image, (x-10,y))
             pygame.display.update((230, 0, 600, 490))
-            clock.tick(100)
+            clock.tick(100) #determines speed
 
     print("score")
     # Score
+    global score
     score = 0
     score_font = pygame.font.Font(FONT, 32)
     score_x = 109
@@ -339,6 +393,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     global score_color
     score_color = (0, 0, 0)
 
+    #scoreboard stuff
     def load_score():
         global score_color
         if score >= (FULL_SCORE * 0.8):
@@ -354,6 +409,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
         button_font = pygame.font.SysFont('Corbel', 30)
         button_x = 981
         button_y = 260
+        #displays steady button or flashing depending on pause state
         if flash ==1:
             pygame.draw.rect(root, button_flash, [890,235,180,50])
         if flash ==3:
@@ -361,10 +417,12 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
             pause_text = button_font.render('Pause', True, button_light)
             centerblit(pause_text, button_x, button_y- (pause_text.get_rect().height / 2))
             pygame.display.update((890,235,180,50))
+            refresh3()
             clock.tick(2)
             pygame.draw.rect(root, button_flash, [890,235,180,50])
             centerblit(pause_text, button_x, button_y- (pause_text.get_rect().height / 2))
             pygame.display.update((890,235,180,50))
+            refresh3()
             clock.tick(2)
         if flash ==2:
             pygame.draw.rect(root, button_dark, [890,235,180,50])
@@ -372,19 +430,24 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
         centerblit(pause_text, button_x, button_y- (pause_text.get_rect().height / 2))
 
    
-
+    #flips pause var state
     def pause():
         global flash
         frame.pause_block()
+        refresh3()
         if flash == 2:
             flash = 3
+            pause = True
+            refresh3()
         else:
             if flash == 3:
                 flash =2
+                pause = False
+              
 
 
     def load_start_button(flash):
-       
+       #determines how start button should display according to game state
         if flash ==1:
             pygame.draw.rect(root, button_dark, [890,160,180,50])
         if flash ==2:
@@ -397,11 +460,14 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
         start_text = button_font.render('Start', True, button_light)
         centerblit(start_text, button_x, button_y- (start_text.get_rect().height / 2))
 
+    #starts things
     def start():
         global flash
         frame.start_block(speed_arr)
         flash = 2
+        pause = False
 
+    #stop button display depending on pause/start state
     def load_stop_button(flash):
         if flash ==1:
             pygame.draw.rect(root, button_flash, [890,310,180,50])
@@ -415,14 +481,31 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
         stop_text = button_font.render('Stop', True, button_light)
         centerblit(stop_text, button_x, button_y- (stop_text.get_rect().height / 2))
 
+    #stops when you hit stop
+    #should kill the block early
+    #The message blocks cause a tk-inter window to also appear, so the message blocks were removed
     def stop():
+        global fly_board
+        global successes
+        global flash
+        global trial
+        global score
         new_thresh = frame.block.compute_avg_peak()
-        messagebox.showinfo(
-            "M1 Threshold Update", f"Average M1 Peak From Previous Block: {new_thresh}\n New M1 Thresh: {.9*new_thresh}")
+        # messagebox.showinfo("M1 Threshold Update", f"Average M1 Peak From Previous Block: {new_thresh}\n New M1 Thresh: {.9*new_thresh}")
         options["m1_thresh"] = new_thresh*.9
         options["updates"] = True
-        frame.stop_block()
+        frame.game_stop()
+        fly_board = [0] * TRIAL_MAX
+        successes = 0
+        score = 0
+        trial = 0
+        flash = 1
+        for i in range(0,1):
+            speed_arr [i][0] = 175 #85+(i*10)
+            speed_arr [i][1] = 150
+        refresh()
 
+    #options menu
     def load_option_button():
         pygame.draw.rect(root, button_dark, [970,450,100,25])
         button_font = pygame.font.SysFont('Corbel', 20)
@@ -430,7 +513,8 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
         button_y = 465
         option_text = button_font.render('Options', True, button_light)
         centerblit(option_text, button_x, button_y- (option_text.get_rect().height / 2))
-
+        paused = True
+    #also options menu
     def option_button():
         show_more_options(options)
 
@@ -445,6 +529,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     combo_x = 109
     combo_y = 448
     combo_color = (0, 0, 0)
+    #combo multiplier display
     def load_combo():
         if combo <= math.floor(COMBO_MAX_2 / 3):
             combo_color = (0, 0, 0)
@@ -456,7 +541,9 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
         centerblit(combo_text, combo_x, combo_y)
 
     # Info
+    global trial
     trial = 0
+    global successes
     successes = 0
     info_font = pygame.font.Font(FONT, 18)
     info_x = 981
@@ -488,8 +575,10 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
     def load_border():
         global border_y
         border_y = chris_lerp(border_y, border_y_goal, LERP_INTERP)
-        root.blit(border_image, (border_x, border_y))
-        root.blit(border_image, (border_x + border_w, border_y))
+        # root.blit(border_image, (border_x, border_y))
+        # root.blit(border_image, (border_x + border_w, border_y))
+        # #the borders suck
+        # #unlike the bars which are very
 
     # Golden fly
     golden_image = image("golden")
@@ -500,6 +589,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
 
     print("score")
     # Fly score
+    global fly_board
     fly_board = [0] * TRIAL_MAX
     fly_image = image("fly")
     fly_x = 5
@@ -532,7 +622,6 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
 
             if event.type == pygame.QUIT:
                 running = False
-                #pygame.quit()
                 on_closing()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -564,15 +653,24 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
                     avg_torque = sum(max)/len(max)
                     
 
-
+                #move frog accordingly
                 player_xcenter = player_x + (player_image.get_width() / 2)
-                span = 218/(.15 * max_emg)
+                span = 218/(.15 * max_emg) 
+                #this is width of green bar zone divided by matching span of EMG signal
+                # deicmal on bottom should match pre_max - pre_min ^^^^^^^^^^ 
                 player_x = (torque_value * span) + 363
+                #this is 'torque_value' (really emg) times span plus an offset
+                #essentially we are solving y=mx + b for
+                # [left edge of green] = [emg*span] + [218*2 - pre_min*span]
+                # the definition for b might be off, I don't have my notes
+                # but the point is to have it scale correctly in green 
+                # with only one motion scale for all three zones ^^^^^
+                # then we keep in boundaries vvvvv
                 if player_x < BOUNDARY_LEFT:
                     player_x += BOUNDARY_LEFT - player_x
                 if (player_x + player_image.get_width()) > BOUNDARY_RIGHT:
                     player_x -= (player_x + player_image.get_width()) - BOUNDARY_RIGHT
-                player_xcenter = player_x + (player_image.get_width() / 2)
+                player_xcenter = player_x + (player_image.get_width() / 2) #player_x is left side
                 
                            
         # Pause button flashing
@@ -623,6 +721,10 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
 
                 # Add check for no peak found
                 if not (frame.current_trial.peak and frame.current_trial.max_delay_ms) and frame.emg:
+                    #we are currently not sending missed M1 waves to the user
+                    #but this would pop up an emg and ask the user for every one
+                    #process/thread is not working
+                    #I believe this is due to the C++ subprocess being different
                     frame.pause_block()
                     json_dir = os.path.join(os.path.join(
                     os.environ['USERPROFILE']), f'Desktop\\LETREP2\\Logs\\')
@@ -663,6 +765,7 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
                             play_sound("success")  
                             fly_board[trial] = 2
                             trial += 1
+                            successes += 1
                         elif m1_size >= options["m1_thresh"] and 436 <= player_xcenter <= 654:
                             #handles failure
                             reflex_fail = True
@@ -725,7 +828,8 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
                 #general_info_lbl.last_updated = time.time()
                 options["m1_thresh"] = .9*new_thresh
                 options["updates"] = True
-                frame.stop_block()
+                stop()
+                # frame.stop_block()
             
             # Reset trial bit
             frame.finished_trial = False
@@ -735,16 +839,18 @@ def show_game(port, pat_id, sess, max_emg, framepass, no_motor=False, no_emg=Fal
         
         # Sets the background color
         root.fill(BG_COLOR)
-        
+        # if flash == 3:
+        #     refresh3()
+        # else:
         refresh()
 
         # Updates the window
         pygame.display.update()
         i = i +1
+
         if i == len(angle):
             i = 0
-
-
+         
 
 if __name__ == "__main__":
 

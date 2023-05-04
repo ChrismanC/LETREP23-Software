@@ -6,11 +6,13 @@ from app import show_app
 from baseline import show_baseline
 from max import max
 
+    #patient signs in with ID number and session
 def sign_in(port):
     print("Using PORT %s" % port) if port else print("No port selected")
     root = Tk()
     root.configure(bg="white")
 
+    #go to max.py with all data
     def continue_button(event=None):
         id = int(id_text.get("1.0", "end"))
         sess = sess_choice.get()
@@ -41,7 +43,7 @@ def sign_in(port):
     sess_choice = IntVar(root)
     sess_choice.set(1)
 
-    sess_list = range(2, 16)
+    sess_list = range(2, 16) #session selector
 
     sess_selector = OptionMenu(
         root, sess_choice, sess_choice.get(), *sess_list)

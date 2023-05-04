@@ -5,7 +5,7 @@ import time
 import random
 from global_funcs import *
 
-#makes bubbles for app and r_app, and squares for r_max
+#makes bubbles for app and r_app
 class SuccessRecordDisplay(Canvas):
 
     def __init__(self, root, width, height, nwidth, nheight, margin=10, radius=10, colors=None, start_color=1, *args, **kw):

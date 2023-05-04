@@ -11,7 +11,8 @@ from analysis_tools import *
 from object_browser import Browser
 
 #this file is for the analysis screen
-# ...todo
+#the analysis screen lets you look at past trial data
+#it is intended for a medical professional to track how therapy is going
 
 class analysis_app(Tk):
     def __init__(self):
@@ -22,6 +23,7 @@ class analysis_app(Tk):
 
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
+        #empty arrays for use
         self.cbs = []
         self.sessions = {}
 

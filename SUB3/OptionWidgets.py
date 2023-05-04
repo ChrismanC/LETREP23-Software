@@ -1,6 +1,9 @@
 from tkinter import *
 from global_funcs import *
 
+#this gives us widgets for the options menu
+
+#option for floats
 class FloatOption:
     def __init__(self, name, text, default_value=0):
         self.name = name
@@ -18,10 +21,12 @@ class FloatOption:
     def get_value(self):
         return float(self._entry.get())
 
+#option for ints
 class IntOption(FloatOption):
     def get_value(self):
         return int(self._entry.get())
 
+#option for yes/no checkmarks
 class BooleanOption:
     def __init__(self, name, text, default_value=False):
         self.name = name
@@ -39,6 +44,7 @@ class BooleanOption:
     def get_value(self):
         return self._disp.get()
 
+#dropdown choice box
 class DropdownOption:
     def __init__(self, name, text, dropdown_list, default_value=None):
         self.name = name
@@ -61,6 +67,7 @@ class DropdownOption:
     def get_value(self):
         return self._choice.get()
 
+#none
 class NoneOption:
     def __init__(self):
         self.name = "None"

@@ -1,6 +1,9 @@
 import csv
 import json
 
+#makes json into csv
+#pretty... simple
+
 def json_to_csv(json_file, csv_file):
     jdict = json.load(json_file)
 

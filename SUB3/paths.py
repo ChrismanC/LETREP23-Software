@@ -1,5 +1,13 @@
 #icons8.com
 #https://godotengine.org/
+#this wretched file
+#ok so it uh
+#hannah may have manually animated the fly animation with her mouse
+#so this is all the positions of the fly
+#the paths c:
+#it has xy coordinates and angles
+#you can edit them with excel or get new coordinates in any way
+#but this was to avoid the downfalls of a different very jittery process
 
 def move_paths():
     ship_pos= [

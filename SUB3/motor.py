@@ -65,6 +65,7 @@ class motor:
            0,
            None)
 
+        #multiprocessing prevents hang
         C_thread = multiprocessing.Process(target=runC2, args=())
         C_thread.start()
 

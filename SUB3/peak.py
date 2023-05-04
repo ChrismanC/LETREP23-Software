@@ -8,6 +8,7 @@ freq=19250
 #but not everywhere...
 #the accelerometer is 963 sa/sec
 
+#this hunts for EMG peaks
 def base_peak(emg,factor):
 
     # maxes = list(signal.find_peaks(emg[500:], height=find_peak_min_thresh(emg, factor))[0])
@@ -47,7 +48,7 @@ def base_peak(emg,factor):
     return(avg_peak, peak_ms)
 
 
-
+#the peak for conditioning
 def condition_peak(emg, avg_time,factor):
 
     print(avg_time)
@@ -79,7 +80,7 @@ def condition_peak(emg, avg_time,factor):
 
     return(avg_peak, peak_ms)
 
-
+#min peak threshold
 def find_peak_min_thresh(emg,factor):
     
     num = 5

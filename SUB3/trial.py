@@ -1,3 +1,5 @@
+#trial objects
+
 class trial():
     def __init__(self):
         self.emg_data = []

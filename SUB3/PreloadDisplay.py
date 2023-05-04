@@ -6,6 +6,9 @@ high_image_dir = 'C:/Program Files/LETREP2/resources/HighImage.png'
 low_image_dir = 'C:/Program Files/LETREP2/resources/LowImage.png'
 good_image_dir = 'C:/Program Files/LETREP2/resources/GoodImage.png'
 
+#this is the OLD preload display widget
+#three bars that rotate in a weird sorta 3D manner
+#the frog replaces this
 class PreloadDisplay(Canvas):
     #shows good/low/high bars on the side so patient can adjust their effort to be better
 

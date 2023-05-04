@@ -13,7 +13,7 @@ def center_window(toplevel):
 
     toplevel.geometry("+%d+%d" % (x, y))
 
-#these define button variables
+#these define button variables... somewhere. App, probably?
 button_color = "blue"
 button_font = ("Arial", 15)
 small_font = ("Arial", 10)

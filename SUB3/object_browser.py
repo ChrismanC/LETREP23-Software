@@ -6,6 +6,7 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
                                                NavigationToolbar2Tk)
 
+#for browsing sessions, blocks, trials, in analysis
 # Takes a dictionary of items and creates a listbox for them
 class Browser(Listbox):
     def __init__(self, frame, height, items, browser_type="Session", child_browser=None):

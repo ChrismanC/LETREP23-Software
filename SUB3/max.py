@@ -12,6 +12,8 @@ from PIL import ImageTk, Image
 import logging
 from game import show_game
 
+#max.py, like r_max, collects maximum average EMG in order to set the EMG preload thresholds.
+#its a copy paste of r_max with just a few tweaks.
 
 def max(port, pat_id, sess, no_motor=False, no_emg=False):
     

@@ -17,7 +17,8 @@ import scipy as sp
 from scipy import signal
 import peak
 
-#framework does most of the heavy lifting for calculations. It does not display to the user; app does that.
+#framework does most of the heavy lifting for calculations. 
+# It does not display to the user; app does that.
 
 class framework():
     def __init__(self, COM, patID=1234, sess=1, blocknum=-1, premin=-.06, premax=.04, no_motor = False, no_emg = False):
@@ -74,6 +75,7 @@ class framework():
             self.emg.exit()
         else:
             logging.warn("No EMG, Exiting")
+        print("Close exit")
 
     def fire(self, failure, trial_start_time, speed):
         #logged to the 'run' log files, as far as I can tell.
@@ -164,6 +166,7 @@ class framework():
 
             if not self.mot or not self.emg:
                 #if no motor/EMG, run fake values for test purposes
+                print("here")
                 logging.info("Missing EMG or Motor, Doing Fake Trial")
                 self.current_trial = trial()
                 trial_start_time = time()
@@ -295,15 +298,33 @@ class framework():
 
 
     def new_block(self):
+        print("New Block 1")
         sleep(5)
         self.block_count+=1
         self.trial_count = -1
+        print("New Block 2")
         self.block = self.block.copy_block()
+        print("New Block 3")
 
     def pause_block(self):
         self.paused = not self.paused
+
+    def game_stop(self):
+        self.running = False
+        self.paused = True
+        b = self.block
+        logging.info(f"Number of trials in block is {len(b.trials)}")
+        json_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), f'Desktop\\LETREP23\\Data\\{b.patID}\\')
+        # json_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), f'Downloads\\LETREP2\\Data\\{b.patID}\\')
+        if not os.path.exists(json_dir):
+            os.makedirs(json_dir)
+        with open(json_dir+f'Session{b.session}_Block{b.blocknum}_{b.date[2:]}_{datetime.now().strftime("%H-%M-%S")}.json', "w") as file: 
+            JSONmaker(self.block, file)
+        # messagebox.showinfo("Block Saved","Block saved to: "
+                #  + json_dir+f'Session{b.session}_Block{b.blocknum}_{b.date[2:]}_{datetime.now().strftime("%H-%M-%S")}.json')
         
     def stop_block(self):
+        print("Stopped 1")
         self.running = False
         self.paused = True
         b = self.block
@@ -443,11 +464,12 @@ class framework():
 
     def _data_collection_thread(self, speed_arr):
         while(self.running):
-            i=randrange(len(speed_arr))
-            while(speed_arr[i][1]==0):
-                i=(i+51)%(len(speed_arr))
-                print("SpeedCom: ", i)
-            speed=speed_arr[i][0]
-            print("SpeedComActual: ", speed)
-            speed_arr[i][1]=(speed_arr[i][1]-1)
-            self.take_trial(speed)
+            if(not self.paused):
+                i=randrange(len(speed_arr))
+                while(speed_arr[i][1]==0):
+                    i=(i+51)%(len(speed_arr))
+                    print("SpeedCom: ", i)
+                speed=speed_arr[i][0]
+                print("SpeedComActual: ", speed)
+                speed_arr[i][1]=(speed_arr[i][1]-1)
+                self.take_trial(speed)

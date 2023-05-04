@@ -4,7 +4,7 @@ import sys
 import win32pipe, win32file, pywintypes
 import struct
 
-
+#this one is more personalized for our purposes than win32pipeexample
 def pipe_server():
     print("pipe server")
     count = 0

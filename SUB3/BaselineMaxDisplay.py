@@ -6,7 +6,7 @@ import random
 from global_funcs import *
 
 #this is what lets max.py and r_max.py show squares instead of ovals
-#yep
+#its a ripoff of successRecordDisplay
 
 class BaselineMaxDisplay(Canvas):
 

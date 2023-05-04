@@ -7,6 +7,8 @@ from emg import emg
 from statistics import mean
 from itertools import chain
 
+#I have never used this file in my life
+#my best guess is that it lets you display EMG in real time?
 def animate(i, xs, ys):
 
     # Limit x and y lists to 20 items

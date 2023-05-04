@@ -6,11 +6,15 @@ import serial.tools.list_ports
 from global_funcs import *
 from sign_in import *
 
-
+#this is for selecting the port to use
+#use DUMMY because the computer is a DUMMY
+#since the c++ motor it doesn't auto detect correctly but hardcoding in dummy worked
+#otherwise it doesnt get emg and motor right
 def select_device():
     root = Tk()
     root.configure(bg="white")
 
+    #list of ports + dummy because dummy
     ports = serial.tools.list_ports.comports()
     port_names = [x[0] + ": " + x[1] for x in ports]
     port_names.append("COM7: Dummy")
@@ -28,11 +32,14 @@ def select_device():
     unselected_port = "No Motor (also disables EMG)"
     choice.set(unselected_port)
 
+    #on continue, sent port to sign in
+    #weird flex of a way to clean the port name but ok
     def continue_button():
         port = choice.get()
         root.destroy()
         sign_in(port.split(": ")[0] if port != unselected_port else None)
 
+    #the selector
     selector = OptionMenu(root, choice, choice.get(), *
                           port_names)
     selector.configure(width=30, anchor="w")

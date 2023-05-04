@@ -48,6 +48,10 @@ from game import show_game
 
 x= 1
 
+#not implemented
+#would replace max.py if implemented
+#currently has issues
+
 def show_max_game(port, pat_id, sess, no_motor=False, no_emg=False):
    
     speed_arr = [[0 for i in range(2)] for j in range(1)]

@@ -6,7 +6,9 @@ from create_json import JSONmaker
 from analysis_tools import open_json_files
 from peak import base_peak
 
-
+#for updating peak
+#opens json files
+#processes peaks
 folder_name = filedialog.askdirectory(title="Select Patient Folder")
 if folder_name != "":
     sessions, multiple_patids = open_json_files(folder_name)

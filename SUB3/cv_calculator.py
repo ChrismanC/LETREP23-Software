@@ -16,8 +16,8 @@ from object_browser import Browser
 
 #analysis
 #calculates the coefficient of variation
-#todo
 
+#get a folder
 folder_name = filedialog.askdirectory(title="Select Patient Folder")
 if folder_name != "":
     
@@ -40,6 +40,7 @@ if folder_name != "":
         [["","Block 4 Peaks", "ms Delay", "Success", "Preload Avg", "Preload StDev"]]]
     trial_header_output = []
 
+    #for session; for block; for trial; get data; do statistics; write data
     for sess in sessions.values():
         # The data pattern, [peak,max_delay_ms,succcess,pre_avg]
         sess_data = [[], [], [], []]
